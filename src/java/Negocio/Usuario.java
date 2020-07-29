@@ -13,8 +13,8 @@ public class Usuario {
     String usuario;
     String contraseña;
     String tipoUsuario;
-    String nombreUsuario;
-    String apellidoUsuario;
+    String nombre;
+    String apellido;
     String telefono;
     String mail;
     String direccion;
@@ -23,8 +23,8 @@ public class Usuario {
         this.usuario = usu;
         this.contraseña = con;
         this.tipoUsuario = tipoUsu;
-        this.nombreUsuario = nombre;
-        this.apellidoUsuario = apellido;
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.telefono = telefono;
         this.mail = mail;
         this.direccion = dir;
@@ -33,5 +33,36 @@ public class Usuario {
     public Usuario (){
     }
     
-    pr
+    public String getUsuario(){
+        return usuario;
+    }
+    
+    public void setUsuario(String usuario){
+        this.usuario = usuario;
+    }
+    
+    public String getPassword(){
+        return contraseña;
+    }
+    
+    public void setPassword(String contraseña){
+        this.contraseña = contraseña;
+    }
+    
+    public String getTipoUsuario(){
+        return tipoUsuario;
+    }
+    
+    public void setTipoUsuario(String tipoUsuario){
+        this.tipoUsuario = tipoUsuario;
+    }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    
 }
