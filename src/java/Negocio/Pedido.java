@@ -27,15 +27,15 @@ public class Pedido {
         return fecha_pedido;
     }
     
-    public void setFechaPedido(Date fecha_pedido){
-        this.fecha_pedido = fecha_pedido;
+    public void setFechaPedido(Date fecha){
+        this.fecha_pedido = fecha;
     }
     
     public String getOrdenCompleta(){
         return orden_completa;
     }
     
-    public void setOrdenCompleta(String orden_completa){
-        this.orden_completa = orden_completa;
+    public void setOrdenCompleta(String completa){
+        this.orden_completa = completa;
     }
 }

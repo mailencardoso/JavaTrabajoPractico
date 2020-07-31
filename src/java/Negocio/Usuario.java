@@ -12,22 +12,22 @@ package Negocio;
  */
 public class Usuario {
     String usuario;
-    String contraseña;
-    String tipoUsuario;
+    String pass;
+    String tipo_usuario;
     String nombre;
     String apellido;
     String telefono;
-    String mail;
+    String email;
     String direccion;
     
-    public Usuario(String usu, String con, String tipoUsu, String nombre, String apellido, String telefono, String mail, String dir) {
+    public Usuario(String usu, String con, String tipoUsu, String nom, String ape, String tel, String mail, String dir) {
         this.usuario = usu;
-        this.contraseña = con;
-        this.tipoUsuario = tipoUsu;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.mail = mail;
+        this.pass = con;
+        this.tipo_usuario = tipoUsu;
+        this.nombre = nom;
+        this.apellido = ape;
+        this.telefono = tel;
+        this.email = mail;
         this.direccion = dir;
     }
     
@@ -38,64 +38,64 @@ public class Usuario {
         return usuario;
     }
     
-    public void setUsuario(String usuario){
-        this.usuario = usuario;
+    public void setUsuario(String usu){
+        this.usuario = usu;
     }
     
     public String getPassword(){
-        return contraseña;
+        return pass;
     }
     
-    public void setPassword(String contraseña){
-        this.contraseña = contraseña;
+    public void setPassword(String con){
+        this.pass = con;
     }
     
     public String getTipoUsuario(){
-        return tipoUsuario;
+        return tipo_usuario;
     }
     
-    public void setTipoUsuario(String tipoUsuario){
-        this.tipoUsuario = tipoUsuario;
+    public void setTipoUsuario(String tipoUsu){
+        this.tipo_usuario = tipoUsu;
     }
     
     public String getNombre(){
         return nombre;
     }
     
-    public void setNombre(String nombre){
-        this.nombre = nombre;
+    public void setNombre(String nom){
+        this.nombre = nom;
     }
     
     public String getApellido(){
         return apellido;
     }
     
-    public void setApellido(String apellido){
-        this.apellido = apellido;
+    public void setApellido(String ape){
+        this.apellido = ape;
     }
     
     public String getTelefono(){
         return telefono;
     }
     
-    public void setTelefono(String telefono){
-        this.telefono = telefono;
+    public void setTelefono(String tel){
+        this.telefono = tel;
     }
     
     public String getMail(){
-        return mail;
+        return email;
     }
     
     public void setMail(String mail){
-        this.mail = mail;
+        this.email = mail;
     }
     
     public String getDireccion(){
         return direccion;
     }
     
-    public void setDireccion(String direccion){
-        this.direccion = direccion;
+    public void setDireccion(String dir){
+        this.direccion = dir;
     }
     
 }

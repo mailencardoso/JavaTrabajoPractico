@@ -26,23 +26,23 @@ public class Producto {
         return nombre;
     }
     
-    public void setNombre(String nombre){
-        this.nombre = nombre;
+    public void setNombre(String nom){
+        this.nombre = nom;
     }
     
     public String getDescripcion(){
         return descripcion;
     }
     
-    public void setDescripcion(String descripcion){
-        this.descripcion = descripcion;
+    public void setDescripcion(String desc){
+        this.descripcion = desc;
     }
     
     public Float getPrecio(){
         return precio;
     }
     
-    public void setPrecio(Float precio){
-        this.precio = precio;
+    public void setPrecio(Float pre){
+        this.precio = pre;
     }
 }
