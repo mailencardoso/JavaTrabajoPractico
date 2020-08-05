@@ -1,7 +1,7 @@
 <%-- 
-    Document   : login
-    Created on : 02/08/2020, 20:02:55
-    Author     : Usuario
+    Document   : registroNuevo
+    Created on : 05-ago-2020, 14:59:25
+    Author     : Diana
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,23 +47,23 @@
     <div class="container-log" >
         <div class ="row" >
             <form>
-                <h3>Iniciar sesión en Albicar </h3>
+                <h3>Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                 <div class="form-group" >
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="form-group" >
-                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-                </div> 
-               <div class="form-group" >
-                    <label for="registro">¿Eres nuevo en Albicar? <a href="registroNuevo.jsp">Regístrate ahora</a></label>
-               </div>
                     
+                    <input type="nombre" class="form-control" id="exampleInputNombre" aria-describedby="nombreHelp" placeholder="Nombre"><br/>
+                    <input type="apellido" class="form-control" id="exampleInputApellido" aria-describedby="apellidoHelp" placeholder="Apellido"><br/>
+                    <input type="usuario" class="form-control" id="exampleInputUsuario" aria-describedby="usuarioHelp" placeholder="Usuario"><br/>
+                    <input type="passs" class="form-control" id="exampleInputContraseña" aria-describedby="passHelp" placeholder="Contraseña"><br/>
+                    <input type="email" class="form-control" id="exampleInputCorreo" aria-describedby="emailHelp" placeholder="Correo electrónico"><br/>
+                    <input type="telefono" class="form-control" id="exampleInputTel" aria-describedby="telHelp" placeholder="Teléfono"><br/>
+                    <input type="direccion" class="form-control" id="exampleInputDireccion" aria-describedby="direccionHelp" placeholder="Dirección"><br/>
+                </div>
+                
+                <div class="form-group" >
+                    <button type="submit" class="btn btn-primary">Crear cuenta</button>
+                </div> 
+                                  
             </form>
         </div>
     </div>
