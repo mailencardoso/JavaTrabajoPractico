@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
-        <link rel="stylesheet" href="css/login.css">
+        <title>Registrate</title>
+        <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -20,14 +20,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="index.jsp">Compra Online!</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
+            <a class="nav-link" href="index.jsp">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -46,24 +46,30 @@
   </nav>
     <div class="container-log" >
         <div class ="row" >
-            <form>
-                <h3>Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+            <form action="Registro.java">
+                <h3 class="registrar">Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
-                <div class="form-group" >
-                    
-                    <input type="nombre" class="form-control" id="exampleInputNombre" aria-describedby="nombreHelp" placeholder="Nombre"><br/>
-                    <input type="apellido" class="form-control" id="exampleInputApellido" aria-describedby="apellidoHelp" placeholder="Apellido"><br/>
-                    <input type="usuario" class="form-control" id="exampleInputUsuario" aria-describedby="usuarioHelp" placeholder="Usuario"><br/>
-                    <input type="passs" class="form-control" id="exampleInputContraseña" aria-describedby="passHelp" placeholder="Contraseña"><br/>
-                    <input type="email" class="form-control" id="exampleInputCorreo" aria-describedby="emailHelp" placeholder="Correo electrónico"><br/>
-                    <input type="telefono" class="form-control" id="exampleInputTel" aria-describedby="telHelp" placeholder="Teléfono"><br/>
-                    <input type="direccion" class="form-control" id="exampleInputDireccion" aria-describedby="direccionHelp" placeholder="Dirección"><br/>
-                </div>
-                
-                <div class="form-group" >
-                    <button type="submit" class="btn btn-primary">Crear cuenta</button>
-                </div> 
-                                  
+                        <div class="form-group">
+                            <label for="exampleInputNombre">Nombre</label>
+                            <input type="text" class="form-control" id="exampleInputNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre"><br>
+                            <label for="exampleInputApellido">Apellido</label>
+                            <input type="text" class="form-control" id="exampleInputApellido" name="apellido" aria-describedby="apellidoHelp" placeholder="Apellido"><br>
+                            <label for="exampleInputUsuario">Usuario</label>
+                            <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" placeholder="Usuario"><br>
+                            <label for="exampleInputContraseña">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleInputContraseña" name="contraseña" aria-describedby="passHelp" placeholder="Contraseña"><br>
+                            <label for="exampleInputCorreo">Email</label>
+                            <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico"><br>
+                            <label for="exampleInputTel">Telefono</label>
+                            <input type="text" class="form-control" id="exampleInputTel" name="telefono" aria-describedby="telHelp" placeholder="Teléfono"><br>
+                            <label for="exampleInputDireccion">Direccion</label>
+                            <input type="text" class="form-control" id="exampleInputDireccion" name="direccion" aria-describedby="direccionHelp" placeholder="Dirección"><br>
+                                        
+                            <div class="form-group" >
+                                <button type="submit" class="btn btn-primary">Crear cuenta</button>
+                            </div> 
+                        </div>
+                                
             </form>
         </div>
     </div>

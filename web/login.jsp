@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -20,14 +20,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <a class="navbar-brand" href="index.jsp">Compra Online!</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
+            <a class="nav-link" href="index.jsp">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -46,16 +46,16 @@
   </nav>
     <div class="container-log" >
         <div class ="row" >
-            <form>
+            <form action="Login.java">
                 <h3>Iniciar sesión en Albicar </h3>
                 <div class="form-group" >
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                    <label for="exampleInputUsuario">Usuario</label>
+                    <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" >
                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                 </div>
                 <div class="form-group" >
                     <button type="submit" class="btn btn-primary">Iniciar sesión</button>

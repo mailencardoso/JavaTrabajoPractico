@@ -5,12 +5,16 @@
  */
 package Controladores;
 
+
+import Datos.ConsultaUsuario;
+import Negocio.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -29,19 +33,37 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter(); /**Devuelve un objeto PrintWriter que puede enviar textos al cliente */
+        HttpSession sesion = request.getSession(true); /** crea la sesion */
+        
+        String usu = request.getParameter("usuario");
+        String pass = request.getParameter("password");
+        
+        /** Crea una instancia de Usuario */
+        ConsultaUsuario user = new ConsultaUsuario();
+        Usuario usuarioActual;
+        usuarioActual = user.login(usu, pass);
+        
+        if(usuarioActual!=null){
+            sesion.setAttribute("userActual", usuarioActual); /** setea la sesion con el usuario logueado */
+            response.sendRedirect("indexlogueado.jsp");  /* redirige al inicio */
+            
+        }else{
+            sesion.setAttribute("error", "Error: Usuario y/o contraseñas incorrectos.");
+            response.sendRedirect("index.jsp");
+
         }
+        
+        
+        
+        
+        
+        
+        
+            
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
