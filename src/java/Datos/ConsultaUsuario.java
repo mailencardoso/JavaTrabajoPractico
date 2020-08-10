@@ -65,11 +65,11 @@ public class ConsultaUsuario extends Conexion{
         return usuarioActual;
     }  
     
-    public boolean agregarCliente(String usuario, String contraseña, String tipoUsuario, String nombre, String apellido, String telefono, String mail, String calle, int numero, String tipoDireccion, int piso, int departamento, String bloque, String comentarios) {
+    public boolean agregarCliente(String usuario, String contraseña, String tipoUsuario, String nombre, String apellido, String telefono, String mail, String direccion) {
         PreparedStatement pst= null;
         try {
             getConexion().setAutoCommit(false);
-            String query= "INSERT INTO Usuario (usuario,pass,tipo_usuario,nombre,apellido,telefono,email) VALUES (?,?,?,?,?,?,?);";
+            String query= "INSERT INTO Usuario (usuario,pass,tipo_usuario,nombre,apellido,telefono,email, direccion) VALUES (?,?,?,?,?,?,?,?);";
             pst = getConexion().prepareStatement(query);
             pst.setString(1, usuario);
             pst.setString(2, contraseña);
@@ -80,21 +80,8 @@ public class ConsultaUsuario extends Conexion{
             pst.setString(7, mail);
             int ban=pst.executeUpdate();
             
-            /*VER QUE HACEMOS CON DIRECCIONES*/
-            String query2= "INSERT INTO direcciones (calle_direccion,numero_direccion,tipo_direccion,piso_direccion,departamento_direccion,bloque_direccion,usuario_direccion,comentarios) VALUES (?,?,?,?,?,?,?,?);";
-            pst = getConexion().prepareStatement(query2);
-            pst.setString(1, calle);
-            pst.setInt(2, numero);
-            pst.setString(3, tipoDireccion);
-            pst.setInt(4, piso);
-            pst.setInt(5, departamento);
-            pst.setString(6, bloque);
-            pst.setString(7, usuario);
-            pst.setString(8, comentarios);
-            int ban2=pst.executeUpdate();
-            
             getConexion().commit();
-            if(ban==1 && ban2==1){
+            if(ban==1){
                 return true;
             }
         } catch (SQLIntegrityConstraintViolationException e) {

@@ -46,7 +46,7 @@
   </nav>
     <div class="container-log" >
         <div class ="row" >
-            <form action="Login.java">
+            <form action="Login" method="post">
                 <h3>Iniciar sesión en Albicar </h3>
                 <div class="form-group" >
                     <label for="exampleInputUsuario">Usuario</label>
