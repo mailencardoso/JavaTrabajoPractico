@@ -21,6 +21,10 @@ public class Producto {
         this.descripcion = desc;
         this.precio = pre;
     }
+
+    public Producto(int id, String nombre, String desc, Float precio) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public String getNombre(){
         return nombre;
