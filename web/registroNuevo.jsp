@@ -46,7 +46,7 @@
   </nav>
     <div class="container-log" >
         <div class ="row" >
-            <form action="Registro.java">
+            <form action="Registro">
                 <h3 class="registrar">Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                         <div class="form-group">

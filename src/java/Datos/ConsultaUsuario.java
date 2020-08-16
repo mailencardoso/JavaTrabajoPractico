@@ -6,6 +6,7 @@
 package Datos;
 
 import Negocio.Usuario;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,8 +34,9 @@ public class ConsultaUsuario extends Conexion{
         Usuario usuarioActual = new Usuario();
         
          try {
-            String query = "SELECT * FROM Usuario WHERE usuario = ? AND pass = ?";
-            pst = getConexion().prepareStatement(query);
+            String query = "SELECT * FROM usuario WHERE usuario = ? AND pass = ?";
+            Connection conexion = getConexion();
+            pst = conexion.prepareStatement(query);
             pst.setString(1, usuario);
             pst.setString(2, pass);
             rs = pst.executeQuery();
@@ -50,7 +52,7 @@ public class ConsultaUsuario extends Conexion{
                 
                 return usuarioActual;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             error = "Error: "+e;
         } finally{
             try {

@@ -20,7 +20,7 @@ public class Conexion {
     private String PORT = "3306";
     private String DATABASE = "db_minimercado";
     private String CLASSNAME = "com.mysql.jdbc.Driver";
-    private String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE;
+    private String URL = "jdbc:mysql://"+HOST+":"+PORT+"/"+DATABASE + "?autoReconnect=true&useSSL=false";
     private Connection con;
     
     public Conexion(){
@@ -34,7 +34,7 @@ public class Conexion {
         }
     }
     
-    public Connection getConexion (){
+    public Connection getConexion(){
         return con;
     }
 }
