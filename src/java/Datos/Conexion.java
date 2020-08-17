@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class Conexion {
     private String USERNAME = "root";
-    private String PASSWORD = "gaston"; //gaston
+    private String PASSWORD = ""; //gaston
     private String HOST = "localhost"; //127.0.0.1
     private String PORT = "3306";
     private String DATABASE = "db_minimercado";

@@ -81,7 +81,6 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
---------------------------------------------------------------
 INSERT INTO `db_minimercado`.`usuario`
 (`usuario`,
 `nombre`,
@@ -99,5 +98,24 @@ VALUES
 "holanda123",
 "3412103600",
 "Parana 400",
+"administrador");
+
+INSERT INTO `db_minimercado`.`usuario`
+(`usuario`,
+`nombre`,
+`apellido`,
+`email`,
+`pass`,
+`telefono`,
+`direccion`,
+`tipo_usuario`)
+VALUES
+("gastonalbizuri",
+"Gaston",
+"Albizuri",
+"gastonalbizuri@gmail.com",
+"holanda123",
+"3468500043",
+"Cordoba 269",
 "administrador");
 

@@ -43,7 +43,7 @@ public class Login extends HttpServlet {
         
         /** Crea una instancia de Usuario */
         ConsultaUsuario user = new ConsultaUsuario();
-        Usuario usuarioActual;
+        Usuario usuarioActual = new Usuario();
         usuarioActual = user.login(usu, pass);
         
         if(usuarioActual!=null){
@@ -55,17 +55,9 @@ public class Login extends HttpServlet {
             response.sendRedirect("index.jsp");
 
         }
-        
-        
-        
-        
-        
-        
-        
-            
-        
     }
-
+    
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -105,4 +97,5 @@ public class Login extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
 }
