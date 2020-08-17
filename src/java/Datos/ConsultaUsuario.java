@@ -50,14 +50,14 @@ public class ConsultaUsuario extends Conexion{
                 
                 return usuarioActual;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             error = "Error: "+e;
         } finally{
             try {
                  if (getConexion()!= null) getConexion().close();
                  if (pst!=null) pst.close();
                  if (rs!= null) rs.close();
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 error = "Error: "+e;
             }   
         }
