@@ -46,7 +46,7 @@
   </nav>
     <div class="container-log" >
         <div class ="row" >
-            <form action="Registro">
+            <form action="Registro" method="post">
                 <h3 class="registrar">Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                         <div class="form-group">

@@ -49,6 +49,7 @@ public class ConsultaUsuario extends Conexion{
                 usuarioActual.setTipoUsuario(rs.getString("tipo_usuario"));
                 usuarioActual.setTelefono(rs.getString("telefono"));
                 usuarioActual.setMail(rs.getString("email"));
+                usuarioActual.setDireccion(rs.getString("direccion"));
                 
                 return usuarioActual;
             }
