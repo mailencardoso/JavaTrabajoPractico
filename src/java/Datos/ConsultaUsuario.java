@@ -68,19 +68,20 @@ public class ConsultaUsuario extends Conexion{
         return usuarioActual;
     }  
     
-    public boolean agregarCliente(String usuario, String contraseña, String tipoUsuario, String nombre, String apellido, String telefono, String mail, String direccion) {
+    public boolean agregarCliente(String usuario, String nombre, String apellido, String email, String pass, String telefono, String direccion, String tipo_usuario) {
         PreparedStatement pst= null;
         try {
             getConexion().setAutoCommit(false);
-            String query= "INSERT INTO Usuario (usuario,pass,tipo_usuario,nombre,apellido,telefono,email, direccion) VALUES (?,?,?,?,?,?,?,?);";
+            String query= "INSERT INTO usuario (usuario,nombre,apellido,email,pass,telefono,direccion,tipo_usuario) VALUES (?,?,?,?,?,?,?,?);";
             pst = getConexion().prepareStatement(query);
             pst.setString(1, usuario);
-            pst.setString(2, contraseña);
-            pst.setString(3, tipoUsuario);
-            pst.setString(4, nombre);
-            pst.setString(5, apellido);
+            pst.setString(2, nombre);
+            pst.setString(3, apellido);
+            pst.setString(4, email);
+            pst.setString(5, pass);
             pst.setString(6, telefono);
-            pst.setString(7, mail);
+            pst.setString(7, direccion);
+            pst.setString(8, tipo_usuario);
             int ban=pst.executeUpdate();
             
             getConexion().commit();
@@ -89,13 +90,13 @@ public class ConsultaUsuario extends Conexion{
             }
         } catch (SQLIntegrityConstraintViolationException e) {
             error = "Error: Nombre de usuario existente";
-        } catch(SQLException e){
+        } catch(Exception e){
             error= "Error: "+e;
         }finally {
             try {
                 if (getConexion()!=null) getConexion().close();
                 if (pst!=null) pst.close();
-            } catch (SQLException e) {
+            } catch (Exception e) {
                 error = "Error: "+e;
             }
         }

@@ -57,7 +57,7 @@
                             <label for="exampleInputUsuario">Usuario</label>
                             <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" placeholder="Usuario"><br>
                             <label for="exampleInputContraseña">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputContraseña" name="contraseña" aria-describedby="passHelp" placeholder="Contraseña"><br>
+                            <input type="password" class="form-control" id="exampleInputContraseña" name="contrasena" aria-describedby="passHelp" placeholder="Contraseña"><br>
                             <label for="exampleInputCorreo">Email</label>
                             <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico"><br>
                             <label for="exampleInputTel">Telefono</label>

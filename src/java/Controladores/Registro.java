@@ -32,7 +32,8 @@ public class Registro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       response.setContentType("text/html;charset=UTF-8");
+        
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter(); /**Devuelve un objeto PrintWriter que puede enviar textos al cliente */
         HttpSession sesion = request.getSession(true); /** crea la sesion */
         
@@ -41,52 +42,50 @@ public class Registro extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
         String usuario = request.getParameter("usuario");
-        String contraseña = request.getParameter("contraseña");
+        String pass = request.getParameter("contrasena");
         String email = request.getParameter("email");
         String telefono = request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
         
-        
+              
         if (nombre.equals("") || apellido.equals("") || usuario.equals("") ||
-            contraseña.equals("") || email.equals("") || telefono.equals("") ||
+            pass.equals("") || email.equals("") || telefono.equals("") ||
             direccion.equals("")){
                 sesion.setAttribute("error", "Error: Debe completar todos los campos");
-                response.sendRedirect("registroNuevo.jsp");
+                ban = false;
             }
         else if(!usuario.matches("^[^\\s]{8,16}")){
                 sesion.setAttribute("error", "Error: El nombre de usuario debe contener entre 8 y 16 caracteres (sin espacios en blanco)");
-                response.sendRedirect("registroNuevo.jsp");
+                ban = false;
             }
-        else if(contraseña.length()>8){
+        else if(pass.length()<8){
                 sesion.setAttribute("error", "Error: La contraseña debe contener al menos 8 caracteres(sin espacios en blanco)");
-                response.sendRedirect("registroNuevo.jsp");
+                ban = false;
         }
         else if(!email.matches("[-\\w\\.]+@\\w+\\.\\w+")){
                 sesion.setAttribute("error", "Error: Ingrese un email correcto");
-                response.sendRedirect("registroNuevo.jsp");
+                ban = false;
         }
         else if(telefono.matches("[0-9]")){
                 sesion.setAttribute("error", "Error: Ingrese un telefono correcto (solo numeros)");
-                response.sendRedirect("registroNuevo.jsp"); 
+                ban = false; 
         }
         
         ConsultaUsuario usu = new ConsultaUsuario();
+
         
         if(ban==true){
-            if(usu.agregarCliente(usuario, contraseña, "Cliente", nombre, apellido, telefono, email, direccion)){
+                usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente");
                 sesion.setAttribute("exito", "Usuario registrado correctamente");
-                response.sendRedirect("index.jsp"); 
+                response.sendRedirect("loginregistrado.jsp"); 
             }
-            else{
-                sesion.setAttribute("error", usu.getError());
-                response.sendRedirect("index.jsp");
-            }
-        }
+            
+        
         else{
             if(usu.getError()!=null){
                 sesion.setAttribute("error", usu.getError());
             }
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("indexerror.jsp");
         }
     }
 
