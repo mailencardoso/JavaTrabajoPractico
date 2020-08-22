@@ -3,7 +3,15 @@
     Created on : 02/08/2020, 20:02:55
     Author     : Usuario
 --%>
-
+<%
+    HttpSession objSesion = request.getSession(false);
+    objSesion.removeAttribute("error");
+    String notificacion = "";
+    if (objSesion.getAttribute("exito") != null){
+        notificacion = (String) objSesion.getAttribute("exito");
+    }
+    
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,7 +55,13 @@
     <div class="container-log" >
         <div class ="row" >
             <form action="Login" method="post">
-                <h3>Iniciar sesión en Albicar </h3>
+                <%if (notificacion.equals("Registro realizado")){ %>
+                <h4>¡Registro realizado con éxito!</h4>
+                <hr style="height:2px;border-width:0;color:lightblue;background-color:lightblue">                
+                <%}%>
+                 <%objSesion.removeAttribute("exito");%>
+               
+                <h3>Iniciar sesión</h3>
                 <div class="form-group" >
                     <label for="exampleInputUsuario">Usuario</label>
                     <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" >

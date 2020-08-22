@@ -76,8 +76,8 @@ public class Registro extends HttpServlet {
         
         if(ban==true){
                 usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente");
-                sesion.setAttribute("exito", "Usuario registrado correctamente");
-                response.sendRedirect("loginregistrado.jsp"); 
+                sesion.setAttribute("exito", "Registro realizado");
+                response.sendRedirect("login.jsp"); 
             }
             
         

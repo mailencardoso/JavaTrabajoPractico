@@ -1,3 +1,7 @@
+<%
+    HttpSession objSesion = request.getSession(false);
+    objSesion.removeAttribute("exito");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
