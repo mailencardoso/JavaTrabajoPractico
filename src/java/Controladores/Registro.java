@@ -47,32 +47,19 @@ public class Registro extends HttpServlet {
         String telefono = request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
         
+        ConsultaUsuario usu1 = new ConsultaUsuario();
+        ConsultaUsuario usu2 = new ConsultaUsuario();
               
-        if (nombre.equals("") || apellido.equals("") || usuario.equals("") ||
-            pass.equals("") || email.equals("") || telefono.equals("") ||
-            direccion.equals("")){
-                sesion.setAttribute("error", "Error: Debe completar todos los campos");
+        if (usu1.existeCuenta(email)){
+                sesion.setAttribute("error1", "Ya existe una cuenta para el email ingresado.");
+                ban = false;
+            };
+        if(usu2.existeUsuario(usuario)){
+                sesion.setAttribute("error2", "Usuario ingresado ya existe.");
                 ban = false;
             }
-        else if(!usuario.matches("^[^\\s]{8,16}")){
-                sesion.setAttribute("error", "Error: El nombre de usuario debe contener entre 8 y 16 caracteres (sin espacios en blanco)");
-                ban = false;
-            }
-        else if(pass.length()<8){
-                sesion.setAttribute("error", "Error: La contraseña debe contener al menos 8 caracteres(sin espacios en blanco)");
-                ban = false;
-        }
-        else if(!email.matches("[-\\w\\.]+@\\w+\\.\\w+")){
-                sesion.setAttribute("error", "Error: Ingrese un email correcto");
-                ban = false;
-        }
-        else if(telefono.matches("[0-9]")){
-                sesion.setAttribute("error", "Error: Ingrese un telefono correcto (solo numeros)");
-                ban = false; 
-        }
-        
-        ConsultaUsuario usu = new ConsultaUsuario();
-
+             
+       ConsultaUsuario usu = new ConsultaUsuario();
         
         if(ban==true){
                 usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente");
@@ -82,13 +69,12 @@ public class Registro extends HttpServlet {
             
         
         else{
-            if(usu.getError()!=null){
-                sesion.setAttribute("error", usu.getError());
-            }
-            response.sendRedirect("indexerror.jsp");
+            response.sendRedirect("registroNuevo.jsp");
+             
+            
         }
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

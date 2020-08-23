@@ -132,5 +132,66 @@ public class ConsultaUsuario extends Conexion{
         }
         return false;
     }
+      
+     public boolean existeCuenta(String email){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+       
+        
+         try {
+            String query = "SELECT * FROM usuario WHERE email = ?";
+            Connection conexion = getConexion();
+            pst = conexion.prepareStatement(query);
+            pst.setString(1, email);
+            rs = pst.executeQuery();
+            
+            if (rs.absolute(1)){
+                
+                return true;
+            }
+        } catch (Exception e) {
+            error = "Error: "+e;
+        } finally{
+            try {
+                 if (getConexion()!= null) getConexion().close();
+                 if (pst!=null) pst.close();
+                 if (rs!= null) rs.close();
+            } catch (Exception e) {
+                error = "Error: "+e;
+            }   
+        }
+        return false;
+    }   
+     
+     public boolean existeUsuario(String usuario){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+                
+         try {
+            String query = "SELECT * FROM usuario WHERE usuario = ?";
+            Connection conexion = getConexion();
+            pst = conexion.prepareStatement(query);
+            pst.setString(1, usuario);
+            rs = pst.executeQuery();
+            
+            if (rs.absolute(1)){
+                                
+                return true;
+            }
+        } catch (Exception e) {
+            error = "Error: "+e;
+        } finally{
+            try {
+                 if (getConexion()!= null) getConexion().close();
+                 if (pst!=null) pst.close();
+                 if (rs!= null) rs.close();
+            } catch (Exception e) {
+                error = "Error: "+e;
+            }   
+        }
+          
+        return false;
+    } 
+    
          
 }

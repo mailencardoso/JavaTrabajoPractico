@@ -5,10 +5,13 @@
 --%>
 <%
     HttpSession objSesion = request.getSession(false);
-    objSesion.removeAttribute("error");
     String notificacion = "";
+    String notificacion2 = "";
     if (objSesion.getAttribute("exito") != null){
         notificacion = (String) objSesion.getAttribute("exito");
+    }
+    if (objSesion.getAttribute("error") != null){
+        notificacion2 = (String) objSesion.getAttribute("error");
     }
     
 %>
@@ -55,13 +58,13 @@
     <div class="container-log" >
         <div class ="row" >
             <form action="Login" method="post">
-                <%if (notificacion.equals("Registro realizado")){ %>
-                <h4>¡Registro realizado con éxito!</h4>
-                <hr style="height:2px;border-width:0;color:lightblue;background-color:lightblue">                
+                <h3>Iniciar sesión</h3>
+                 <%if (notificacion.equals("Registro realizado")){ %>
+                <div class="alert alert-success" role="alert">
+                                ¡Registro nuevo realizado <b>con éxito</b>!
+                            </div>                 
                 <%}%>
                  <%objSesion.removeAttribute("exito");%>
-               
-                <h3>Iniciar sesión</h3>
                 <div class="form-group" >
                     <label for="exampleInputUsuario">Usuario</label>
                     <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" >
@@ -72,7 +75,15 @@
                     <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                 </div>
                 <div class="form-group" >
-                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button><br>
+                    
+                    <%if (notificacion2.equals("Error: Usuario y/o contraseñas incorrectos.")){ %>
+                    <br> <div class="alert alert-danger" role="alert">
+                                <b>¡ERROR!</b> Usuario y/o contraseña incorrectos. <br>Verifica tus datos.
+                            </div>
+                    <%}%>
+                 <%objSesion.removeAttribute("error");%>
+                 
                 </div> 
                <div class="form-group" >
                     <label for="registro">¿Eres nuevo en Albicar? <a href="registroNuevo.jsp">Regístrate ahora</a></label>

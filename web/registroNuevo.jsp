@@ -3,7 +3,17 @@
     Created on : 05-ago-2020, 14:59:25
     Author     : Diana
 --%>
-
+<%
+    HttpSession objSesion = request.getSession(false);
+    String notificacion1 = "";
+    String notificacion2 = "";
+    if (objSesion.getAttribute("error1") != null){
+        notificacion1 = (String) objSesion.getAttribute("error1");
+    };
+    if (objSesion.getAttribute("error2") != null){
+        notificacion2 = (String) objSesion.getAttribute("error2");
+    };   
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,28 +57,42 @@
     <div class="container-log" >
         <div class ="row" >
             <form action="Registro" method="post">
-                <h3 class="registrar">Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
-                        <div class="form-group">
+                <h3>Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                            <div class="form-group">
+                            <%if (notificacion1.equals("Ya existe una cuenta para el email ingresado.")){ %>   
+                            <div class="alert alert-danger" role="alert">
+                                <b>Ya existe</b> una cuenta para el email ingresado.
+                            </div>   
+                            <%}%>
+                            <%objSesion.removeAttribute("error1");%>
+                            <%if (notificacion2.equals("Usuario ingresado ya existe.")){ %>   
+                            <div class="alert alert-danger" role="alert">
+                                Usuario ingresado <b>ya existe</b>. Ingrese uno diferente.
+                            </div>   
+                            <%}%>
+                            <%objSesion.removeAttribute("error1");%>
+                            <label><font color=grey>Por favor rellene el siguiente formulario.</font></label><br>
                             <label for="exampleInputNombre">Nombre</label>
-                            <input type="text" class="form-control" id="exampleInputNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre"><br>
+                            <input type="text" class="form-control" id="exampleInputNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre" required><br>
                             <label for="exampleInputApellido">Apellido</label>
-                            <input type="text" class="form-control" id="exampleInputApellido" name="apellido" aria-describedby="apellidoHelp" placeholder="Apellido"><br>
+                            <input type="text" class="form-control" id="exampleInputApellido" name="apellido" aria-describedby="apellidoHelp" placeholder="Apellido" required><br>
                             <label for="exampleInputUsuario">Usuario</label>
-                            <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" placeholder="Usuario"><br>
+                            <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="descripcionUsuario" placeholder="Usuario" required pattern="[a-zA-Z0-9]+" minlength="8" maxlength="16" title="Solo caracteres alfanuméricos sin espacios."><br>
                             <label for="exampleInputContraseña">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputContraseña" name="contrasena" aria-describedby="passHelp" placeholder="Contraseña"><br>
-                            <label for="exampleInputCorreo">Email</label>
-                            <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico"><br>
-                            <label for="exampleInputTel">Telefono</label>
-                            <input type="text" class="form-control" id="exampleInputTel" name="telefono" aria-describedby="telHelp" placeholder="Teléfono"><br>
-                            <label for="exampleInputDireccion">Direccion</label>
-                            <input type="text" class="form-control" id="exampleInputDireccion" name="direccion" aria-describedby="direccionHelp" placeholder="Dirección"><br>
-                                        
+                            <input type="password" class="form-control" id="exampleInputContraseña" name="contrasena" aria-describedby="passHelp" placeholder="Contraseña" required minlength="8" maxlength="16"><br>
+                            <label for="exampleInputCorreo">Correo electrónico</label>
+                            <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico" required><br>
+                            <label for="exampleInputTel">Teléfono</label>
+                            <input type="tel" class="form-control" id="exampleInputTel" name="telefono" aria-describedby="telHelp" placeholder="Teléfono" required pattern="[0-9]+" title="Ingrese solo números."><br>
+                            <label for="exampleInputDireccion">Dirección</label>
+                            <input type="text" class="form-control" id="exampleInputDireccion" name="direccion" aria-describedby="direccionHelp" placeholder="Dirección" required><br>
                             <div class="form-group" >
                                 <button type="submit" class="btn btn-primary">Crear cuenta</button>
                             </div> 
+                            
                         </div>
+                          
                                 
             </form>
         </div>

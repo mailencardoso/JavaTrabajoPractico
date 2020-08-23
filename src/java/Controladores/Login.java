@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
             
         }else{
             sesion.setAttribute("error", "Error: Usuario y/o contraseñas incorrectos.");
-            response.sendRedirect("loginincorrecto.jsp");
+            response.sendRedirect("login.jsp");
 
         }
     }
