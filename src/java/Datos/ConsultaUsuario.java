@@ -72,7 +72,9 @@ public class ConsultaUsuario extends Conexion{
         PreparedStatement pst= null;
         try {
             getConexion().setAutoCommit(false);
+
             String query= "INSERT INTO usuario (usuario,nombre,apellido,email,pass,telefono,direccion,tipo_usuario) VALUES (?,?,?,?,?,?,?,?);";
+
             pst = getConexion().prepareStatement(query);
             pst.setString(1, usuario);
             pst.setString(2, nombre);
@@ -82,6 +84,8 @@ public class ConsultaUsuario extends Conexion{
             pst.setString(6, telefono);
             pst.setString(7, direccion);
             pst.setString(8, tipo_usuario);
+            pst.setString(7, email);
+            pst.setString(8, direccion);
             int ban=pst.executeUpdate();
             
             getConexion().commit();

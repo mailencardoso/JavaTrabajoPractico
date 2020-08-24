@@ -99,20 +99,47 @@
   </nav>
  <%}%> 
   <!-- Page Content -->
-  <div class="container">
-
-    <div class ="row" >
-        <div class="col-lg-2">
-            <h3>Mi perfil </h3>
-            <div class="profile-photo" >
-                <img src="img/perfilMai.jpg" id="perfil-photo" class="img-thumbnail" alt="Foto de perfil">
-                
-            </div>
-        </div>    
+<div class="container-profile">
+    <div class="row justify-content-center">
+        <h3 id="profile">Mi perfil</h3>
     </div>
-    <!-- /.row -->
-
-  </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            Nombre de usuario: <%=usuarioActual.getUsuario()%>
+        </div>
+        <div class="col-4">
+            Email : <%=usuarioActual.getMail()%>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            Nombre: <%=usuarioActual.getNombre()%>
+        </div>
+        <div class="col-4">
+            Apellido: <%=usuarioActual.getApellido()%>
+        </div>
+    </div>
+    <br>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            Direccion: <%=usuarioActual.getDireccion()%>
+        </div>
+        <div class="col-4">
+            Telefono: <%=usuarioActual.getTelefono()%>
+        </div>
+    </div>
+    <br>    
+    <div class="row justify-content-center">
+        <div class="col-4" id="botones">
+            <a type="button" class="btn btn-light">Cancelar</a>
+            <a type="button" class="btn btn-primary">Modificar Datos</a>
+        </div>
+       
+    </div>
+</div>
+  
   <!-- /.container -->
 
   <!-- Footer -->
