@@ -3,12 +3,10 @@
     padding-left: 350px;
 }
 
-
 .container-profile{
-    padding-top: 150px;
-   
+    height: 700px; 
+    
 }
-
 
 h3{
   padding-bottom: 20px;
@@ -23,7 +21,26 @@ h3{
     text-align: right;
 }
 
-#perfil-photo{
-    width: 20px;
-    height: 20px;
+#update-button{
+    padding-top: 60px;
+    padding-left: 430px;
+}
+
+.sing-out{
+    padding-right: 45px;
+    padding-top: 15px;
+}
+
+#personal h3{
+    padding-right: 90px;
+}
+
+
+#second-row label{
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.prof{
+    font-weight: bold;
 }

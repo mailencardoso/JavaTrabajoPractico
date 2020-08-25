@@ -29,12 +29,13 @@
   <meta name="author" content="">
 
   <title>Albicar</title>
-
+  <link rel="stylesheet" href="css/general.css">
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
+  
 
 </head>
 
@@ -100,44 +101,42 @@
  <%}%> 
   <!-- Page Content -->
 <div class="container-profile">
-    <div class="row justify-content-center">
-        <h3 id="profile">Mi perfil</h3>
+    <div class="row justify-content-end">
+        <a class="sing-out" href="#">Cerrar Sesion</a>
+    </div>
+    <div id="personal" class="row justify-content-center">
+            <h3>Mis datos personales</h3>
     </div>
     <br>
     <div class="row justify-content-center">
-        <div class="col-4">
-            Nombre de usuario: <%=usuarioActual.getUsuario()%>
+        <div class="col-sm-4">
+            Nombre de usuario: <label class="prof"><%=usuarioActual.getUsuario()%></label>
         </div>
-        <div class="col-4">
-            Email : <%=usuarioActual.getMail()%>
+        <div class="col-sm-4">
+            Email: <label class="prof"> <%=usuarioActual.getMail()%></label>
         </div>
     </div>
-    <br>
+    <div id="second-row" class="row justify-content-center">
+        <div class="col-sm-4">
+            Nombre: <label class="prof"> <%=usuarioActual.getNombre()%></label>
+        </div>
+        <div class="col-sm-4">
+            Apellido: <label class="prof"><%=usuarioActual.getApellido()%></label>
+        </div>
+    </div>    
     <div class="row justify-content-center">
-        <div class="col-4">
-            Nombre: <%=usuarioActual.getNombre()%>
+        <div class="col-sm-4">
+            Telefono:<label class="prof"> <%=usuarioActual.getTelefono()%></label>
         </div>
-        <div class="col-4">
-            Apellido: <%=usuarioActual.getApellido()%>
+        <div class="col-sm-4">
+            Dirección:<label class="prof"> <%=usuarioActual.getDireccion()%></label>
         </div>
-    </div>
-    <br>
-    <div class="row justify-content-center">
-        <div class="col-4">
-            Direccion: <%=usuarioActual.getDireccion()%>
-        </div>
-        <div class="col-4">
-            Telefono: <%=usuarioActual.getTelefono()%>
-        </div>
-    </div>
-    <br>    
-    <div class="row justify-content-center">
-        <div class="col-4" id="botones">
-            <a type="button" class="btn btn-light">Cancelar</a>
-            <a type="button" class="btn btn-primary">Modificar Datos</a>
-        </div>
-       
-    </div>
+    </div> 
+    <div id="update-button" class="row justify-content-center">
+        <div class="col-sm-4">
+            <a class="btn btn-primary" href="modificarDatos.jsp" role="button">Modificar datos</a>
+        </div>   
+    </div> 
 </div>
   
   <!-- /.container -->
