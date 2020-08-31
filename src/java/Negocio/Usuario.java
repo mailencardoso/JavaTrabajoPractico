@@ -33,6 +33,10 @@ public class Usuario {
     
     public Usuario (){
     }
+
+    public Usuario(String usuario, String contActual, String nombre, String apellido, String telefono, String email, String direccion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public String getUsuario(){
         return usuario;

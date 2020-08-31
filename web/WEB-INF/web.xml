@@ -8,6 +8,14 @@
         <servlet-name>Registro</servlet-name>
         <servlet-class>Controladores.Registro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarDatos</servlet-name>
+        <servlet-class>Controladores.ModificarDatos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Controladores.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>Registro</servlet-name>
         <url-pattern>/Registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarDatos</servlet-name>
+        <url-pattern>/ModificarDatos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

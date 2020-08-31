@@ -88,9 +88,10 @@
     <%}%> 
   <!-- Page Content -->
     <div class="container-profile">
-        <div class ="row" >
+        <div class ="row justify-content-center" >
             <form action="ModificarDatos" method="post">
-                <h3>Mis datos Personales</h3>
+                <h3 id="modif">Modificar mis datos</h3>
+     
                 <%if (notificacion.equals("Modificaciòn realizada")){ %>
                 <div class="alert alert-success" role="alert">
                     ¡Modificación realizada <b>con éxito</b>!
@@ -104,22 +105,28 @@
                 <%}%>
                 <%objSesion.removeAttribute("error");%>    
                 <label for="exampleInputNombre">Nombre</label>
-                <input type="text" class="form-control" id="exampleInputNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre" required><br>
+                <input type="text" class="form-control" id="exampleInputNombre" name="nombre" aria-describedby="nombreHelp" value="<%=usuarioActual.getNombre()%>" required><br>
                 <label for="exampleInputApellido">Apellido</label>
-                <input type="text" class="form-control" id="exampleInputApellido" name="apellido" aria-describedby="apellidoHelp" placeholder="Apellido" required><br>
+                <input type="text" class="form-control" id="exampleInputApellido" name="apellido" aria-describedby="apellidoHelp" value="<%=usuarioActual.getApellido()%>" required><br>
                 <label for="exampleInputUsuario">Usuario</label>
-                <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="descripcionUsuario" placeholder="Usuario" required pattern="[a-zA-Z0-9]+" minlength="8" maxlength="16" title="Solo caracteres alfanuméricos sin espacios."><br>
-                <label for="exampleInputContraseña">Contraseña</label>
-                <input type="password" class="form-control" id="exampleInputContraseña" name="contrasena" aria-describedby="passHelp" placeholder="Contraseña" required minlength="8" maxlength="16"><br>
+                <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="descripcionUsuario" value="<%=usuarioActual.getUsuario()%>" required pattern="[a-zA-Z0-9]+" minlength="8" maxlength="16" title="Solo caracteres alfanuméricos sin espacios."><br>
+                <label for="exampleInputContraseña">Contraseña Actual</label>
+                <input type="password" class="form-control" id="exampleInputContraseña" name="contrasenaAct" aria-describedby="passHelp" value="<%=usuarioActual.getPassword()%>" required minlength="8" maxlength="16"><br>
+                <label for="exampleInputContraseña">Nueva Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputContraseña" name="passNueva" aria-describedby="passHelp" ><br>
+                <label for="exampleInputContraseña">Repita Nueva Contraseña</label>
+                <input type="password" class="form-control" id="exampleInputContraseña" name="passNueva2" aria-describedby="passHelp"  ><br>
                 <label for="exampleInputCorreo">Email</label>
-                <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico" required><br>
+                <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" value="<%=usuarioActual.getMail()%>" required><br>
                 <label for="exampleInputTel">Teléfono</label>
-                <input type="tel" class="form-control" id="exampleInputTel" name="telefono" aria-describedby="telHelp" placeholder="Teléfono" required pattern="[0-9]+" title="Ingrese solo números."><br>
+                <input type="tel" class="form-control" id="exampleInputTel" name="telefono" aria-describedby="telHelp" value="<%=usuarioActual.getTelefono()%>" required pattern="[0-9]+" title="Ingrese solo números."><br>
                 <label for="exampleInputDireccion">Dirección</label>
-                <input type="text" class="form-control" id="exampleInputDireccion" name="direccion" aria-describedby="direccionHelp" placeholder="Dirección" required><br>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Crear cuenta</button>
-                </div> 
+                <input type="text" class="form-control" id="exampleInputDireccion" name="direccion" aria-describedby="direccionHelp" value="<%=usuarioActual.getDireccion()%>" required><br>
+                <div class="form-group" id="modificar-datos-button"> 
+                    <a type="button"  class="btn btn-secondary" href="perfil.jsp">Cancelar</a>
+                    <button type="submit"  class="btn btn-primary">Modificar Datos</button>
+                </div>
+                
                     
             </form>
         </div>

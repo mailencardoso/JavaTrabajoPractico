@@ -4,7 +4,7 @@
 }
 
 .container-profile{
-    height: 700px; 
+    height: 1200px; 
     
 }
 
@@ -43,4 +43,18 @@ h3{
 
 .prof{
     font-weight: bold;
+}
+
+#modificar-datos-button{
+    padding-left: 55px;
+}
+
+#exampleInputNombre, #exampleInputApellido,
+#exampleInputUsuario, #exampleInputContraseña,
+#exampleInputCorreo, #exampleInputTel, #exampleInputDireccion{
+    font-weight: bold;
+}
+
+#modif{
+    padding-top: 60px;
 }

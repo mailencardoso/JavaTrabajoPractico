@@ -5,8 +5,6 @@
  */
 package Controladores;
 
-import Datos.ConsultaUsuario;
-import Negocio.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Usuario
  */
-public class Registro extends HttpServlet {
+public class Logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,48 +30,14 @@ public class Registro extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); /**Devuelve un objeto PrintWriter que puede enviar textos al cliente */
-        HttpSession sesion = request.getSession(true); /** crea la sesion */
-        
-        boolean ban = true;
-        
-        String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String usuario = request.getParameter("usuario");
-        String pass = request.getParameter("contrasena");
-        String email = request.getParameter("email");
-        String telefono = request.getParameter("telefono");
-        String direccion = request.getParameter("direccion");
-        
-        ConsultaUsuario usu = new ConsultaUsuario();
-        
-              
-        if (usu.existeCuenta(email)){
-                sesion.setAttribute("error1", "Ya existe una cuenta para el email ingresado.");
-                ban = false;
-            };
-        if(usu.existeUsuario(usuario)){
-                sesion.setAttribute("error2", "Usuario ingresado ya existe.");
-                ban = false;
-            }
-      
-        
-        if(ban==true){
-                usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente");
-                sesion.setAttribute("exito", "Registro realizado");
-                response.sendRedirect("login.jsp"); 
-            }
-            
-        
-        else{
-            response.sendRedirect("registroNuevo.jsp");
-             
-            
-        }
+        HttpSession sesion = request.getSession(false);
+        sesion.invalidate();
+        response.sendRedirect("index.jsp");
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

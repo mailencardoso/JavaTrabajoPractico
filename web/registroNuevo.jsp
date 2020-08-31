@@ -73,20 +73,20 @@
                             <%}%>
                             <%objSesion.removeAttribute("error1");%>
                             <label><font color=grey>Por favor rellene el siguiente formulario.</font></label><br>
-                            <label for="exampleInputNombre">Nombre</label>
-                            <input type="text" class="form-control" id="exampleInputNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre" required><br>
-                            <label for="exampleInputApellido">Apellido</label>
-                            <input type="text" class="form-control" id="exampleInputApellido" name="apellido" aria-describedby="apellidoHelp" placeholder="Apellido" required><br>
-                            <label for="exampleInputUsuario">Usuario</label>
-                            <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="descripcionUsuario" placeholder="Usuario" required pattern="[a-zA-Z0-9]+" minlength="8" maxlength="16" title="Solo caracteres alfanuméricos sin espacios."><br>
-                            <label for="exampleInputContraseña">Contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputContraseña" name="contrasena" aria-describedby="passHelp" placeholder="Contraseña" required minlength="8" maxlength="16"><br>
-                            <label for="exampleInputCorreo">Correo electrónico</label>
-                            <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico" required><br>
-                            <label for="exampleInputTel">Teléfono</label>
-                            <input type="tel" class="form-control" id="exampleInputTel" name="telefono" aria-describedby="telHelp" placeholder="Teléfono" required pattern="[0-9]+" title="Ingrese solo números."><br>
-                            <label for="exampleInputDireccion">Dirección</label>
-                            <input type="text" class="form-control" id="exampleInputDireccion" name="direccion" aria-describedby="direccionHelp" placeholder="Dirección" required><br>
+                            <label for="exampleNombre">Nombre</label>
+                            <input type="text" class="form-control" id="exampleNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre" required><br>
+                            <label for="exampleApellido">Apellido</label>
+                            <input type="text" class="form-control" id="exampleApellido" name="apellido" aria-describedby="apellidoHelp" placeholder="Apellido" required><br>
+                            <label for="exampleUsuario">Usuario</label>
+                            <input type="text" class="form-control" id="exampleUsuario" name="usuario" aria-describedby="descripcionUsuario" placeholder="Usuario" required pattern="[a-zA-Z0-9]+" minlength="8" maxlength="16" title="Solo caracteres alfanuméricos sin espacios."><br>
+                            <label for="exampleContraseña">Contraseña</label>
+                            <input type="password" class="form-control" id="exampleContraseña" name="contrasena" aria-describedby="passHelp" placeholder="Contraseña" required minlength="8" maxlength="16"><br>
+                            <label for="exampleCorreo">Correo electrónico</label>
+                            <input type="email" class="form-control" id="exampleCorreo" name="email" aria-describedby="emailHelp" placeholder="Correo electrónico" required><br>
+                            <label for="exampleTel">Teléfono</label>
+                            <input type="tel" class="form-control" id="exampleTel" name="telefono" aria-describedby="telHelp" placeholder="Teléfono" required pattern="[0-9]+" title="Ingrese solo números."><br>
+                            <label for="exampleDireccion">Dirección</label>
+                            <input type="text" class="form-control" id="exampleDireccion" name="direccion" aria-describedby="direccionHelp" placeholder="Dirección" required><br>
                             <div class="form-group" >
                                 <button type="submit" class="btn btn-primary">Crear cuenta</button>
                             </div> 

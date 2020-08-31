@@ -102,7 +102,7 @@
   <!-- Page Content -->
 <div class="container-profile">
     <div class="row justify-content-end">
-        <a class="sing-out" href="#">Cerrar Sesion</a>
+        <a class="sing-out" href="Logout">Cerrar Sesion</a>
     </div>
     <div id="personal" class="row justify-content-center">
             <h3>Mis datos personales</h3>

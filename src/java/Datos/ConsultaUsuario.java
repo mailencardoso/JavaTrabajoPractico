@@ -111,7 +111,7 @@ public class ConsultaUsuario extends Conexion{
         PreparedStatement pst = null;
         ResultSet rs= null;
         try {
-            pst = getConexion().prepareStatement("UPDATE Usuario SET pass=?, tipo_usuario=?, nombre =?, apellido=?, telefono=?,email=? WHERE usuario = ?");
+            pst = getConexion().prepareStatement("UPDATE Usuario SET pass=?, nombre =?, apellido=?, telefono=?,email=?, direccion=? WHERE usuario = ?");
             pst.setString(1,contraseña);
             pst.setString(2,tipoUsuario);
             pst.setString(3,nombre);
