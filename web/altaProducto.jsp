@@ -1,26 +1,25 @@
 <%-- 
-    Document   : login
-    Created on : 02/08/2020, 20:02:55
-    Author     : Usuario
+    Document   : registroNuevo
+    Created on : 05-ago-2020, 14:59:25
+    Author     : Diana
 --%>
 <%
     HttpSession objSesion = request.getSession(false);
-    String notificacion = "";
+    String notificacion1 = "";
     String notificacion2 = "";
-    if (objSesion.getAttribute("exito") != null){
-        notificacion = (String) objSesion.getAttribute("exito");
-    }
-    if (objSesion.getAttribute("error") != null){
-        notificacion2 = (String) objSesion.getAttribute("error");
-    }
-    
+    if (objSesion.getAttribute("error1") != null){
+        notificacion1 = (String) objSesion.getAttribute("error1");
+    };
+    if (objSesion.getAttribute("error2") != null){
+        notificacion2 = (String) objSesion.getAttribute("error2");
+    };   
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>Alta Producto</title>
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -55,43 +54,42 @@
       </div>
     </div>
   </nav>
-    <div class="container-log" >
-        <div class ="row" >
-            <form action="Login" method="post">
-                <h3>Iniciar sesión</h3>
-                 <%if (notificacion.equals("Registro realizado")){ %>
-                <div class="alert alert-success" role="alert">
-                                ¡Registro nuevo realizado <b>con éxito</b>!
-                            </div>                 
-                <%}%>
-                 <%objSesion.removeAttribute("exito");%>
-                <div class="form-group" >
-                    <label for="exampleInputUsuario">Usuario</label>
-                    <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" >
-                   <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-                </div>
-                <div class="form-group" >
-                    <button type="submit" class="btn btn-primary">Iniciar sesión</button><br>
-                    
-                    <%if (notificacion2.equals("Error: Usuario y/o contraseñas incorrectos.")){ %>
-                    <br> <div class="alert alert-danger" role="alert">
-                                <b>¡ERROR!</b> Usuario y/o contraseña incorrectos. <br>Verifica tus datos.
-                            </div>
-                    <%}%>
-                 <%objSesion.removeAttribute("error");%>
-                 
-                </div> 
-               <div class="form-group" >
-                    <label for="registro">¿Eres nuevo en Albicar? <a href="registroNuevo.jsp">Regístrate ahora</a></label>
-               </div>
-                    
-            </form>
+    <div class="container-profile" >
+        <div id="altaproduc" class="row justify-content-center">
+            <h3>ABM de Productos</h3>
+        </div>
+        <div class ="row justify-content-center" >
+            <div class="col-lg-3">
+            
+                <form action="AltaProducto" method="post">
+                
+                    <div class="form-group">
+                           
+                            
+                        <label for="exampleNombreProducto">Titulo Producto</label>
+                        <input type="text" class="form-control" id="exampleNombreProducto" name="nombreProducto" aria-describedby="nombreHelp" placeholder="Nombre Producto" required><br>
+                        
+                        <label for="exampleDescripcion">Descripcion Producto</label>
+                        <input type="text" class="form-control" id="exampleDescripcion" name="descripcion" aria-describedby="descripcionHelp" placeholder="Descripcion" required><br>
+                        
+                        <label for="exampleImagen">Elija una imagen</label>
+                        <input type="file" class="form-control" id="exampleImagen" name="imagen"></input>
+                        
+                        <label for="examplePrecio">Precio</label>
+                        <input type="text" class="form-control" id="examplePrecio" name="precio" aria-describedby="PrecioHelp" placeholder="Precio" required><br>
+         
+                        <div class="form-group" >
+                            <button type="submit" class="btn btn-primary">Agregar producto</button>
+                        </div> 
+                            
+                    </div>
+                          
+                                
+                </form>
+            </div>
         </div>
     </div>
+
 
   
 </body>

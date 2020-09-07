@@ -23,7 +23,8 @@
   <meta name="author" content="">
 
   <title>Albicar</title>
-
+  
+  <link rel="stylesheet" href="css/general.css">
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -38,7 +39,7 @@
  <%if (usuarioActual.getTipoUsuario().equals("administrador")){ %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.jsp">Compra Online!</a>
+      <a class="navbar-brand" href="index.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,7 +51,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="productosABM.jsp">Productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pedidos</a>
@@ -67,7 +68,7 @@
  <%if (usuarioActual.getTipoUsuario().equals("Cliente")){ %>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.jsp">Compra Online!</a>
+      <a class="navbar-brand" href="index.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -79,7 +80,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="listadoProductos.jsp">Productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contacto</a>
@@ -99,7 +100,7 @@
 
       <div class="col-lg-3">
 
-        <h1 class="my-4">Albicar</h1>
+        <h1 class="my-4"><img class="logo" src="img/logo.png"></img></h1>
         <div class="list-group">
           <a href="#" class="list-group-item">Category 1</a>
           <a href="#" class="list-group-item">Category 2</a>

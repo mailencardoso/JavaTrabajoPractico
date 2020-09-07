@@ -32,14 +32,14 @@
         <%if (usuarioActual.getTipoUsuario().equals("administrador")){ %>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp">Compra Online!</a>
+            <a class="navbar-brand" href="index.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="indexlogueado.jsp">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -61,14 +61,14 @@
     <%if (usuarioActual.getTipoUsuario().equals("Cliente")){ %>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp">Compra Online!</a>
+            <a class="navbar-brand" href="index.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
+                        <a class="nav-link" href="indexlogueado.jsp">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -98,33 +98,40 @@
                 </div>                 
                 <%}%>
                 <%objSesion.removeAttribute("exito");%>
-                <%if (notificacion.equals("Usuario ingresado ya existe.")){ %>   
-                <div class="alert alert-danger" role="alert">
-                    Usuario ingresado <b>ya existe</b>. Ingrese uno diferente.
-                </div>   
-                <%}%>
-                <%objSesion.removeAttribute("error");%>    
+             
+                
+                
                 <label for="exampleInputNombre">Nombre</label>
                 <input type="text" class="form-control" id="exampleInputNombre" name="nombre" aria-describedby="nombreHelp" value="<%=usuarioActual.getNombre()%>" required><br>
+                
                 <label for="exampleInputApellido">Apellido</label>
                 <input type="text" class="form-control" id="exampleInputApellido" name="apellido" aria-describedby="apellidoHelp" value="<%=usuarioActual.getApellido()%>" required><br>
-                <label for="exampleInputUsuario">Usuario</label>
-                <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="descripcionUsuario" value="<%=usuarioActual.getUsuario()%>" required pattern="[a-zA-Z0-9]+" minlength="8" maxlength="16" title="Solo caracteres alfanuméricos sin espacios."><br>
+                
                 <label for="exampleInputContraseña">Contraseña Actual</label>
-                <input type="password" class="form-control" id="exampleInputContraseña" name="contrasenaAct" aria-describedby="passHelp" value="<%=usuarioActual.getPassword()%>" required minlength="8" maxlength="16"><br>
+                <input type="password" class="form-control" id="exampleInputContraseña" name="contrasenaAct" aria-describedby="passHelp" required minlength="8" maxlength="16"><br>
+                
                 <label for="exampleInputContraseña">Nueva Contraseña</label>
                 <input type="password" class="form-control" id="exampleInputContraseña" name="passNueva" aria-describedby="passHelp" ><br>
+                
                 <label for="exampleInputContraseña">Repita Nueva Contraseña</label>
                 <input type="password" class="form-control" id="exampleInputContraseña" name="passNueva2" aria-describedby="passHelp"  ><br>
+                
                 <label for="exampleInputCorreo">Email</label>
                 <input type="email" class="form-control" id="exampleInputCorreo" name="email" aria-describedby="emailHelp" value="<%=usuarioActual.getMail()%>" required><br>
+                
                 <label for="exampleInputTel">Teléfono</label>
                 <input type="tel" class="form-control" id="exampleInputTel" name="telefono" aria-describedby="telHelp" value="<%=usuarioActual.getTelefono()%>" required pattern="[0-9]+" title="Ingrese solo números."><br>
+                
                 <label for="exampleInputDireccion">Dirección</label>
                 <input type="text" class="form-control" id="exampleInputDireccion" name="direccion" aria-describedby="direccionHelp" value="<%=usuarioActual.getDireccion()%>" required><br>
+                
                 <div class="form-group" id="modificar-datos-button"> 
                     <a type="button"  class="btn btn-secondary" href="perfil.jsp">Cancelar</a>
                     <button type="submit"  class="btn btn-primary">Modificar Datos</button>
+                    
+                    <input type="hidden" name="usuario" value="<%=usuarioActual.getUsuario()%>">
+                    <input type="hidden" name="contActualReal" value="<%=usuarioActual.getPassword()%>">
+                    <input type="hidden" name="tipoUsuario" value="<%=usuarioActual.getTipoUsuario()%>">
                 </div>
                 
                     

@@ -58,3 +58,28 @@ h3{
 #modif{
     padding-top: 60px;
 }
+
+.logo-navbar {
+    width: 80px;
+    heigth: 80px;
+}
+
+.logo{
+    width: 200px;
+    heigth: 80px;
+}
+
+#product-abm{
+    padding-top: 50px;
+    
+}
+
+#button-abmproduct{
+    color:  white;
+}
+
+#altaproduc{
+  
+    padding-top: 90px;
+}
+

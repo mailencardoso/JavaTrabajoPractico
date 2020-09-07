@@ -32,84 +32,83 @@ public class ModificarDatos extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter(); /**Devuelve un objeto PrintWriter que puede enviar textos al cliente */
-        HttpSession sesion = request.getSession(true); /** crea la sesion */
-        
-        boolean ban = true;
+        PrintWriter out = response.getWriter();
+        HttpSession objSesion = request.getSession(false);
         
         String nombre = request.getParameter("nombre");
         String apellido = request.getParameter("apellido");
-        String usuario = request.getParameter("usuario");
-        String contActual = request.getParameter("contrasenaActual");
-        String contNueva = request.getParameter("passNueva");
-        String contNueva2 = request.getParameter("passNueva2");
-        String email = request.getParameter("email");
         String telefono = request.getParameter("telefono");
-        String direccion = request.getParameter("direccion");
+        String mail = request.getParameter("email");
+        String direc = request.getParameter("direccion");
+        String contReal = request.getParameter("contActualReal");//Contraseña real actual
+        String contActual = request.getParameter("contrasenaAct");//Contraseña actual ingresada
+        String nuevaPass = request.getParameter("passNueva");//Contraseña nueva
+        String nuevaPass2= request.getParameter("passNueva2");//Contraseña nueva 2
+        String usuario = request.getParameter("usuario");
+        String tipoUsuario= request.getParameter("tipoUsuario");
         
+        boolean ban;
         ConsultaUsuario usu = new ConsultaUsuario();
-       
-              
-         if (contActual.equals("")||nombre.equals("")||apellido.equals("")||
-                email.equals("")||telefono.equals("")){
+        
+        if (contActual.equals("")||nombre.equals("")||apellido.equals("")||
+                mail.equals("")||telefono.equals("") || direc.equals("")){
             usu.setError("Error: Complete todos los campos obligatorios (*)");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
-        else if(!contActual.equals(contActual)){
+        else if(!contReal.equals(contActual)){
             usu.setError("Error: Ingrese correctamente la contraseña actual");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
-        else if(!contNueva.equals(contNueva2)){
+        else if(!nuevaPass.equals(nuevaPass2)){
             usu.setError("Error: Los dos campos de la nueva contraseña no coinciden");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
-        else if(contNueva.length()<6 && !contNueva.equals("")){
+        else if(nuevaPass.length()<6 && !nuevaPass.equals("")){
             usu.setError("Error: La nueva contraseña debe tener por lo menos 6 caracteres");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(!nombre.matches("^[A-Za-z][a-z]+")){
             usu.setError("Error: Ingrese un nombre correcto");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(!apellido.matches("^[A-Za-z][a-z]+")){
             usu.setError("Error: Ingrese un apellido correcto");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
-        else if(!email.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")){
+        else if(!mail.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")){
             usu.setError("Error: Ingrese un mail correcto");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if ( !telefono.matches( "[0-9][0-9][0-9][0-9][0-9][0-9][0-9]+" )){
             usu.setError("Error: Ingrese un número de teléfono correcto (Sólo dígitos)");
-            sesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("error",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else {
-            if(contNueva.equals("") && contNueva2.equals("")){
-                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,email,contActual,direccion);
+            if(nuevaPass.equals("") && nuevaPass2.equals("")){
+                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,mail,contActual,tipoUsuario, direc);
             }
             else{
-                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,email,contNueva,direccion);
-                contActual = contNueva;
+                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,mail,nuevaPass,tipoUsuario, direc);
+                contReal = nuevaPass;
             }
             
             if(ban){
-                Usuario userActual = (Usuario) sesion.getAttribute("usuarioActual");
-                userActual = new Usuario(usuario,contActual,nombre,apellido,telefono,email, direccion);
-                sesion.setAttribute("usuarioActual", userActual);
-                sesion.setAttribute("notificacion", "Datos actualizados!");
+                Usuario usuarioActual = (Usuario) objSesion.getAttribute("usuarioActual");
+                usuarioActual = new Usuario(usuario,contActual,tipoUsuario,nombre,apellido,telefono,mail, direc);
+                objSesion.setAttribute("userActual", usuarioActual);
+                objSesion.setAttribute("notificacion", "Datos actualizados!");
                 response.sendRedirect("perfil.jsp");
             }
             else{
-                sesion.setAttribute("error",usu.getError());
+                objSesion.setAttribute("error",usu.getError());
                 response.sendRedirect("modificarDatos.jsp");
             }  
         }
