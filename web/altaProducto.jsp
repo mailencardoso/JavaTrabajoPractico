@@ -3,17 +3,6 @@
     Created on : 05-ago-2020, 14:59:25
     Author     : Diana
 --%>
-<%
-    HttpSession objSesion = request.getSession(false);
-    String notificacion1 = "";
-    String notificacion2 = "";
-    if (objSesion.getAttribute("error1") != null){
-        notificacion1 = (String) objSesion.getAttribute("error1");
-    };
-    if (objSesion.getAttribute("error2") != null){
-        notificacion2 = (String) objSesion.getAttribute("error2");
-    };   
-%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,7 +26,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.jsp">Home
+            <a class="nav-link" href="indexlogueado.jsp">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -45,10 +34,10 @@
             <a class="nav-link" href="#">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="#">Pedido</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.jsp">Iniciar Sesión</a>
+              <a class="nav-link" href="perfil.jsp">Hola, mcardoso</a>
           </li>
         </ul>
       </div>
@@ -61,10 +50,12 @@
         <div class ="row justify-content-center" >
             <div class="col-lg-3">
             
-                <form action="AltaProducto" method="post">
+                <form action="AltaProducto" method="post" enctype="multipart/form-data">
                 
                     <div class="form-group">
-                           
+                        
+                        <label for="exampleCodigoProducto">Codigo Producto</label>
+                        <input type="text" class="form-control" id="exampleCodigoProducto" name="codigoProducto" aria-describedby="codigoHelp" placeholder="Codigo Producto" required><br>
                             
                         <label for="exampleNombreProducto">Titulo Producto</label>
                         <input type="text" class="form-control" id="exampleNombreProducto" name="nombreProducto" aria-describedby="nombreHelp" placeholder="Nombre Producto" required><br>
@@ -72,11 +63,14 @@
                         <label for="exampleDescripcion">Descripcion Producto</label>
                         <input type="text" class="form-control" id="exampleDescripcion" name="descripcion" aria-describedby="descripcionHelp" placeholder="Descripcion" required><br>
                         
+                        <label for="examplePrecioProducto">Precio Producto</label>
+                        <input type="text" class="form-control" id="examplePrecioProducto" name="precioProducto" aria-describedby="precioHelp" placeholder="Precio Producto" required><br>
+                        
+                        
                         <label for="exampleImagen">Elija una imagen</label>
                         <input type="file" class="form-control" id="exampleImagen" name="imagen"></input>
                         
-                        <label for="examplePrecio">Precio</label>
-                        <input type="text" class="form-control" id="examplePrecio" name="precio" aria-describedby="PrecioHelp" placeholder="Precio" required><br>
+   
          
                         <div class="form-group" >
                             <button type="submit" class="btn btn-primary">Agregar producto</button>

@@ -5,17 +5,25 @@
  */
 package Controladores;
 
+import Datos.ConsultaProductos;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author mzsol
  */
+
+@MultipartConfig
 public class AltaProducto extends HttpServlet {
 
     /**
@@ -30,19 +38,37 @@ public class AltaProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AltaProducto</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AltaProducto at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter(); /**Devuelve un objeto PrintWriter que puede enviar textos al cliente */
+        HttpSession sesion = request.getSession(true); /** crea la sesion */
+        
+        boolean ban = true;
+        
+        String codigo = request.getParameter("codigoProducto");
+        String nombre = request.getParameter("NombreProducto");
+        String desc = request.getParameter("descripcion");
+        String precio = request.getParameter("precioProducto");
+        Part part = request.getPart("imagen");
+        InputStream foto = part.getInputStream();
+        
+        int cod = Integer.parseInt(codigo);
+        float prec = Float.parseFloat(precio);
+        
+        ConsultaProductos product = new ConsultaProductos();
+        
+        if(ban==true){
+                product.agregarProducto(cod, nombre, desc, prec, (Blob) foto);
+                sesion.setAttribute("exito", "Producto dado de alta con exito");
+                response.sendRedirect("productosABM.jsp"); 
+            }
+            
+        
+        else{
+            response.sendRedirect("altaProducto.jsp");
+             
+            
         }
     }
+ 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

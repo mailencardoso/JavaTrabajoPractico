@@ -5,6 +5,8 @@
  */
 package Negocio;
 
+import java.sql.Blob;
+
 
 
 /**
@@ -12,19 +14,31 @@ package Negocio;
  * @author Usuario
  */
 public class Producto {
-    
+    int id_producto;
     String nombre;
     String descripcion;
     Float precio;
+    Blob foto;
     
-    public Producto(String nom, String desc, Float pre){
+    public Producto(int id, String nom, String desc, Float pre, Blob imag){
+        this.id_producto = id;
         this.nombre = nom;
         this.descripcion = desc;
         this.precio = pre;
+        this.foto = imag;
     }
 
-    public Producto(int id, String nombre, String desc, Float precio) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Producto(){
+        
+    }
+
+    
+    public int getID(){
+        return id_producto;
+    }
+    
+    public void setID(int id){
+        this.id_producto = id;
     }
     
     public String getNombre(){
@@ -50,4 +64,13 @@ public class Producto {
     public void setPrecio(Float pre){
         this.precio = pre;
     }
+    
+    public Blob getFoto(){
+        return foto;
+    }
+    
+    public void setFoto(Blob imag){
+        this.foto = imag;
+    }
+    
 }
