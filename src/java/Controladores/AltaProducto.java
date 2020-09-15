@@ -50,7 +50,7 @@ public class AltaProducto extends HttpServlet {
         boolean ban = true;
         
         String codigo = request.getParameter("codigoProducto");
-        String nombre = request.getParameter("NombreProducto");
+        String nombre = request.getParameter("nombreProducto");
         String desc = request.getParameter("descripcion");
         String precio = request.getParameter("precioProducto");
         Part part = request.getPart("imagen");

@@ -84,8 +84,7 @@ public class ConsultaUsuario extends Conexion{
             pst.setString(6, telefono);
             pst.setString(7, direccion);
             pst.setString(8, tipo_usuario);
-            pst.setString(7, email);
-            pst.setString(8, direccion);
+           
             int ban=pst.executeUpdate();
             
             getConexion().commit();

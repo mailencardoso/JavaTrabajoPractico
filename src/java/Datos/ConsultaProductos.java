@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ConsultaProductos extends Conexion {
     
-     String error=null;
+    private String error=null;
 
     public String getError() {
         return error;
@@ -68,19 +68,19 @@ public class ConsultaProductos extends Conexion {
     }
     
     
-    public boolean agregarProducto(int id_produc,String nombre, String desc, Float precio, Blob img) {
+    public boolean agregarProducto(int id_producto,String nombre, String descripcion, float precio, Blob foto) {
         PreparedStatement pst= null;
         try {
             getConexion().setAutoCommit(false);
 
-            String query= "INSERT INTO producto (id_producto, nombre,descripcion,precio,foto) VALUES (?,?,?,?);";
+            String query= "INSERT INTO producto(id_producto, nombre,descripcion,precio,foto) VALUES (?,?,?,?,?);";
 
             pst = getConexion().prepareStatement(query);
-            pst.setInt(1,id_produc);
+            pst.setInt(1,id_producto);
             pst.setString(2, nombre);
-            pst.setString(3, desc);
+            pst.setString(3, descripcion);
             pst.setFloat(4, precio);
-            pst.setBlob(5, img);
+            pst.setBlob(5, foto);
             int ban=pst.executeUpdate();
          
             getConexion().commit();
@@ -88,7 +88,7 @@ public class ConsultaProductos extends Conexion {
                 return true;
             }
         } catch (SQLIntegrityConstraintViolationException e) {
-            error = "Error: Producto existente";
+            error = "Error: Producto existente"+e;
         } catch(Exception e){
             error= "Error: "+e;
         }finally {
