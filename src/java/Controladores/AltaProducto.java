@@ -6,10 +6,15 @@
 package Controladores;
 
 import Datos.ConsultaProductos;
+import java.io.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sql.rowset.serial.SerialBlob;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -36,7 +42,7 @@ public class AltaProducto extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter(); /**Devuelve un objeto PrintWriter que puede enviar textos al cliente */
         HttpSession sesion = request.getSession(true); /** crea la sesion */
@@ -48,15 +54,17 @@ public class AltaProducto extends HttpServlet {
         String desc = request.getParameter("descripcion");
         String precio = request.getParameter("precioProducto");
         Part part = request.getPart("imagen");
-        InputStream foto = part.getInputStream();
+        InputStream inputStream = part.getInputStream();
         
         int cod = Integer.parseInt(codigo);
         float prec = Float.parseFloat(precio);
+        byte[] blob = IOUtils.toByteArray(inputStream);
+        Blob foto = new SerialBlob(blob);
         
         ConsultaProductos product = new ConsultaProductos();
         
         if(ban==true){
-                product.agregarProducto(cod, nombre, desc, prec, (Blob) foto);
+                product.agregarProducto(cod, nombre, desc, prec, foto);
                 sesion.setAttribute("exito", "Producto dado de alta con exito");
                 response.sendRedirect("productosABM.jsp"); 
             }
@@ -82,7 +90,11 @@ public class AltaProducto extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(AltaProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -96,7 +108,11 @@ public class AltaProducto extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(AltaProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
