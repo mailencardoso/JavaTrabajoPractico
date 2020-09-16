@@ -47,18 +47,19 @@ public class Registro extends HttpServlet {
         String telefono = request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
         
-        ConsultaUsuario usu = new ConsultaUsuario();
-        
+        ConsultaUsuario usu1 = new ConsultaUsuario();
+        ConsultaUsuario usu2 = new ConsultaUsuario();
               
-        if (usu.existeCuenta(email)){
+        if (usu1.existeCuenta(email)){
                 sesion.setAttribute("error1", "Ya existe una cuenta para el email ingresado.");
                 ban = false;
             };
-        if(usu.existeUsuario(usuario)){
+        if(usu2.existeUsuario(usuario)){
                 sesion.setAttribute("error2", "Usuario ingresado ya existe.");
                 ban = false;
             }
-      
+             
+       ConsultaUsuario usu = new ConsultaUsuario();
         
         if(ban==true){
                 usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente");
