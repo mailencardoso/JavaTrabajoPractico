@@ -64,9 +64,13 @@
 
         <h1 class="my-4"><img class="logo" src="img/logo.png"></img></h1>
         <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
+          <a href="#" class="list-group-item">Bebidas</a>
+          <a href="#" class="list-group-item">Carnicería y pescadería</a>
+          <a href="#" class="list-group-item">Fiambres y salchichas</a>
+          <a href="#" class="list-group-item">Lácteos y quesos</a>
+          <a href="#" class="list-group-item">Panadería y bollería industrial</a>
+          <a href="#" class="list-group-item">Productos de limpieza</a>          
+          <a href="#" class="list-group-item">Perfumería</a>          
         </div>
 
       </div>
@@ -82,14 +86,12 @@
           </ol>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="First slide">
+              <img class="d-block img-fluid" src="img/carrousel1.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Second slide">
+              <img class="d-block img-fluid" src="img/carrousel2.jpg" alt="Second slide">
             </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid" src="http://placehold.it/900x350" alt="Third slide">
-            </div>
+            
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -105,13 +107,31 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src="img/Bebidas/LataQuilmes.jpg" alt=""></a>
               <div class="card-body">
+                  <small><font color="red">Oferta publicada</font></small>  
                 <h4 class="card-title">
-                  <a href="#">Item One</a>
+                  <a href="#">Cerveza Quilmes</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <h5>$52.00</h5>
+                <p class="card-text">Cerveza Quilmes En Lata X 473 Cc.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="img/LacteosQuesos/quesoPauli.jpg" alt=""></a>
+              <div class="card-body">
+                  <small><font color="red">Oferta publicada</font></small> 
+                <h4 class="card-title">
+                  <a href="#">Queso La Paulina</a>
+                </h4>
+                <h5>$34.71</h5>
+                <p class="card-text">Queso Cremoso La Paulina X100gr.</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -121,13 +141,14 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src="img/frutaverdu/pera.jpg" alt=""></a>
               <div class="card-body">
+                  <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Item Two</a>
+                  <a href="#">Pera</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
+                <h5>$9.99</h5>
+                <p class="card-text">Pera X 100 Gr.</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -137,13 +158,14 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src="img/carnes/lomo.jpg" alt=""></a>
               <div class="card-body">
+                  <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Item Three</a>
+                  <a href="#">Cabeza de Lomo</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <h5>$41.90</h5>
+                <p class="card-text">Cabeza De Lomo Ternera X 100 Gr.</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -153,45 +175,31 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src="img/panes/panFargo.jpg" alt=""></a>
               <div class="card-body">
+                  <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Item Four</a>
+                  <a href="#">Pan de hamb. Fargo</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <h5>$96,72</h5>
+                <p class="card-text">Pan De Hamburguesa Fargo C/Semillas Sesamo X4u.</p>
               </div>
               <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <a href="#"><img class="card-img-top" src="img/limpieza/lavandina.jpg" alt=""></a>
               <div class="card-body">
+                  <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Item Five</a>
+                  <a href="#">Lavandina Ayudín</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Six</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                <h5>$78.99</h5>
+                <p class="card-text">Lavandina En Gel Ayudin X700ml. Menta</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
