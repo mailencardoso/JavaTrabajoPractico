@@ -102,16 +102,53 @@ public class ConsultaProductos extends Conexion {
         return false;
                 
     }
-    public boolean modifProduct(int id_produc, String nombre, String desc, Float precio, Blob img) {
+    public Producto buscarCodigo(int id_producto){
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        Producto productoActual = new Producto();
+        
+        
+        try{
+            String query = "SELECT * FROM producto WHERE id_producto = ?";
+            Connection conexion = getConexion();
+            pst = conexion.prepareStatement(query);
+            pst.setInt(1, id_producto);
+            rs = pst.executeQuery();
+            
+            if(rs.absolute(1)){
+                productoActual.setID(rs.getInt("id_producto"));
+                productoActual.setNombre(rs.getString("nombre"));
+                productoActual.setDescripcion(rs.getString("descripcion"));
+                productoActual.setPrecio(rs.getFloat("precio"));
+                
+                return productoActual;
+            }
+        }
+        catch(Exception e){
+            error = "Error: Producto no existente "+e;
+        }
+        finally{
+            try {
+                 if (getConexion()!= null) getConexion().close();
+                 if (pst!=null) pst.close();
+                 if (rs!= null) rs.close();
+            } catch (Exception e) {
+                error = "Error de conexion "+e;
+            }   
+        }
+        productoActual= null;
+        return productoActual;
+    }
+    
+    public boolean modifProduct(int id_producto, String nombre, String descripcion, Float precio) {
         PreparedStatement pst = null;
         ResultSet rs= null;
         try {
-            pst = getConexion().prepareStatement("UPDATE producto SET nombre = ? , descripcion =?, precio=?, foto=? WHERE id_producto = ?");
+            pst = getConexion().prepareStatement("UPDATE producto SET nombre = ? , descripcion =?, precio=? WHERE id_producto = ?");
             pst.setString(1,nombre);
-            pst.setString(2,desc);
+            pst.setString(2,descripcion);
             pst.setFloat(3,precio);
-            pst.setBlob(4,img);
-            pst.setInt(5,id_produc);
+            pst.setInt(4,id_producto);
             
             if(pst.executeUpdate()==1){
                 return true;

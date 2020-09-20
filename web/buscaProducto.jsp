@@ -1,3 +1,9 @@
+<%-- 
+    Document   : buscaProducto
+    Created on : 20/09/2020, 12:34:49
+    Author     : maiic
+--%>
+
 <%@page import="Negocio.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
@@ -62,17 +68,19 @@
   <!-- Page Content -->
  <div class="container-profile">
     
-    <div id="product-abm" class="row justify-content-center">
-            <h3>ABM de Productos</h3>
-    </div>
-    <br>
-    <div class="row justify-content-center">
-        <div class="col-lg-3">
-            <a type="button" id="button-abmproduct" class="btn btn-success btn-lg btn-block" href="altaProducto.jsp">Agregar producto</a>
-            <a type="button" id="button-abmproduct" class="btn btn-warning btn-lg btn-block" href="buscaProducto.jsp">Modificar/Eliminar producto</a>
+    <div class ="row justify-content-center" >
+        <form action="BuscarProductos" method="post">
+            <h3 id="modif">Buscar Productos</h3>
             
-        </div>
+            <label for="exampleCodigoProd">Codigo</label>
+            <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" required><br>
         
+        <div class="form-group" id="modificar-datos-button"> 
+            <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
+            <button type="submit"  class="btn btn-primary">Buscar</button>
+                    
+        </div>
+        </form>
     </div>
   <!-- /.container -->
 </div>
@@ -91,3 +99,4 @@
 </body>
 
 </html>
+

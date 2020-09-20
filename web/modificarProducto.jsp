@@ -89,9 +89,6 @@
                 <input type="text" class="form-control" id="examplePrecioProducto" name="precioProducto" aria-describedby="precioHelp" value="<%=productoActual.getPrecio()%>"><br>
                         
                         
-                <label for="exampleImagen">Elija una imagen</label>
-                <input type="file" class="form-control" id="exampleImagen" name="imagen"></input>
-                        
                 <div class="form-group" id="modificar-datos-button"> 
                     <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
                     <button type="submit"  class="btn btn-primary">Modificar</button>

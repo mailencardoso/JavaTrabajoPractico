@@ -8,26 +8,18 @@ package Controladores;
 import Datos.ConsultaProductos;
 import Negocio.Producto;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
-import java.sql.Blob;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
-import javax.sql.rowset.serial.SerialBlob;
-import org.apache.commons.io.IOUtils;
 
 /**
  *
  * @author maiic
  */
-public class ModificarProductos extends HttpServlet {
+public class BuscarProductos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,37 +31,30 @@ public class ModificarProductos extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        HttpSession sesion = request.getSession(true); 
         
-        PrintWriter out = response.getWriter() ;
-        HttpSession objSesion = request.getSession(false);
+        String cod = request.getParameter("codigo");
         
-        String codigo = request.getParameter("codigo");
-        String nombre = request.getParameter("nombreProducto");
-        String descripcion = request.getParameter("descripcion");
-        String precio = request.getParameter("precioProducto");
-      
+        int codigo = Integer.parseInt(cod);
         
-        int cod = Integer.parseInt(codigo);
-        float prec = Float.parseFloat(precio);
-       
-        
-        boolean ban = true;
         ConsultaProductos prod = new ConsultaProductos();
+        Producto productoActual = new Producto();
+        productoActual = prod.buscarCodigo(codigo);
         
+        if(productoActual!=null){
+            sesion.setAttribute("prodActual", productoActual); /** setea la sesion con el usuario logueado */
+            response.sendRedirect("modificarProducto.jsp");  /* redirige a modificar */
             
-        if(ban==true){
-                Producto productoActual = (Producto) objSesion.getAttribute("productoActual");
-                productoActual = new Producto(cod,nombre,descripcion,prec);
-                objSesion.setAttribute("prodActual", productoActual);
-                objSesion.setAttribute("notificacion", "Datos actualizados!");
-                response.sendRedirect("productosABM.jsp");
-            }
-            else{
-                objSesion.setAttribute("error",prod.getError());
-                response.sendRedirect("modificarProducto.jsp");
-            }  
-    }   
+        }else{
+            sesion.setAttribute("error", "Error: Codigo de producto incorrecto.");
+            response.sendRedirect("buscarProducto.jsp");
+
+        }
+        
+        }
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,11 +69,7 @@ public class ModificarProductos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ModificarProductos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -102,11 +83,7 @@ public class ModificarProductos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ModificarProductos.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

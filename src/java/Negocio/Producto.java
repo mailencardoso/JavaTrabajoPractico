@@ -32,6 +32,7 @@ public class Producto {
         
     }
 
+
     
     public int getID(){
         return id_producto;

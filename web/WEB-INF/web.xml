@@ -24,6 +24,10 @@
         <servlet-name>ModificarProductos</servlet-name>
         <servlet-class>Controladores.ModificarProductos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscarProductos</servlet-name>
+        <servlet-class>Controladores.BuscarProductos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ModificarProductos</servlet-name>
         <url-pattern>/ModificarProductos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarProductos</servlet-name>
+        <url-pattern>/BuscarProductos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
