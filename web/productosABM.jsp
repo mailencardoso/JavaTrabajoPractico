@@ -69,7 +69,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-3">
             <a type="button" id="button-abmproduct" class="btn btn-success btn-lg btn-block" href="altaProducto.jsp">Agregar producto</a>
-            <a type="button" id="button-abmproduct" class="btn btn-warning btn-lg btn-block" href="modifProducto.jsp">Modificar producto</a>
+            <a type="button" id="button-abmproduct" class="btn btn-warning btn-lg btn-block" href="modificarProducto.jsp">Modificar producto</a>
             <a type="button" id="button-abmproduct" class="btn btn-danger btn-lg btn-block" href="eliminarProducto.jsp">Eliminar producto</a>
         </div>
         

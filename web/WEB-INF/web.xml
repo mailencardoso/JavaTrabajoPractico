@@ -20,6 +20,10 @@
         <servlet-name>AltaProducto</servlet-name>
         <servlet-class>Controladores.AltaProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ModificarProductos</servlet-name>
+        <servlet-class>Controladores.ModificarProductos</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>AltaProducto</servlet-name>
         <url-pattern>/AltaProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificarProductos</servlet-name>
+        <url-pattern>/ModificarProductos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

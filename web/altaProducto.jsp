@@ -70,7 +70,8 @@
                         <label for="exampleImagen">Elija una imagen</label>
                         <input type="file" class="form-control" id="exampleImagen" name="imagen"></input>
                         
-   
+                        <br>
+                        
          
                         <div class="form-group" >
                             <button type="submit" class="btn btn-primary">Agregar producto</button>
