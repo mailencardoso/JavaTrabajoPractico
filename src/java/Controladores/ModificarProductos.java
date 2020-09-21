@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +28,7 @@ import org.apache.commons.io.IOUtils;
  *
  * @author maiic
  */
+@MultipartConfig
 public class ModificarProductos extends HttpServlet {
 
     /**
@@ -48,19 +50,29 @@ public class ModificarProductos extends HttpServlet {
         String nombre = request.getParameter("nombreProducto");
         String descripcion = request.getParameter("descripcion");
         String precio = request.getParameter("precioProducto");
-      
+        Part part = request.getPart("imagen");
+        InputStream inputStream = part.getInputStream();
         
         int cod = Integer.parseInt(codigo);
         float prec = Float.parseFloat(precio);
+        byte[] blob = IOUtils.toByteArray(inputStream);
+        Blob foto = new SerialBlob(blob);
        
-        
-        boolean ban = true;
+        boolean ban;
         ConsultaProductos prod = new ConsultaProductos();
         
+        if(prec <0){
+            prod.setError("Error: Ingrese precio mayor a cero");
+            objSesion.setAttribute("error",prod.getError());
+            response.sendRedirect("buscaProducto.jsp");
+        }
+        else{
+            ban = prod.modifProduct(cod, nombre,descripcion,prec, foto);
+        
             
-        if(ban==true){
+        if(ban){
                 Producto productoActual = (Producto) objSesion.getAttribute("productoActual");
-                productoActual = new Producto(cod,nombre,descripcion,prec);
+                productoActual = new Producto(cod,nombre,descripcion,prec, foto);
                 objSesion.setAttribute("prodActual", productoActual);
                 objSesion.setAttribute("notificacion", "Datos actualizados!");
                 response.sendRedirect("productosABM.jsp");
@@ -69,7 +81,8 @@ public class ModificarProductos extends HttpServlet {
                 objSesion.setAttribute("error",prod.getError());
                 response.sendRedirect("modificarProducto.jsp");
             }  
-    }   
+        }      
+    }
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -64,7 +64,7 @@
   <!-- Page Content -->
     <div class="container-profile">
         <div class ="row justify-content-center" >
-            <form action="ModificarProductos" method="post">
+            <form action="ModificarProductos" method="post" enctype="multipart/form-data">
                 <h3 id="modif">Modificar Productos</h3>
      
                 <%if (notificacion.equals("Modificaciòn realizada")){ %>
@@ -87,7 +87,8 @@
                         
                 <label for="examplePrecioProducto">Precio Producto</label>
                 <input type="text" class="form-control" id="examplePrecioProducto" name="precioProducto" aria-describedby="precioHelp" value="<%=productoActual.getPrecio()%>"><br>
-                        
+                
+                <input type="hidden" name="imagen" value="<%=productoActual.getFoto()%>">
                         
                 <div class="form-group" id="modificar-datos-button"> 
                     <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>

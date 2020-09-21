@@ -3,7 +3,12 @@
     Created on : 05-ago-2020, 14:59:25
     Author     : Diana
 --%>
+<%@page import="Negocio.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession objSesion = request.getSession(false);
+    Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +22,7 @@
     </head>
 <!-- This snippet uses Font Awesome 5 Free as a dependency. You can download it at fontawesome.io! -->
 <body>
+    <%if (usuarioActual.getTipoUsuario().equals("administrador")){ %>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
@@ -31,21 +37,22 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="productosABM.jsp">Productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Pedido</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="perfil.jsp">Hola, mcardoso</a>
+              <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <%}%>      
     <div class="container-profile" >
         <div id="altaproduc" class="row justify-content-center">
-            <h3>ABM de Productos</h3>
+            <h3>Alta de Productos</h3>
         </div>
         <div class ="row justify-content-center" >
             <div class="col-lg-3">

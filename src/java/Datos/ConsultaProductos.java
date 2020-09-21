@@ -140,15 +140,17 @@ public class ConsultaProductos extends Conexion {
         return productoActual;
     }
     
-    public boolean modifProduct(int id_producto, String nombre, String descripcion, Float precio) {
+    public boolean modifProduct(int id_producto, String nombre, String descripcion, Float precio, Blob foto) {
         PreparedStatement pst = null;
         ResultSet rs= null;
         try {
-            pst = getConexion().prepareStatement("UPDATE producto SET nombre = ? , descripcion =?, precio=? WHERE id_producto = ?");
+            pst = getConexion().prepareStatement("UPDATE producto SET nombre = ? , descripcion =?, precio=?, foto=? WHERE id_producto = ?");
             pst.setString(1,nombre);
             pst.setString(2,descripcion);
             pst.setFloat(3,precio);
-            pst.setInt(4,id_producto);
+            pst.setBlob(4,foto);
+            pst.setInt(5,id_producto);
+            
             
             if(pst.executeUpdate()==1){
                 return true;
