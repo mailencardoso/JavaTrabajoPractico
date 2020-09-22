@@ -12,6 +12,10 @@
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
+    String notificacion = "";
+    if (objSesion.getAttribute("error") != null){
+        notificacion = (String) objSesion.getAttribute("error");
+    }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,14 +76,21 @@
         <form action="BuscarProductos" method="post">
             <h3 id="modif">Buscar Productos</h3>
             
-            <label for="exampleCodigoProd">Codigo</label>
-            <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" required><br>
-        
-        <div class="form-group" id="modificar-datos-button"> 
+            <label for="exampleCodigoProd">Código</label>
+            <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" required>
+             <%if (notificacion.equals("Error: Codigo de producto incorrecto.")){ %>
+                    <br> <div class="alert alert-danger" role="alert">
+                                <b>¡ERROR!</b> Producto no existe.<br>
+                                Ingrese nuevamente
+                            </div>
+                    <%}%>
+                 <%objSesion.removeAttribute("error");%>       
+                 <br><div class="form-group" id="modificar-datos-button"> 
             <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
             <button type="submit"  class="btn btn-primary">Buscar</button>
-                    
+             
         </div>
+            
         </form>
     </div>
   <!-- /.container -->

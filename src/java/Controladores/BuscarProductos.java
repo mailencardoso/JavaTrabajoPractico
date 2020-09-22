@@ -50,7 +50,7 @@ public class BuscarProductos extends HttpServlet {
             
         }else{
             sesion.setAttribute("error", "Error: Codigo de producto incorrecto.");
-            response.sendRedirect("buscarProducto.jsp");
+            response.sendRedirect("buscaProducto.jsp");
 
         }
         
