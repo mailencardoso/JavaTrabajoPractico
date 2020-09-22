@@ -50,6 +50,7 @@ public class ModificarProductos extends HttpServlet {
         String nombre = request.getParameter("nombreProducto");
         String descripcion = request.getParameter("descripcion");
         String precio = request.getParameter("precioProducto");
+        String categoria = request.getParameter("categoria");
         Part part = request.getPart("imagen");
         InputStream inputStream = part.getInputStream();
         
@@ -67,12 +68,12 @@ public class ModificarProductos extends HttpServlet {
             response.sendRedirect("buscaProducto.jsp");
         }
         else{
-            ban = prod.modifProduct(cod, nombre,descripcion,prec, foto);
+            ban = prod.modifProduct(cod, nombre,descripcion,prec, foto, categoria);
         
             
         if(ban){
                 Producto productoActual = (Producto) objSesion.getAttribute("productoActual");
-                productoActual = new Producto(cod,nombre,descripcion,prec, foto);
+                productoActual = new Producto(cod,nombre,descripcion,prec, foto, categoria);
                 objSesion.setAttribute("prodActual", productoActual);
                 objSesion.setAttribute("notificacion", "Datos actualizados!");
                 response.sendRedirect("productosABM.jsp");

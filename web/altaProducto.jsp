@@ -10,6 +10,7 @@
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
 %>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -73,6 +74,18 @@
                         <label for="examplePrecioProducto">Precio Producto</label>
                         <input type="text" class="form-control" id="examplePrecioProducto" name="precioProducto" aria-describedby="precioHelp" placeholder="Precio Producto" required><br>
                         
+                        <label for="exampleCategoria">Categoría</label><br>
+                        <select name="categoria">
+                            <option value="0">Elige una categoría</option>
+                            <option value="Bebidas">Bebidas</option>
+                            <option value="Carniceria y pescaderia">Carnicería y pescadería</option>
+                            <option value="Fiambres y salchichas">Fiambres y salchichas</option>
+                            <option value="Lacteos y quesos">Lácteos y quesos</option>
+                            <option value="Panaderia bolleria industrial">Panadería bollería industrial</option>
+                            <option value="Productos de limpieza">Productos de limpieza</option>
+                            <option value="Perfumeria">Perfumería</option>
+                        </select><br><br>
+                        
                         
                         <label for="exampleImagen">Elija una imagen</label>
                         <input type="file" class="form-control" id="exampleImagen" name="imagen"></input>
@@ -96,3 +109,8 @@
   
 </body>
 </html>
+      
+              
+
+              
+         

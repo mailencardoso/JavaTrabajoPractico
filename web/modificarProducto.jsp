@@ -88,6 +88,18 @@
                 <label for="examplePrecioProducto">Precio Producto</label>
                 <input type="text" class="form-control" id="examplePrecioProducto" name="precioProducto" aria-describedby="precioHelp" value="<%=productoActual.getPrecio()%>"><br>
                 
+                <label for="exampleCategoria">Categoría</label><br>
+                        <select name="categoria">
+                            <option value="<%=productoActual.getCategoria()%>"><%=productoActual.getCategoria()%></option>
+                            <option value="Bebidas">Bebidas</option>
+                            <option value="Carniceria y pescaderia">Carnicería y pescadería</option>
+                            <option value="Fiambres y salchichas">Fiambres y salchichas</option>
+                            <option value="Lacteos y quesos">Lácteos y quesos</option>
+                            <option value="Panaderia bolleria industrial">Panadería bollería industrial</option>
+                            <option value="Productos de limpieza">Productos de limpieza</option>
+                            <option value="Perfumeria">Perfumería</option>
+                        </select><br><br>
+                
                 <input type="hidden" name="imagen" value="<%=productoActual.getFoto()%>">
                         
                 <div class="form-group" id="modificar-datos-button"> 

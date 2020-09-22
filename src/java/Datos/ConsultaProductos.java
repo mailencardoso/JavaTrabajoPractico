@@ -40,15 +40,16 @@ public class ConsultaProductos extends Conexion {
 
             while (rs.next()){
                 int id;
-                String nombre, desc;
+                String nombre, desc, cat;
                 Float precio;
                 Blob img;
                 id = rs.getInt("id_producto");
                 nombre = rs.getString("nombre");
                 desc= rs.getString("descripcion");
                 precio=rs.getFloat("precio");
+                cat=rs.getString("categoria");
                 img = rs.getBlob("foto");
-                prodActual = new Producto(id,nombre,desc,precio, img);
+                prodActual = new Producto(id,nombre,desc,precio,img,cat);
                 productos.add(prodActual);
             }
             
@@ -68,12 +69,12 @@ public class ConsultaProductos extends Conexion {
     }
     
     
-    public boolean agregarProducto(int id_producto,String nombre, String descripcion, float precio, Blob foto) {
+    public boolean agregarProducto(int id_producto,String nombre, String descripcion, float precio, Blob foto, String categoria) {
         PreparedStatement pst= null;
         try {
             getConexion().setAutoCommit(false);
 
-            String query= "INSERT INTO producto(id_producto, nombre,descripcion,precio,foto) VALUES (?,?,?,?,?);";
+            String query= "INSERT INTO producto(id_producto, nombre,descripcion,precio,foto,categoria) VALUES (?,?,?,?,?,?);";
 
             pst = getConexion().prepareStatement(query);
             pst.setInt(1,id_producto);
@@ -81,6 +82,7 @@ public class ConsultaProductos extends Conexion {
             pst.setString(3, descripcion);
             pst.setFloat(4, precio);
             pst.setBlob(5, foto);
+            pst.setString(6, categoria);
             int ban=pst.executeUpdate();
          
             getConexion().commit();
@@ -120,6 +122,7 @@ public class ConsultaProductos extends Conexion {
                 productoActual.setNombre(rs.getString("nombre"));
                 productoActual.setDescripcion(rs.getString("descripcion"));
                 productoActual.setPrecio(rs.getFloat("precio"));
+                productoActual.setCategoria(rs.getString("categoria"));
                 
                 return productoActual;
             }
@@ -140,16 +143,18 @@ public class ConsultaProductos extends Conexion {
         return productoActual;
     }
     
-    public boolean modifProduct(int id_producto, String nombre, String descripcion, Float precio, Blob foto) {
+    public boolean modifProduct(int id_producto, String nombre, String descripcion, Float precio, Blob foto, String categoria) {
         PreparedStatement pst = null;
         ResultSet rs= null;
         try {
-            pst = getConexion().prepareStatement("UPDATE producto SET nombre = ? , descripcion =?, precio=?, foto=? WHERE id_producto = ?");
+            pst = getConexion().prepareStatement("UPDATE producto SET nombre = ? , descripcion =?, precio=?, foto=?, categoria=? WHERE id_producto = ?");
             pst.setString(1,nombre);
             pst.setString(2,descripcion);
             pst.setFloat(3,precio);
             pst.setBlob(4,foto);
-            pst.setInt(5,id_producto);
+            pst.setString(5,categoria);
+            pst.setInt(6,id_producto);
+            
             
             
             if(pst.executeUpdate()==1){
@@ -168,7 +173,7 @@ public class ConsultaProductos extends Conexion {
         }
         return false;
     }
-    public boolean EliminarProduct(int id_produc, String nombre, String desc, Float precio, Blob img) {
+    public boolean EliminarProduct(int id_produc, String nombre, String desc, Float precio, Blob img, String categoria) {
         PreparedStatement pst = null;
         ResultSet rs= null;
         try {

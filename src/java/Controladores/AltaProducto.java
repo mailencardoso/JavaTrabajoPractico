@@ -54,6 +54,7 @@ public class AltaProducto extends HttpServlet {
         String desc = request.getParameter("descripcion");
         String precio = request.getParameter("precioProducto");
         Part part = request.getPart("imagen");
+        String categoria = request.getParameter("categoria");
         InputStream inputStream = part.getInputStream();
         
         int cod = Integer.parseInt(codigo);
@@ -64,7 +65,7 @@ public class AltaProducto extends HttpServlet {
         ConsultaProductos product = new ConsultaProductos();
         
         if(ban==true){
-                product.agregarProducto(cod, nombre, desc, prec, foto);
+                product.agregarProducto(cod, nombre, desc, prec, foto,categoria);
                 sesion.setAttribute("exito", "Producto dado de alta con exito");
                 response.sendRedirect("productosABM.jsp"); 
             }

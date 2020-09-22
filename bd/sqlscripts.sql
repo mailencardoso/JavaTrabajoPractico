@@ -119,3 +119,4 @@ VALUES
 "Cordoba 269",
 "administrador");
 
+SELECT * FROM usuario;

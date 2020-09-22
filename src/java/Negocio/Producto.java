@@ -19,13 +19,15 @@ public class Producto {
     String descripcion;
     Float precio;
     Blob foto;
+    String categoria;
     
-    public Producto(int id, String nom, String desc, Float pre, Blob imag){
+    public Producto(int id, String nom, String desc, Float pre, Blob imag, String cat){
         this.id_producto = id;
         this.nombre = nom;
         this.descripcion = desc;
         this.precio = pre;
         this.foto = imag;
+        this.categoria = cat;
     }
 
     public Producto(){
@@ -72,6 +74,14 @@ public class Producto {
     
     public void setFoto(Blob imag){
         this.foto = imag;
+    }
+    
+    public String getCategoria(){
+        return categoria;
+    }
+    
+    public void setCategoria(String cat){
+        this.categoria = cat;
     }
     
 }
