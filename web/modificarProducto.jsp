@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Productos</a>
+                        <a class="nav-link" href="productosABM.jsp">Productos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Pedidos</a>

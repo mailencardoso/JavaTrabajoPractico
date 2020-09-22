@@ -122,11 +122,18 @@ public class ConsultaProductos extends Conexion {
                 productoActual.setNombre(rs.getString("nombre"));
                 productoActual.setDescripcion(rs.getString("descripcion"));
                 productoActual.setPrecio(rs.getFloat("precio"));
+<<<<<<< Updated upstream
                 productoActual.setCategoria(rs.getString("categoria"));
                 
                 return productoActual;
             }
+=======
+                productoActual.setFoto(rs.getBlob("foto"));
+                }
+            return productoActual;
+>>>>>>> Stashed changes
         }
+        
         catch(Exception e){
             error = "Error: Producto no existente "+e;
         }

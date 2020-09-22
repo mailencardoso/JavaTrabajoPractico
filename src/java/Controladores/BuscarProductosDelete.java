@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author maiic
  */
-public class BuscarProductos extends HttpServlet {
+public class BuscarProductosDelete extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,11 +48,11 @@ public class BuscarProductos extends HttpServlet {
         
         if(productoActual!=null){
             sesion.setAttribute("prodActual", productoActual); 
-            response.sendRedirect("modificarProducto.jsp");  
+            response.sendRedirect("eliminarProducto.jsp");  
             
         }else{
             sesion.setAttribute("error", "Error: Codigo de producto incorrecto.");
-            response.sendRedirect("buscaProducto.jsp");
+            response.sendRedirect("buscarProductoEliminar.jsp");
 
         }
         

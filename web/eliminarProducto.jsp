@@ -1,8 +1,15 @@
+<%-- 
+    Document   : eliminarProducto
+    Created on : 21/09/2020, 21:42:15
+    Author     : maiic
+--%>
 <%@page import="Negocio.Usuario"%>
+<%@page import="Negocio.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
+    Producto productoActual = (Producto) objSesion.getAttribute("prodActual");
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
@@ -62,18 +69,22 @@
   <!-- Page Content -->
  <div class="container-profile">
     
-    <div id="product-abm" class="row justify-content-center">
-            <h3>ABM de Productos</h3>
-    </div>
-    <br>
-    <div class="row justify-content-center">
-        <div class="col-lg-3">
-            <a type="button" id="button-abmproduct" class="btn btn-primary btn-lg btn-block" href="altaProducto.jsp">Agregar producto</a>
-            <a type="button" id="button-abmproduct" class="btn btn-primary btn-lg btn-block" href="buscaProducto.jsp">Modificar producto</a>
-            <a type="button" id="button-abmproduct" class="btn btn-primary btn-lg btn-block" href="buscaProductoEliminar.jsp">Eliminar producto</a>
+    <div class ="row justify-content-center" >
+        <form action="EliminarProducto" method="post" enctype="multipart/form-data">
+            <h3 id="modif">Está seguro que desea eliminar el siguiente producto?</h3>
             
-        </div>
+            <label for="exampleCodigoProd"><%=productoActual.getFoto()%></label><br>
+            <label for="exampleCodigoProd">Codigo: <%=productoActual.getID()%></label><br>
+            <label for="exampleCodigoProd">Nombre: <%=productoActual.getNombre()%></label><br>
+            <label for="exampleCodigoProd">Descripcion: <%=productoActual.getDescripcion()%></label><br>
+            <label for="exampleCodigoProd">Precio $<%=productoActual.getPrecio()%></label><br>
         
+        <div class="form-group" id="modificar-datos-button"> 
+            <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
+            <button type="submit"  class="btn btn-primary">Eliminar</button>
+                    
+        </div>
+        </form>
     </div>
   <!-- /.container -->
 </div>
@@ -92,3 +103,5 @@
 </body>
 
 </html>
+
+
