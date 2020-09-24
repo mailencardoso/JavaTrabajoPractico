@@ -12,11 +12,14 @@ package Negocio;
 public class Linea_pedido {
     
     int cantidad;
+    private Producto producto;
+    private int numeroLinea;
     
-    public Linea_pedido(int cant){
+    public Linea_pedido(int cant, Producto prodAct,int num){
         
         this.cantidad = cant;
-             
+        this.producto = prodAct;
+        this.numeroLinea = num;
           
         }
     
@@ -28,7 +31,21 @@ public class Linea_pedido {
         this.cantidad = cant;
     }
     
+    public void setProducto(Producto prodAct) {
+        this.producto=prodAct;
+    }
     
+    public Producto getProducto(){
+        return producto;
+    }
+
+    public void setNumeroLinea(int num) {
+        this.numeroLinea=num;
+    }
+    
+    public int getNumeroLinea(){
+        return numeroLinea;
+    }
     
     
 }
