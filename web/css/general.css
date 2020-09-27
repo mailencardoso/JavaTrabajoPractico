@@ -321,3 +321,8 @@ h1, .sub-heading {
   transform: translate3d(0, -100%, 0);
   opacity: 0;
 }
+
+.img-delete{
+    width: 150px;
+    heigth: 150px;
+}

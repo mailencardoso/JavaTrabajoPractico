@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.rowset.serial.SerialBlob;
@@ -22,6 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 
 /**
@@ -57,15 +61,16 @@ public class AltaProducto extends HttpServlet {
         String categoria = request.getParameter("categoria");
         InputStream inputStream = part.getInputStream();
         
-        int cod = Integer.parseInt(codigo);
-        float prec = Float.parseFloat(precio);
+        
         byte[] blob = IOUtils.toByteArray(inputStream);
         Blob foto = new SerialBlob(blob);
+        int cod = Integer.parseInt(codigo);
+        float prec = Float.parseFloat(precio);
         
         ConsultaProductos product = new ConsultaProductos();
         
         if(ban==true){
-                product.agregarProducto(cod, nombre, desc, prec, foto,categoria);
+                product.agregarProducto(cod, nombre, desc, prec, foto, categoria);
                 sesion.setAttribute("exito", "Producto dado de alta con exito");
                 response.sendRedirect("productosABM.jsp"); 
             }

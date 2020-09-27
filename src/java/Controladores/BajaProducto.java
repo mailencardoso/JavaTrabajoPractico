@@ -55,7 +55,7 @@ public class BajaProducto extends HttpServlet {
        
         int cod = productoActual.getID();
         
-        ban = prod.EliminarProduct(cod);
+        ban = prod.eliminarProduct(cod);
         
         
         

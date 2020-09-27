@@ -7,9 +7,12 @@ package Datos;
 
 
 import Negocio.Producto;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Base64;
 /**
  *
  * @author Gaston
@@ -69,20 +72,21 @@ public class ConsultaProductos extends Conexion {
     }
     
     
-    public boolean agregarProducto(int id_producto,String nombre, String descripcion, float precio, Blob foto, String categoria) {
+    public boolean agregarProducto(int id_producto,String nombre, String descripcion, float precio, Blob foto,  String categoria) {
         PreparedStatement pst= null;
         try {
             getConexion().setAutoCommit(false);
 
-            String query= "INSERT INTO producto(id_producto, nombre,descripcion,precio,foto,categoria) VALUES (?,?,?,?,?,?);";
+            String query= "INSERT INTO producto(id_producto, nombre,descripcion,precio, foto,categoria) VALUES (?,?,?,?,?,?);";
 
             pst = getConexion().prepareStatement(query);
             pst.setInt(1,id_producto);
             pst.setString(2, nombre);
             pst.setString(3, descripcion);
             pst.setFloat(4, precio);
-            pst.setBlob(5, foto);
+            pst.setBlob(5,foto);
             pst.setString(6, categoria);
+            
             int ban=pst.executeUpdate();
          
             getConexion().commit();
@@ -117,19 +121,41 @@ public class ConsultaProductos extends Conexion {
             pst.setInt(1, id_producto);
             rs = pst.executeQuery();
             
-            if(rs.absolute(1)){
-                productoActual.setID(rs.getInt("id_producto"));
-                productoActual.setNombre(rs.getString("nombre"));
-                productoActual.setDescripcion(rs.getString("descripcion"));
-                productoActual.setPrecio(rs.getFloat("precio"));
-                productoActual.setCategoria(rs.getString("categoria"));
-                productoActual.setFoto(rs.getBlob("foto"));
+            if(rs.next()){
+                productoActual = new Producto();
+                int codigo = rs.getInt("id_producto");
+                String nombre = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                float prec = rs.getFloat("precio");
+                String categ = rs.getString("categoria");
+                Blob blob = rs.getBlob("foto");
+ 
+                InputStream inputStream = blob.getBinaryStream();
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+ 
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+ 
+                byte[] imageBytes = outputStream.toByteArray();
+ 
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                          
+                inputStream.close();
+                outputStream.close();   
                 
+                productoActual.setID(codigo);
+                productoActual.setNombre(nombre);
+                productoActual.setDescripcion(descripcion);
+                productoActual.setPrecio(prec);
+                productoActual.setCategoria(categ);
+                productoActual.setBase64Image(base64Image);
                 
                 return productoActual;
             }
 
-               
 
         }
         
@@ -179,13 +205,12 @@ public class ConsultaProductos extends Conexion {
         }
         return false;
     }
-    public boolean EliminarProduct(int id_produc) {
+    public boolean eliminarProduct(int id_produc) {
         PreparedStatement pst = null;
         ResultSet rs= null;
         try {
             pst = getConexion().prepareStatement("DELETE FROM producto WHERE id_producto = ?");
-            pst.setInt(1,id_produc);
-            
+         
             if(pst.executeUpdate()==1){
                 return true;
             }

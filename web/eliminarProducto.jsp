@@ -5,6 +5,8 @@
 --%>
 <%@page import="Negocio.Usuario"%>
 <%@page import="Negocio.Producto"%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.util.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession objSesion = request.getSession(false);
@@ -58,7 +60,7 @@
             <a class="nav-link" href="#">Pedidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
+            <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%> </a>
           </li>
         </ul>
       </div>
@@ -68,17 +70,19 @@
  
   <!-- Page Content -->
  <div class="container-profile">
-    
+    <div id="altaproduc" class="row justify-content-center">
+            <h3>Está seguro que desea eliminar el siguiente producto?</h3>
+    </div>
     <div class ="row justify-content-center" >
         <form action="BajaProducto" method="post" enctype="multipart/form-data">
-            <h3 id="modif">Está seguro que desea eliminar el siguiente producto?</h3>
             
-            <label for="exampleCodigoProd"><%=productoActual.getFoto()%></label><br>
+            
+            <img class="img-delete" src="data:image/jpg;base64,<%=productoActual.base64Image%>"/><br>
             <label for="exampleCodigoProd">Codigo: <%=productoActual.getID()%></label><br>
             <label for="exampleCodigoProd">Nombre: <%=productoActual.getNombre()%></label><br>
             <label for="exampleCodigoProd">Descripcion: <%=productoActual.getDescripcion()%></label><br>
             <label for="exampleCodigoProd">Precio $<%=productoActual.getPrecio()%></label><br>
-        
+            <br>
         <div class="form-group" id="modificar-datos-button"> 
             <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
             <button type="submit"  class="btn btn-primary">Eliminar</button>

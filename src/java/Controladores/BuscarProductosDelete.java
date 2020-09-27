@@ -8,6 +8,8 @@ package Controladores;
 import Datos.ConsultaProductos;
 import Negocio.Producto;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -51,8 +53,8 @@ public class BuscarProductosDelete extends HttpServlet {
             response.sendRedirect("eliminarProducto.jsp");  
             
         }else{
-            sesion.setAttribute("estado", "Error: Codigo de producto no existe.");
-            response.sendRedirect("buscaProductoEliminar.jsp");
+            sesion.setAttribute("error", "Error: Codigo de producto incorrecto.");
+            response.sendRedirect("buscarProductoEliminar.jsp");
 
         }
         
