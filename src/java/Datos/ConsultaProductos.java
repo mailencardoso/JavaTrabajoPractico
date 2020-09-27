@@ -179,12 +179,13 @@ public class ConsultaProductos extends Conexion {
         }
         return false;
     }
-    public boolean EliminarProduct(int id_produc, String nombre, String desc, Float precio, Blob img, String categoria) {
+    public boolean EliminarProduct(int id_produc) {
         PreparedStatement pst = null;
         ResultSet rs= null;
         try {
-            pst = getConexion().prepareStatement("DELETE * FROM producto WHERE id_producto = ?");
-         
+            pst = getConexion().prepareStatement("DELETE FROM producto WHERE id_producto = ?");
+            pst.setInt(1,id_produc);
+            
             if(pst.executeUpdate()==1){
                 return true;
             }

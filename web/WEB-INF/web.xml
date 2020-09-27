@@ -32,6 +32,10 @@
         <servlet-name>BuscarProductosDelete</servlet-name>
         <servlet-class>Controladores.BuscarProductosDelete</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BajaProducto</servlet-name>
+        <servlet-class>Controladores.BajaProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>BuscarProductosDelete</servlet-name>
         <url-pattern>/BuscarProductosDelete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BajaProducto</servlet-name>
+        <url-pattern>/BajaProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -70,7 +70,7 @@
  <div class="container-profile">
     
     <div class ="row justify-content-center" >
-        <form action="EliminarProducto" method="post" enctype="multipart/form-data">
+        <form action="BajaProducto" method="post" enctype="multipart/form-data">
             <h3 id="modif">Está seguro que desea eliminar el siguiente producto?</h3>
             
             <label for="exampleCodigoProd"><%=productoActual.getFoto()%></label><br>

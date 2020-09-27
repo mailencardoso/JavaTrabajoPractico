@@ -12,6 +12,11 @@
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
+    String notificacion = "";
+   if (objSesion.getAttribute("estado") != null){
+        notificacion = (String) objSesion.getAttribute("estado");
+    }
+    
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,9 +77,20 @@
         <form action="BuscarProductosDelete" method="post">
             <h3 id="modif">Buscar Productos</h3>
             
-            <label for="exampleCodigoProd">Codigo</label>
+            <label for="exampleCodigoProd">Código</label>
             <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" required><br>
-        
+        <%if (notificacion.equals("Eliminado correctamente")){ %>
+                <div class="alert alert-success" role="alert">
+                                ¡Producto eliminado <b>correctamente</b>!
+                            </div>                 
+                <%}%>
+                 <%objSesion.removeAttribute("exito");%>
+        <%if (notificacion.equals("Error: Codigo de producto no existe.")){ %>
+                <div class="alert alert-danger" role="alert">
+                                <b>¡ERROR!</b> Producto inexistente. <br>Ingrese de nuevo.
+                            </div>              
+                <%}%>
+                 <%objSesion.removeAttribute("exito");%>
         <div class="form-group" id="modificar-datos-button"> 
             <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
             <button type="submit"  class="btn btn-primary">Buscar</button>
