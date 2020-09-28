@@ -8,6 +8,7 @@ package Datos;
 
 import Negocio.Producto;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.*;
@@ -210,7 +211,8 @@ public class ConsultaProductos extends Conexion {
         ResultSet rs= null;
         try {
             pst = getConexion().prepareStatement("DELETE FROM producto WHERE id_producto = ?");
-         
+            pst.setInt(1,id_produc);
+            
             if(pst.executeUpdate()==1){
                 return true;
             }
@@ -228,7 +230,72 @@ public class ConsultaProductos extends Conexion {
         return false;
     }
 
+ 
   
+  public ArrayList<Producto> buscarCategoria(String cat) throws IOException{
+        PreparedStatement pst = null;
+        ArrayList<Producto> productos = new ArrayList<>();
+        Producto prodActual = null;
+        ResultSet rs = null;
+        String query;
+        try {
+            query = "SELECT * FROM producto where categoria = ?";
+            Connection conexion = getConexion();
+            pst = conexion.prepareStatement(query);
+            pst.setString(1, cat);
+            rs = pst.executeQuery();
+
+            while (rs.next()){
+                prodActual = new Producto();
+                int codigo = rs.getInt("id_producto");
+                String nombre = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                float prec = rs.getFloat("precio");
+                String categ = rs.getString("categoria");
+                Blob blob = rs.getBlob("foto");
+ 
+                InputStream inputStream = blob.getBinaryStream();
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+ 
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+ 
+                byte[] imageBytes = outputStream.toByteArray();
+ 
+                String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+                          
+                inputStream.close();
+                outputStream.close();   
+                
+                prodActual.setID(codigo);
+                prodActual.setNombre(nombre);
+                prodActual.setDescripcion(descripcion);
+                prodActual.setPrecio(prec);
+                prodActual.setCategoria(categ);
+                prodActual.setBase64Image(base64Image);
+                
+                productos.add(prodActual);
+                
+                return productos;
+            }
+            
+        } catch (SQLException e) {
+            error = "Error: "+e;
+        }finally{
+           try {
+                if (getConexion()!=null) getConexion().close();
+                if (pst!=null) pst.close();
+                if (rs!=null) rs.close();
+            } catch (SQLException e) {
+                error = "Error: "+e;
+            }
+        }
+        return productos;
+        
+    }
     
     
 }

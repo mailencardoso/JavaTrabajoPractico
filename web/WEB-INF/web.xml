@@ -36,6 +36,10 @@
         <servlet-name>BajaProducto</servlet-name>
         <servlet-class>Controladores.BajaProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuscasProdCategoria</servlet-name>
+        <servlet-class>Controladores.BuscasProdCategoria</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>BajaProducto</servlet-name>
         <url-pattern>/BajaProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscasProdCategoria</servlet-name>
+        <url-pattern>/BuscasProdCategoria</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

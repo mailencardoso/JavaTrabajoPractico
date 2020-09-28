@@ -64,13 +64,13 @@
 
         <h1 class="my-4"><img class="logo" src="img/logo.png"></img></h1>
         <div class="list-group">
-          <a href="#" class="list-group-item">Bebidas</a>
-          <a href="#" class="list-group-item">Carnicería y pescadería</a>
-          <a href="#" class="list-group-item">Fiambres y salchichas</a>
-          <a href="#" class="list-group-item">Lácteos y quesos</a>
-          <a href="#" class="list-group-item">Panadería y bollería industrial</a>
-          <a href="#" class="list-group-item">Productos de limpieza</a>          
-          <a href="#" class="list-group-item">Perfumería</a>          
+          <a href="bebidas.jsp" class="list-group-item">Bebidas</a>
+          <a href="carnes.jsp" class="list-group-item">Carnicería y pescadería</a>
+          <a href="fiambres.jsp" class="list-group-item">Fiambres y salchichas</a>
+          <a href="lacteos.jsp" class="list-group-item">Lácteos y quesos</a>
+          <a href="panaderia.jsp" class="list-group-item">Panadería y bollería industrial</a>
+          <a href="limpieza.jsp" class="list-group-item">Productos de limpieza</a>          
+          <a href="perfumeria.jsp" class="list-group-item">Perfumería</a>          
         </div>
 
       </div>

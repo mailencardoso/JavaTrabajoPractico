@@ -84,13 +84,13 @@
                                 ¡Producto eliminado <b>correctamente</b>!
                             </div>                 
                 <%}%>
-                 <%objSesion.removeAttribute("exito");%>
+                 <%objSesion.removeAttribute("estado");%>
         <%if (notificacion.equals("Error: Codigo de producto no existe.")){ %>
                 <div class="alert alert-danger" role="alert">
                                 <b>¡ERROR!</b> Producto inexistente. <br>Ingrese de nuevo.
                             </div>              
                 <%}%>
-                 <%objSesion.removeAttribute("exito");%>
+                 <%objSesion.removeAttribute("estado");%>
         <div class="form-group" id="modificar-datos-button"> 
             <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
             <button type="submit"  class="btn btn-primary">Buscar</button>
