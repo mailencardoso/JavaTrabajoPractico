@@ -82,7 +82,7 @@
             <a class="nav-link" href="#">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>

@@ -1,115 +1,12 @@
-.container-log{
-    padding-top: 150px;
-    padding-left: 350px;
-}
-
-.container-profile{
-    height: 1200px; 
-    
-}
-
-h3{
-  padding-bottom: 20px;
-}
-
-.form-check{
-    padding-bottom: 5px;
-}
-
-.registrar{
-    padding-bottom: 5px;
-    text-align: right;
-}
-
-#update-button{
-    padding-top: 60px;
-    padding-left: 430px;
-}
-
-.sing-out{
-    padding-right: 45px;
-    padding-top: 15px;
-}
-
-#personal h3{
-    padding-right: 90px;
-}
-
-
-#second-row label{
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-
-.prof{
-    font-weight: bold;
-
-}
-
-#modificar-datos-button{
-    padding-left: 55px;
-}
-
-#exampleInputNombre, #exampleInputApellido,
-#exampleInputUsuario, #exampleInputContraseña,
-#exampleInputCorreo, #exampleInputTel, #exampleInputDireccion{
-    font-weight: bold;
-}
-
-#modif{
-    padding-top: 60px;
-}
-
-.logo-navbar {
-    width: 80px;
-    heigth: 80px;
-}
-
-.carrito-navbar {
-    width: 50px;
-    heigth: 50px;
-}
-
-.logo{
-    width: 200px;
-    heigth: 80px;
-}
-
-#product-abm{
-    padding-top: 50px;
-    
-}
-
-#button-abmproduct{
-    color:  white;
-}
-
-#altaproduc{
-  
-    padding-top: 90px;
-}
-
-
-
-.navbar-login
-{
-    width: 305px;
-    padding: 10px;
-    padding-bottom: 0px;
-}
-
-.navbar-login-session
-{
-    padding: 10px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-}
-
-.icon-size
-{
-    font-size: 87px;
-}
-
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28/09/2020, 21:35:53
+    Author     : maiic
+*/
 [class*="entypo-"]:before { font-family: 'entypo', sans-serif; }
 body {
   background-color: #ecf0f1;
@@ -126,9 +23,6 @@ h1, .sub-heading {
   font-weight: 300;
 }
 
-.pedido{
-    padding-top: 20px;
-}
 /**
  * @section: utilities;
  * @see: Justify Grid [http://justifygrid.com/]
@@ -323,9 +217,4 @@ h1, .sub-heading {
   transition: all .5s ease;
   transform: translate3d(0, -100%, 0);
   opacity: 0;
-}
-
-.img-delete{
-    width: 150px;
-    heigth: 150px;
 }
