@@ -38,6 +38,12 @@ public class Pedido {
         this.usuarioAdministrador = adm;
         this.lineas = lin;
     }
+
+    public Pedido() {
+      
+    }
+
+    
     
     public int getId() {
         return idpedido;
@@ -73,6 +79,10 @@ public class Pedido {
 
     public void setUsuarioAdministrador(String usuarioAdm) {
         this.usuarioAdministrador = usuarioAdm;
+    }
+    
+    public void setCliente(Usuario cli) {
+        this.cliente = cli;
     }
     
     public ArrayList<Linea_pedido> getLineas() {
