@@ -40,6 +40,10 @@
         <servlet-name>BuscasProdCategoria</servlet-name>
         <servlet-class>Controladores.BuscasProdCategoria</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AgregarProducto</servlet-name>
+        <servlet-class>Controladores.AgregarProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>BuscasProdCategoria</servlet-name>
         <url-pattern>/BuscasProdCategoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AgregarProducto</servlet-name>
+        <url-pattern>/AgregarProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
