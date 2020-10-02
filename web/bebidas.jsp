@@ -11,7 +11,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession objSesion = request.getSession(false);
-   // Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
+    Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
    // objSesion.removeAttribute("error");
    // String tipoUsuario = userActual.getTipoUsuario();
    // if(userActual.getNombreUsuario().equals("")|| tipoUsuario.equals("Administrador")){
@@ -47,25 +47,25 @@
   <!-- Navigation  -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
+      <a class="navbar-brand" href="indexlogueado.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="indexlogueado.jsp">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="listadoProductos.jsp">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.jsp">Iniciar Sesión</a>
+            <a class="nav-link" href="perfil.jsp"><%=usuarioActual.getUsuario()%></a>
           </li>
         </ul>
       </div>
@@ -101,6 +101,18 @@
                       <h5><%=prod.get(i).getPrecio()%></h5>
                       <p class="card-text"><%=prod.get(i).getDescripcion()%></p>
                     </div>
+                    <form action="AgregarProducto" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="idProducto" value="<%=prod.get(i).getID()%>">
+                        <input type="hidden" name="nombreProducto" value="<%=prod.get(i).getNombre()%>">
+                        <input type="hidden" name="descripcionProducto" value="<%=prod.get(i).getDescripcion()%>">
+                        <input type="hidden" name="precioProducto" value="<%=prod.get(i).getPrecio()%>">
+                        <input type="hidden" name="imagenProducto" value="<%=prod.get(i).base64Image%>">
+                        <input type="hidden" name="categoriaProducto" value="<%=prod.get(i).getCategoria()%>">
+                        <label id="cantidad">Cantidad: </label>     <input type="text" name="cantidad" id="cantidad" size="1">
+                        <div class="card-footer">    
+                            <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                        </div>
+                    </form>   
                     
                   </div>
                 </div>
