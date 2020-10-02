@@ -37,7 +37,7 @@ public class ConsultaProductos extends Conexion {
         ResultSet rs = null;
         String query;
         try {
-            query = "SELECT * FROM producto";
+            query = "SELECT * FROM producto ORDER BY categoria, id_producto";
             pst= getConexion().prepareStatement(query);
             
             rs = pst.executeQuery();

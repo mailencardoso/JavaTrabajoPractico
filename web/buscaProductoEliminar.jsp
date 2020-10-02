@@ -5,6 +5,9 @@
 --%>
 
 <%@page import="Negocio.Usuario"%>
+<%@page import="Datos.ConsultaProductos"%>
+<%@page import="Negocio.Producto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession objSesion = request.getSession(false);
@@ -96,8 +99,33 @@
             <button type="submit"  class="btn btn-primary">Buscar</button>
                     
         </div>
-        </form>
+        </form>        
     </div>
+         <% ArrayList<Producto> prod = new ArrayList<Producto>(); prod = null;
+            ConsultaProductos productos = new ConsultaProductos();
+            prod = productos.listadoProductos(); %>
+            
+         
+          <table class="table table-striped">
+                 <thead>
+                   <tr>
+                     <th scope="col">Código</th>
+                     <th scope="col">Nombre</th>
+                     <th scope="col">Precio</th>
+                     <th scope="col">Categoría</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                     <%for(int i=0;i<prod.size();i++ ){%>
+                   <tr>
+                     <th scope="row"><%=prod.get(i).getID()%></th>
+                     <td><%=prod.get(i).getNombre()%></td>
+                     <td><%=prod.get(i).getPrecio()%></td>
+                     <td><%=prod.get(i).getCategoria()%></td>
+                   </tr>
+                    <%}%>
+                   </tbody>
+               </table>
   <!-- /.container -->
 </div>
   <!-- Footer -->

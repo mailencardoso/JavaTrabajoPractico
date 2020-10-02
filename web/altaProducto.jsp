@@ -62,17 +62,17 @@
                 
                     <div class="form-group">
                         
-                        <label for="exampleCodigoProducto">Codigo Producto</label>
-                        <input type="text" class="form-control" id="exampleCodigoProducto" name="codigoProducto" aria-describedby="codigoHelp" placeholder="Codigo Producto" required><br>
+                        <label for="exampleCodigoProducto">Código producto</label>
+                        <input type="text" class="form-control" id="exampleCodigoProducto" name="codigoProducto" aria-describedby="codigoHelp" placeholder="Código producto" required><br>
                             
-                        <label for="exampleNombreProducto">Titulo Producto</label>
-                        <input type="text" class="form-control" id="exampleNombreProducto" name="nombreProducto" aria-describedby="nombreHelp" placeholder="Nombre Producto" required><br>
+                        <label for="exampleNombreProducto">Título producto</label>
+                        <input type="text" class="form-control" id="exampleNombreProducto" name="nombreProducto" aria-describedby="nombreHelp" placeholder="Nombre producto" required><br>
                         
-                        <label for="exampleDescripcion">Descripcion Producto</label>
-                        <input type="text" class="form-control" id="exampleDescripcion" name="descripcion" aria-describedby="descripcionHelp" placeholder="Descripcion" required><br>
+                        <label for="exampleDescripcion">Descripción</label>
+                        <input type="text" class="form-control" id="exampleDescripcion" name="descripcion" aria-describedby="descripcionHelp" placeholder="Descripción" required><br>
                         
-                        <label for="examplePrecioProducto">Precio Producto</label>
-                        <input type="text" class="form-control" id="examplePrecioProducto" name="precioProducto" aria-describedby="precioHelp" placeholder="Precio Producto" required><br>
+                        <label for="examplePrecioProducto">Precio</label>
+                        <input type="text" class="form-control" id="examplePrecioProducto" name="precioProducto" aria-describedby="precioHelp" placeholder="Precio producto" required><br>
                         
                         <label for="exampleCategoria">Categoría</label><br>
                         <select name="categoria">
