@@ -13,11 +13,7 @@
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
-   // objSesion.removeAttribute("error");
-   // String tipoUsuario = userActual.getTipoUsuario();
-   // if(userActual.getNombreUsuario().equals("")|| tipoUsuario.equals("Administrador")){
-       // response.sendRedirect("index.jsp");
-    //}
+   
 %>
 
 <!DOCTYPE html>
@@ -46,7 +42,30 @@
 <body>
 
   <!-- Navigation  -->
+ <%if(usuarioActual == null){%>
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.jsp">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="login.jsp">Iniciar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <%}%>
+  <%if(usuarioActual != null){%>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="indexlogueado.jsp"><img class="logo-navbar" src="img/logo-abreviado.png"></img></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,12 +85,13 @@
             <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="perfil.jsp"><%=usuarioActual.getUsuario()%></a>
+            <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <%}%>  
  <div class="container">
      
      <% ArrayList<Producto> prod = new ArrayList<Producto>(); prod = null;
@@ -97,7 +117,11 @@
                     <div class="card-body">
                          
                       <h4 class="card-title">
+                        <%if(usuarioActual != null){%> 
                         <a href="#"><%=prod.get(i).getNombre()%></a>
+                         <%} else{%>
+                        <a href="login.jsp"><%=prod.get(i).getNombre()%></a> 
+                        <%}%>
                       </h4>
                       <h5><%=prod.get(i).getPrecio()%></h5>
                       <p class="card-text"><%=prod.get(i).getDescripcion()%></p>
@@ -109,10 +133,12 @@
                         <input type="hidden" name="precioProducto" value="<%=prod.get(i).getPrecio()%>">
                         <input type="hidden" name="imagenProducto" value="<%=prod.get(i).base64Image%>">
                         <input type="hidden" name="categoriaProducto" value="<%=prod.get(i).getCategoria()%>">
+                        <%if(usuarioActual != null){%>
                         <label id="cantidad">Cantidad: </label>     <input type="text" name="cantidad" id="cantidad" size="1">
                         <div class="card-footer">    
                             <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
                         </div>
+                        <%}%>
                     </form>   
                     
                   </div>

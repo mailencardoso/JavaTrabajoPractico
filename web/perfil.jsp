@@ -36,7 +36,22 @@
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
   
-
+     <script type="text/javascript">
+     function ConfirmDemo() {
+    //Ingresamos un mensaje a mostrar
+    var mensaje = confirm("¿Está seguro que desea cerrar sesión?");
+    //Detectamos si el usuario acepto el mensaje
+    if (mensaje) {
+    document.getElementById('cerrarsesion').submit();    
+    alert("¡Gracias por visitarnos!");
+    
+    }
+    //Detectamos si el usuario denegó el mensaje
+    else {
+    alert("¡Gracias por quedarte con nosotros!");
+    }
+    }
+    </script>
 </head>
 
 <body>
@@ -101,9 +116,7 @@
  <%}%> 
   <!-- Page Content -->
 <div class="container-profile">
-    <div class="row justify-content-end">
-        <a class="sing-out" href="Logout">Cerrar Sesion</a>
-    </div>
+    <br><br>
     <div id="personal" class="row justify-content-center">
             <h3>Mis datos personales</h3>
     </div>
@@ -134,8 +147,12 @@
     </div> 
     <div id="update-button" class="row justify-content-center">
         <div class="col-sm-4">
-            <a class="btn btn-primary" href="modificarDatos.jsp" role="button">Modificar datos</a>
+            <a class="btn btn-primary" href="modificarDatos.jsp" role="button">Modificar datos</a> <br><br>
+            <form id="cerrarsesion" action="Logout" method="post">
+            <input type="button" style="background-color:red; border-color:red; color:white" onclick="ConfirmDemo()" value="Cerrar sesión" />
+            </form>
         </div>   
+        
     </div> 
 </div>
   
