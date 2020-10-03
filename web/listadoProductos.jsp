@@ -125,7 +125,7 @@
                             <input type="hidden" name="categoriaProducto" value="<%=prod.get(i).getCategoria()%>">
                             <label id="cantidad">Cantidad: </label>     <input type="text" name="cantidad" id="cantidad" size="1">
                             <div class="card-footer">    
-                                <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
+                                <input type="submit" onclick="alert('¡Producto/s agregados al carrito!')" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                             </div>
                         </form>   
                     
