@@ -64,11 +64,11 @@ public class AgregarProducto extends HttpServlet {
         String cantidad = request.getParameter("cantidad");
         if (cantidad.equals("")){
             sesion.setAttribute("error","Error: Ingrese la cantidad a comprar");
-            response.sendRedirect("comprar.jsp");
+            response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
         }
         else if (!cantidad.matches( "[1-9]|[1-2][0-9]|" )){
             sesion.setAttribute("error","Error: Ingrese una cantidad correcta y menor a 30 unidades");
-            response.sendRedirect("comprar.jsp");
+            response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
         }
         else{
             Usuario cliente = (Usuario) sesion.getAttribute("userActual");
@@ -102,10 +102,10 @@ public class AgregarProducto extends HttpServlet {
             pedActual.setPrecio();
             sesion.setAttribute("pedidoActual", pedActual);
             sesion.setAttribute("notificacion", "Objeto ingresado al carrito!");
-            response.sendRedirect("comprar.jsp");
+            response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
         }
     }
-
+/*response.encodeRedirectURL(request.getRequestURI())*/
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

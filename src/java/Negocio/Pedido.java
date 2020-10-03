@@ -21,12 +21,7 @@ public class Pedido {
     private ArrayList<Linea_pedido> lineas;   
     private String usuarioAdministrador;
     
-    private static float envio = 15.0f;
-
-    public static float getEnvio() {
-        return envio;
-    }
-    
+   
     
     
     public Pedido(int idped, Date fecha, String completa, Usuario cli, String adm, ArrayList<Linea_pedido> lin){
@@ -103,7 +98,7 @@ public class Pedido {
             for (int i=0;i<lineas.size();i++){
                 total= total+lineas.get(i).getCantidad()*lineas.get(i).getProducto().getPrecio();
             }
-        total=total + envio;
+       
         }
         precio = total;
     }

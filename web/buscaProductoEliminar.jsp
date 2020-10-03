@@ -106,7 +106,7 @@
             prod = productos.listadoProductos(); %>
             
          
-          <table class="table table-striped">
+          <table class="table table-striped" id="tablaListado">
                  <thead>
                    <tr>
                      <th scope="col">Código</th>

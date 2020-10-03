@@ -4,7 +4,19 @@
     Author     : Diana
 --%>
 
+<%@page import="Negocio.Linea_pedido"%>
+<%@page import="Negocio.Pedido"%>
+<%@page import="Negocio.Usuario"%>
+<%@page import="Datos.ConsultaProductos"%>
+<%@page import="Negocio.Producto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    HttpSession objSesion = request.getSession(false);
+    Pedido pedido = (Pedido) objSesion.getAttribute("pedidoActual");
+    Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
+    
+%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -24,10 +36,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
-  
-  
-  <script src="javascript/carritos.js" type="text/javascript"></script>
-  <script id="shopping-cart--list-item-template" type="text/template"></script>
+
   
 
 </head>
@@ -44,22 +53,19 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home
+            <a class="nav-link" href="indexlogueado.jsp">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="listadoProductos.jsp">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.jsp">Iniciar Sesión</a>
+              <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
           </li>  
-          <li class="nav-item">
-            <a class="nav-link" href="index.jsp"><img class="carrito-navbar" src="img/carrito-nav.png"></img></a>
-          </li>
         </ul>
       </div>
      
@@ -68,60 +74,46 @@
 
   <!-- Page Content -->
   <div class="container-profile">
-      <div class="main">
-          <h1 class="pedido">Mi Pedido</h1>
-        
-
-        <section class="shopping-cart">
-            <ol class="ui-list shopping-cart--list" id="shopping-cart--list">
-
+      <a type="submit" class="btn btn-success" id="seguir-comprando" href="listadoProductos.jsp">← Seguir Comprando</a>
+    <div class ="row justify-content-center" >
+        <form action="RegistrarPedido" method="post">
+            <h3 id="pedido">Mi pedido</h3>
             
-                <li class="_grid shopping-cart--list-item">
-                    <div class="_column product-image">
-                        <img class="product-image--img" src="{{$img}}" alt="Item image" />
-                    </div>
-                    <div class="_column product-info">
-                        <h4 class="product-name"></h4>
-                        <p class="product-desc"></p>
-                        <div class="price product-single-price"></div>
-                    </div>
-                    <div class="_column product-modifiers" data-product-price="{{=price}}">
-                        <div class="_grid">
-                            <button class="_btn _column product-subtract">&minus;</button>
-                            <div class="_column product-qty">0</div>
-                            <button class="_btn _column product-plus">&plus;</button>
-                        </div>
-                        <button class="_btn entypo-trash product-remove">Remove</button>
-                        <div class="price product-total-price">$0.00</div>
-                    </div>
-                </li>
-            
-
-            </ol>
-
-            <footer class="_grid cart-totals">
-                <div class="_column subtotal" id="subtotalCtr">
-                    <div class="cart-totals-key">Subtotal</div>
-                    <div class="cart-totals-value">$0.00</div>
-                </div>
-                <div class="_column shipping" id="shippingCtr">
-                    <div class="cart-totals-key">Shipping</div>
-                    <div class="cart-totals-value">$0.00</div>
-                </div>
-                <div class="_column taxes" id="taxesCtr">
-                    <div class="cart-totals-key">Taxes (6%)</div>
-                    <div class="cart-totals-value">$0.00</div>
-                </div>
-                <div class="_column total" id="totalCtr">
-                    <div class="cart-totals-key">Total</div>
-                    <div class="cart-totals-value">$0.00</div>
-                </div>
-                <div class="_column checkout">
-                    <button class="_btn checkout-btn entypo-forward">Checkout</button>
-                </div>
-            </footer>
-
-        </section>
+            <table class="table table-striped" id="tablaPedido">
+                <thead>
+                    <tr>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Categoría</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%ArrayList<Linea_pedido> lineas = new ArrayList<Linea_pedido>();
+                    lineas = pedido.getLineas();
+                    for (int i=0;i<lineas.size();i++){%>
+                   <tr>
+                     <td scope="row" ><%=lineas.get(i).getProducto().getID()%></td>
+                     <td><%=lineas.get(i).getProducto().getNombre()%></td>
+                     <td><%=lineas.get(i).getProducto().getPrecio()%></td>
+                     <td><%=lineas.get(i).getProducto().getCategoria()%></td>
+                     <td><%=lineas.get(i).getCantidad()%></td>
+                     <td>$<%=lineas.get(i).getCantidad()*lineas.get(i).getProducto().getPrecio()%></td>
+                   </tr>
+                    <%}%>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td colspan="2"><label>Total </label></td>
+                        <td>$<%=pedido.getPrecio()%>               
+                    </tr>
+                   </tbody>
+               </table>
+               <input type="submit" class="btn btn-primary" id="carrito-register" value="Registrar Pedido">
+        </form>
     </div>
   </div>
 
