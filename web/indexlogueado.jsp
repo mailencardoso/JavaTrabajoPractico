@@ -338,7 +338,7 @@
                 </div>
                 <div class="card-footer">
                     <form action="AgregarProducto" method="post">
-                        <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                        <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                     </form> 
                 </div>
             </div>
@@ -357,7 +357,7 @@
                 </div>
                 <div class="card-footer">
                     <form action="AgregarProducto" method="post">
-                        <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                        <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                     </form> 
               </div>
             </div>
@@ -376,7 +376,7 @@
               </div>
               <div class="card-footer">
                 <form action="AgregarProducto" method="post">
-                    <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                 </form> 
               </div>
             </div>
@@ -395,7 +395,7 @@
               </div>
               <div class="card-footer">
                 <form action="AgregarProducto" method="post">
-                    <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                 </form> 
               </div>
             </div>
@@ -414,7 +414,7 @@
               </div>
               <div class="card-footer">
                 <form action="AgregarProducto" method="post">
-                    <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                 </form> 
               </div>
             </div>
@@ -433,7 +433,7 @@
               </div>
               <div class="card-footer">
                 <form action="AgregarProducto" method="post">
-                    <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                 </form> 
               </div>
             </div>

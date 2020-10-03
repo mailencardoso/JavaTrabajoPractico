@@ -66,7 +66,7 @@
             <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="perfil.jsp"><%=usuarioActual.getUsuario()%></a>
+            <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
           </li>
         </ul>
       </div>
@@ -125,7 +125,7 @@
                             <input type="hidden" name="categoriaProducto" value="<%=prod.get(i).getCategoria()%>">
                             <label id="cantidad">Cantidad: </label>     <input type="text" name="cantidad" id="cantidad" size="1">
                             <div class="card-footer">    
-                                <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                                <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                             </div>
                         </form>   
                     

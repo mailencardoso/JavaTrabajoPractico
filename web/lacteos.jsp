@@ -136,7 +136,7 @@
                         <%if(usuarioActual != null){%>
                         <label id="cantidad">Cantidad: </label>     <input type="text" name="cantidad" id="cantidad" size="1">
                         <div class="card-footer">    
-                            <a type="submit" id="carrito-button" class="btn btn-primary">Agregar al carrito</a>
+                            <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                         </div>
                         <%}%>
                     </form>   
