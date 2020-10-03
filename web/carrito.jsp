@@ -76,7 +76,7 @@
   <div class="container-profile">
       <a type="submit" class="btn btn-success" id="seguir-comprando" href="listadoProductos.jsp">← Seguir Comprando</a>
     <div class ="row justify-content-center" >
-        <form action="RegistrarPedido" method="post">
+        <form action="RegistroPedido" method="post">
             <h3 id="pedido">Mi pedido</h3>
             
             <table class="table table-striped" id="tablaPedido">
@@ -112,6 +112,7 @@
                     </tr>
                    </tbody>
                </table>
+               <td><input type="hidden" name="usuario" value="<%=usuarioActual.getUsuario()%>">
                <input type="submit" class="btn btn-primary" id="carrito-register" value="Registrar Pedido">
         </form>
     </div>

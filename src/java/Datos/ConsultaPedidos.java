@@ -31,7 +31,7 @@ public class ConsultaPedidos extends Conexion{
         this.error = error;
     }
     
-     public boolean RegistroPedido(String id_usuario, Pedido pedido) {
+     public boolean RegistroPedido(String usuario, Pedido pedido) {
         PreparedStatement pst = null;
         ResultSet rs = null;
         Calendar c2 = new GregorianCalendar();
@@ -43,17 +43,18 @@ public class ConsultaPedidos extends Conexion{
  
         try{
             getConexion().setAutoCommit(false);
-            String consulta= "INSERT INTO pedidos (id_usuario,fecha_pedido,total,orden_completa) VALUES (?,?,?,?,?,?);";
+            String consulta= "INSERT INTO pedido (usuario_cliente,fecha_pedido,orden_completa,total) VALUES (?,?,?,?);";
             pst = getConexion().prepareStatement(consulta);
-            pst.setString(1, id_usuario);
+            pst.setString(1, usuario);
             pst.setDate(2, fecha);
-            pst.setFloat(3, pedido.getPrecio());
-            pst.setString(4, pedido.getOrdenCompleta());
+            pst.setString(3, pedido.getOrdenCompleta());
+            pst.setFloat(4, pedido.getPrecio());
+            
             int ban=pst.executeUpdate();
             
-            String consulta2="select p.id_pedido from pedidos p where id_usuario=? and fecha_pedido = ?;";
+            String consulta2="select p.id_pedido from pedido p where usuario_cliente=? and fecha_pedido = ?;";
             pst =getConexion().prepareStatement(consulta2);
-            pst.setString(1, id_usuario);
+            pst.setString(1, usuario);
             pst.setDate(2, fecha);
             rs = pst.executeQuery();
             int numPedido=0;
@@ -63,11 +64,11 @@ public class ConsultaPedidos extends Conexion{
             
             int ban2=1;
             for (int i=0;i<lineas.size();i++){
-                String consulta3="insert into linea_pedido (id_producto,id_pedido,id_linea,cantidad) values (?,?,?,?)";
+                String consulta3="insert into linea_pedido (id_linea,id_producto,id_pedido,cantidad) values (?,?,?,?)";
                 pst = getConexion().prepareStatement(consulta3);
-                pst.setInt(1, numPedido);
-                pst.setInt(2, lineas.get(i).getNumeroLinea());
-                pst.setInt(3, lineas.get(i).getProducto().getID());
+                pst.setInt(1, lineas.get(i).getNumeroLinea());
+                pst.setInt(2, lineas.get(i).getProducto().getID());
+                pst.setInt(3, numPedido);
                 pst.setInt(4, lineas.get(i).getCantidad());
                 int band=pst.executeUpdate();
                 if (band==0){
@@ -81,14 +82,14 @@ public class ConsultaPedidos extends Conexion{
             }
 
         }catch (Exception e) {
-            error = "Error: "+e;
+            error = "Error: No se ha podido registrar el pedido"+e;
         } finally {
             try {
                 if (getConexion()!=null) getConexion().close();
                 if (pst!=null) pst.close();
                 if (rs!=null) rs.close();
             } catch (SQLException e) {
-                error = "Error: "+e;
+                error = "Error: Problemas al cerrar conexion"+e;
             }
         }
         

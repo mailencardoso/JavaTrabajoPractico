@@ -64,11 +64,11 @@ public class AgregarProducto extends HttpServlet {
         String cantidad = request.getParameter("cantidad");
         if (cantidad.equals("")){
             sesion.setAttribute("error","Error: Ingrese la cantidad a comprar");
-            response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
+            response.sendRedirect("carrito.jsp");
         }
         else if (!cantidad.matches( "[1-9]|[1-2][0-9]|" )){
             sesion.setAttribute("error","Error: Ingrese una cantidad correcta y menor a 30 unidades");
-            response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
+            response.sendRedirect("carrito.jsp");
         }
         else{
             Usuario cliente = (Usuario) sesion.getAttribute("userActual");
@@ -102,7 +102,7 @@ public class AgregarProducto extends HttpServlet {
             pedActual.setPrecio();
             sesion.setAttribute("pedidoActual", pedActual);
             sesion.setAttribute("notificacion", "Objeto ingresado al carrito!");
-            response.sendRedirect(response.encodeRedirectURL(request.getRequestURI()));
+            response.sendRedirect("carrito.jsp");
         }
     }
 /*response.encodeRedirectURL(request.getRequestURI())*/
