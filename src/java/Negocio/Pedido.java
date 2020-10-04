@@ -39,6 +39,12 @@ public class Pedido {
     }
 
     
+
+    public Pedido(int idpedido, Usuario cliente, java.sql.Date fechaPed, String orden, Float totalPedido, ArrayList<Linea_pedido> lineasPedido) {
+        
+    }
+
+    
     
     public int getId() {
         return idpedido;
@@ -110,5 +116,23 @@ public class Pedido {
             }
         }
     }
+    
+    
+    public String getApellidoCliente() {
+        return cliente.getApellido();
+    }
+    public String getNombreCliente() {
+        return cliente.getNombre();
+    }
+    
+    public String getTelefonoCliente(){
+        return cliente.getTelefono();
+    }
+    
+    public String getMailCliente(){
+        return cliente.getMail();
+    }
+
+    
     
 }

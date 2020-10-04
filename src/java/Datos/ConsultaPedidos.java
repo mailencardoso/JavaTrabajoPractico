@@ -6,6 +6,7 @@
 package Datos;
 
 import Negocio.*;
+import java.sql.Blob;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,4 +98,76 @@ public class ConsultaPedidos extends Conexion{
         return false;  
     }
 
+    public ArrayList<Pedido> listadoPedidosAdmin()throws SQLException, SQLException{
+        PreparedStatement st= null;
+        ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+        Pedido pedidoActual = null;
+        Usuario cliente = null;
+        ArrayList<Linea_pedido> lineasPedido  = new ArrayList<Linea_pedido>();
+        Linea_pedido lineaActual = null;
+        Producto prodAct = null;
+        ResultSet rs= null;
+        try{
+            String consulta = "SELECT * FROM pedido p"+
+                " INNER JOIN linea_pedido lp ON p.id_pedido = lp.id_pedido"+
+                " INNER JOIN producto pr ON lp.id_producto = pr.id_producto"+ 
+                " INNER JOIN usuario u ON p.usuario_cliente = u.usuario"+
+                " ORDER BY p.fecha_pedido asc";
+            st= getConexion().prepareStatement(consulta);
+            rs = st.executeQuery();
+            int idPed = 0;
+            while (rs.next()){
+
+                int idlinea = rs.getInt("id_linea");
+                int idpedido = rs.getInt("id_pedido");
+                int cant = rs.getInt("cantidad");
+                int idProd = rs.getInt("id_producto");
+                String nombreProducto = rs.getString("pr.nombre");
+                String descProducto= rs.getString("descripcion");
+                String categ =rs.getString("categoria");
+                float precioProducto = rs.getFloat("precio");
+                Blob imagenProducto = rs.getBlob("foto");
+                prodAct = new Producto(idProd,nombreProducto,descProducto,precioProducto,imagenProducto,categ);
+                if (idpedido!= idPed){
+                    lineasPedido = new ArrayList<Linea_pedido>();
+                }  
+                lineaActual = new Linea_pedido(cant,prodAct,idlinea);
+                lineasPedido.add(lineaActual);
+                java.sql.Date fechaPed = rs.getDate("fecha_pedido");
+                String orden = rs.getString("orden_completa");
+                float totalPedido = rs.getFloat("total");
+                String usuCli = rs.getString("usuario_cliente");
+                String conCli = rs.getString("pass");
+                String tipoCli = rs.getString("tipo_usuario");
+                String nomCli = rs.getString("u.nombre");
+                String apeCli = rs.getString("apellido");
+                String telCli = rs.getString("telefono");
+                String mailCli = rs.getString("email");
+                String direc = rs.getString("direccion");
+                
+                if (idpedido!= idPed){
+                    cliente = new Usuario(usuCli, nomCli, apeCli, mailCli, conCli, telCli,direc, tipoCli);
+                    pedidoActual = new Pedido(idpedido,cliente,fechaPed,orden,totalPedido,lineasPedido);
+                    pedidos.add(pedidoActual);
+                    idPed=idpedido;
+                }
+                
+            }
+            
+        }catch (Exception e) {
+            error = "Error: No se ha podido listar su solicitud "+e;
+        }finally{
+            try{
+                if (getConexion()!=null) getConexion().close();
+                if (st!=null) st.close();
+                if (rs!=null) rs.close();
+            }catch (SQLException e){
+                error = "Error: No se ha podido cerrar la conexion correctamente "+e;
+            }
+        }
+        return pedidos;    
+    }
+    
+   
+     
 }

@@ -61,7 +61,7 @@
             <a class="nav-link" href="productosABM.jsp">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pedidos</a>
+            <a class="nav-link" href="listadoPedidosAdmin.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
