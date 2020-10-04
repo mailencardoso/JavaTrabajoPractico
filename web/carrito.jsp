@@ -108,8 +108,8 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td colspan="2"><label>Total </label></td>
-                        <td>$<%=pedido.getPrecio()%>               
+                        <td colspan="2"><label><b>Total:</b> </label></td>
+                        <td>$<%=pedido.getPrecio()%>            
                     </tr>
                    </tbody>
                </table>

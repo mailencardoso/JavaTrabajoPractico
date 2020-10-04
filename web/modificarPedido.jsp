@@ -88,7 +88,7 @@
                         <th scope="col">Categoría</th>
                         <th scope="col">Cantidad</th>
                         <th scope="col"></th>
-                        <th scope="col"></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -101,24 +101,28 @@
                      <td><%=lineas.get(i).getProducto().getNombre()%></td>
                      <td><%=lineas.get(i).getProducto().getPrecio()%></td>
                      <td><%=lineas.get(i).getProducto().getCategoria()%></td>
-                     <td><input type="text" name="cantidad" id="cantidad" size="1" value="<%=lineas.get(i).getCantidad()%>"></td>
-                     <td>
-                           <form action="EliminarProducto" method="post">
-                             <input type="hidden" name="numeroLinea" value="<%=lineas.get(i).getNumeroLinea()%>">
-                             <input type="submit" value="Eliminar">
-                           </form>
-                     </td>
+                    <!-- <td></td> -->
                      <td>
                            <form action="ActualizarProducto" method="post">
                              <input type="hidden" name="numeroLinea" value="<%=lineas.get(i).getNumeroLinea()%>">  
-                             <input type="hidden" name="cantidad">
-                             <input type="submit" value="Actualizar">
+                             <input type="text" name="cantidad" id="cantidad" size="1" value="<%=lineas.get(i).getCantidad()%>">
+                             <input type="submit" class="btn btn-primary" value="Actualizar">
+                           </form>
+                     </td>
+                     <td>
+                           <form action="EliminarProducto" method="post">
+                             <input type="hidden" name="numeroLinea" value="<%=lineas.get(i).getNumeroLinea()%>">
+                             <input type="submit" class="btn btn-primary" style="background-color:red; border-color:red; color:white" value="Eliminar">
                            </form>
                      </td>
                    </tr>
                     <%}%>
                     </tbody>
                </table>
+                    <br><br>
+                    <div class="align-content-center"   >
+                    <a type="button" href="carrito.jsp" class="btn btn-secondary">Volver</a>
+                    </div> 
                <td>
         
     </div>

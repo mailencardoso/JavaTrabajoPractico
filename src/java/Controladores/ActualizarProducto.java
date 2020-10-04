@@ -51,8 +51,14 @@ public class ActualizarProducto extends HttpServlet {
         Pedido pedActual = new Pedido();
         pedActual = (Pedido) objSesion.getAttribute("pedidoActual");
         lineas = pedActual.getLineas();
-        lineas.get(numLinea).setCantidad(cant);
+        int i;
+        for(i=0;i<lineas.size();i++){
+          if(lineas.get(i).getNumeroLinea()==numLinea){
+              lineas.get(i).setCantidad(cant);
+          }  
+        }
         pedActual.setLineas(lineas);
+        pedActual.setPrecio();
         objSesion.setAttribute("pedidoActual", pedActual);
         if(pedActual.getLineas().isEmpty()){
             objSesion.removeAttribute("pedidoActual");

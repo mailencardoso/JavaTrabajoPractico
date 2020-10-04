@@ -327,75 +327,69 @@
          
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="img/Bebidas/LataQuilmes.jpg" alt=""></a>
+                <a href="listadoProductos.jsp"><img class="card-img-top" src="img/Bebidas/LataQuilmes.jpg" alt=""></a>
                 <div class="card-body">
                     <small><font color="red">Oferta publicada</font></small>  
                     <h4 class="card-title">
-                    <a href="#">Cerveza Quilmes</a>
+                    <a href="listadoProductos.jsp">Cerveza Quilmes</a>
                     </h4>
                     <h5>$52.00</h5>
                     <p class="card-text">Cerveza Quilmes En Lata X 473 Cc.</p>
                 </div>
                 <div class="card-footer">
-                    <form action="AgregarProducto" method="post">
-                        <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
-                    </form> 
+                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
                 </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="img/LacteosQuesos/quesoPauli.jpg" alt=""></a>
+                <a href="listadoProductos.jsp"><img class="card-img-top" src="img/LacteosQuesos/quesoPauli.jpg" alt=""></a>
                 <div class="card-body">
                     <small><font color="red">Oferta publicada</font></small> 
                     <h4 class="card-title">
-                    <a href="#">Queso La Paulina</a>
+                    <a href="listadoProductos.jsp">Queso La Paulina</a>
                     </h4>
                     <h5>$34.71</h5>
                     <p class="card-text">Queso Cremoso La Paulina X100gr.</p>
                 </div>
                 <div class="card-footer">
-                    <form action="AgregarProducto" method="post">
-                        <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
-                    </form> 
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/frutaverdu/pera.jpg" alt=""></a>
+              <a href="listadoProductos.jsp"><img class="card-img-top" src="img/frutaverdu/pera.jpg" alt=""></a>
               <div class="card-body">
                   <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Pera</a>
+                  <a href="listadoProductos.jsp">Pera</a>
                 </h4>
                 <h5>$9.99</h5>
                 <p class="card-text">Pera X 100 Gr.</p>
               </div>
               <div class="card-footer">
-                <form action="AgregarProducto" method="post">
-                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
-                </form> 
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/carnes/lomo.jpg" alt=""></a>
+              <a href="listadoProductos.jsp"><img class="card-img-top" src="img/carnes/lomo.jpg" alt=""></a>
               <div class="card-body">
                   <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Cabeza de Lomo</a>
+                  <a href="listadoProductos.jsp">Cabeza de Lomo</a>
                 </h4>
                 <h5>$41.90</h5>
                 <p class="card-text">Cabeza De Lomo Ternera X 100 Gr.</p>
               </div>
               <div class="card-footer">
                 <form action="AgregarProducto" method="post">
-                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
+                   <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                 </form> 
               </div>
             </div>
@@ -403,37 +397,35 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/panes/panFargo.jpg" alt=""></a>
+              <a href="listadoProductos.jsp"><img class="card-img-top" src="img/panes/panFargo.jpg" alt=""></a>
               <div class="card-body">
                   <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Pan de hamb. Fargo</a>
+                  <a href="listadoProductos.jsp">Pan de hamb. Fargo</a>
                 </h4>
                 <h5>$96,72</h5>
                 <p class="card-text">Pan De Hamburguesa Fargo C/Semillas Sesamo X4u.</p>
               </div>
               <div class="card-footer">
-                <form action="AgregarProducto" method="post">
-                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
-                </form> 
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9733;</small>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/limpieza/lavandina.jpg" alt=""></a>
+              <a href="listadoProductos.jsp"><img class="card-img-top" src="img/limpieza/lavandina.jpg" alt=""></a>
               <div class="card-body">
                   <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="#">Lavandina Ayudín</a>
+                  <a href="listadoProductos.jsp">Lavandina Ayudín</a>
                 </h4>
                 <h5>$78.99</h5>
                 <p class="card-text">Lavandina En Gel Ayudin X700ml. Menta</p>
               </div>
               <div class="card-footer">
                 <form action="AgregarProducto" method="post">
-                    <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
+                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                 </form> 
               </div>
             </div>
