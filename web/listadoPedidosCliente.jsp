@@ -44,7 +44,7 @@
 </head>
 
 <body>
-<%if (usuarioActual.getTipoUsuario().equals("administrador")){ %>
+
   <!-- Navigation  -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
@@ -60,10 +60,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="productosABM.jsp">Productos</a>
+            <a class="nav-link" href="listadoProductos.jsp">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="listadoPedidosAdmin.jsp">Pedidos</a>
+            <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
@@ -72,12 +72,12 @@
       </div>
     </div>
   </nav>
-<%}%>
+
  <div class="container-profile">
       <a type="submit" class="btn btn-secondary" id="seguir-comprando" href="indexlogueado.jsp">← Volver</a>
 
     <div class ="row justify-content-center" >
-            <h3 id="pedido">Listado de pedidos de Clientes</h3>
+            <h3 id="pedido">Mis Pedidos Realizados</h3>
             
             <table class="table table-striped" id="tablaListadoPedidos">
                 <thead>
@@ -90,7 +90,7 @@
                 <tbody>
                     <% ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
                      ConsultaPedidos ped = new ConsultaPedidos();
-                     pedidos = ped.listadoPedidosAdmin();
+                     pedidos = ped.listadoPedidosCliente(usuarioActual.getUsuario());
                     
                     for (int i=0;i<pedidos.size();i++){%>
                    <tr>

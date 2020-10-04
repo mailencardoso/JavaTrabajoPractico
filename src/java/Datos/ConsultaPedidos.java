@@ -48,7 +48,7 @@ public class ConsultaPedidos extends Conexion{
             pst = getConexion().prepareStatement(consulta);
             pst.setString(1, usuario);
             pst.setDate(2, fecha);
-            pst.setString(3, pedido.getOrdenCompleta());
+            pst.setString(3, "Orden completada");
             pst.setFloat(4, pedido.getPrecio());
             
             int ban=pst.executeUpdate();
@@ -131,7 +131,10 @@ public class ConsultaPedidos extends Conexion{
                 if (idpedido!= idPed){
                     lineasPedido = new ArrayList<Linea_pedido>();
                 }  
-                lineaActual = new Linea_pedido(cant,prodAct,idlinea);
+                lineaActual = new Linea_pedido();
+                lineaActual.setNumeroLinea(idlinea);
+                lineaActual.setProducto(prodAct);
+                lineaActual.setCantidad(cant);
                 lineasPedido.add(lineaActual);
                 java.sql.Date fechaPed = rs.getDate("fecha_pedido");
                 String orden = rs.getString("orden_completa");
@@ -146,8 +149,13 @@ public class ConsultaPedidos extends Conexion{
                 String direc = rs.getString("direccion");
                 
                 if (idpedido!= idPed){
-                    cliente = new Usuario(usuCli, nomCli, apeCli, mailCli, conCli, telCli,direc, tipoCli);
-                    pedidoActual = new Pedido(idpedido,cliente,fechaPed,orden,totalPedido,lineasPedido);
+                    cliente = new Usuario(usuCli, conCli, tipoCli,nomCli, apeCli, telCli, mailCli,direc );
+                    pedidoActual = new Pedido();
+                    pedidoActual.setId(idpedido);
+                    pedidoActual.setFechaPedido(fechaPed);
+                    pedidoActual.setOrdenCompleta(orden);
+                    pedidoActual.setCliente(cliente);
+                    pedidoActual.setLineas(lineasPedido);
                     pedidos.add(pedidoActual);
                     idPed=idpedido;
                 }
@@ -168,6 +176,82 @@ public class ConsultaPedidos extends Conexion{
         return pedidos;    
     }
     
+    public ArrayList<Pedido> listadoPedidosCliente(String usuario) throws SQLException, SQLException{
+        PreparedStatement st= null;
+        ArrayList<Pedido> pedidos = new ArrayList<Pedido>();
+        Pedido pedidoActual = null;
+        Usuario cliente = null;
+        ArrayList<Linea_pedido> lineasPedido  = new ArrayList<Linea_pedido>();
+        Linea_pedido lineaActual = null;
+        Producto prodAct = null;
+        ResultSet rs= null;
+        try {
+            String consulta = "SELECT * FROM pedido p"+
+                " INNER JOIN linea_pedido lp ON p.id_pedido = lp.id_pedido"+
+                " INNER JOIN producto pr ON lp.id_producto = pr.id_producto"+ 
+                " INNER JOIN usuario u ON p.usuario_cliente = u.usuario"+
+                " where p.usuario_cliente = ? order by p.id_pedido desc , lp.id_linea desc";
+            st= getConexion().prepareStatement(consulta);
+            st.setString(1, usuario);
+            rs = st.executeQuery();
+            int idPed = 0;
+            while (rs.next()){
+                int idlinea = rs.getInt("id_linea");
+                int idpedido = rs.getInt("id_pedido");
+                int cant = rs.getInt("cantidad");
+                int idProd = rs.getInt("id_producto");
+                String nombreProducto = rs.getString("pr.nombre");
+                String descProducto= rs.getString("descripcion");
+                String categ =rs.getString("categoria");
+                float precioProducto = rs.getFloat("precio");
+                Blob imagenProducto = rs.getBlob("foto");
+               prodAct = new Producto(idProd,nombreProducto,descProducto,precioProducto,imagenProducto,categ);
+                if (idpedido!= idPed){
+                    lineasPedido = new ArrayList<Linea_pedido>();
+                }  
+                 lineaActual = new Linea_pedido();
+                lineaActual.setNumeroLinea(idlinea);
+                lineaActual.setProducto(prodAct);
+                lineaActual.setCantidad(cant);
+                lineasPedido.add(lineaActual);
+           
+                java.sql.Date fechaPed = rs.getDate("fecha_pedido");
+                String orden = rs.getString("orden_completa");
+                float totalPedido = rs.getFloat("total");
+                String usuCli = rs.getString("usuario_cliente");
+                String conCli = rs.getString("pass");
+                String tipoCli = rs.getString("tipo_usuario");
+                String nomCli = rs.getString("u.nombre");
+                String apeCli = rs.getString("apellido");
+                String telCli = rs.getString("telefono");
+                String mailCli = rs.getString("email");
+                String direc = rs.getString("direccion");
+                
+                if (idpedido!= idPed){
+                    cliente = new Usuario(usuCli, conCli, tipoCli,nomCli, apeCli, telCli, mailCli,direc );
+                    pedidoActual = new Pedido();
+                    pedidoActual.setId(idpedido);
+                    pedidoActual.setFechaPedido(fechaPed);
+                    pedidoActual.setOrdenCompleta(orden);
+                    pedidoActual.setCliente(cliente);
+                    pedidoActual.setLineas(lineasPedido);
+                    pedidos.add(pedidoActual);
+                    idPed=idpedido;
+                }
+            }    
+        } catch (Exception e) {
+            error = "Error: "+e;
+        }finally{
+           try {
+                if (getConexion()!=null) getConexion().close();
+                if (st!=null) st.close();
+                if (rs!=null) rs.close();
+            } catch (SQLException e) {
+                error = "Error: "+e;
+            }
+        }
+        return pedidos;
+    }
    
      
 }

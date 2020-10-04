@@ -233,7 +233,9 @@
 
         </div>
         <!-- /.row -->
-        
+        <div class="row justify-content-center">
+            <a type="submit" href="listadoProductos.jsp" id="button-index" class="btn btn-primary btn-lg">Ver más</a>
+        </div>
       </div>
       <!-- /.col-lg-9 -->
 
@@ -265,6 +267,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="carrito.jsp">Pedidos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="listadoPedidosCliente.jsp">Lista de Pedidos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
@@ -430,10 +435,12 @@
               </div>
             </div>
           </div>
-
+           
         </div>
         <!-- /.row -->
-        
+        <div class="row justify-content-center">
+            <a type="submit" href="listadoProductos.jsp" id="button-index" class="btn btn-primary btn-lg">Ver más</a>
+        </div>
       </div>
       <!-- /.col-lg-9 -->
 

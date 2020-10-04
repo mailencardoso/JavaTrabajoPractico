@@ -79,7 +79,7 @@
         
             <h3 id="pedido">Mi pedido</h3>
             
-            <table class="table table-striped" id="tablaPedido">
+            <table class="table table-striped" id="tablaListadoPedidos">
                 <thead>
                     <tr>
                         <th scope="col">Código</th>
@@ -103,10 +103,10 @@
                      <td><%=lineas.get(i).getProducto().getCategoria()%></td>
                     <!-- <td></td> -->
                      <td>
-                           <form action="ActualizarProducto" method="post">
+                           <form action="ActualizarProducto"  method="post">
                              <input type="hidden" name="numeroLinea" value="<%=lineas.get(i).getNumeroLinea()%>">  
                              <input type="text" name="cantidad" id="cantidad" size="1" value="<%=lineas.get(i).getCantidad()%>">
-                             <input type="submit" class="btn btn-primary" value="Actualizar">
+                             <input type="submit" id="act-button" class="btn btn-primary" value="Actualizar">
                            </form>
                      </td>
                      <td>
@@ -120,8 +120,8 @@
                     </tbody>
                </table>
                     <br><br>
-                    <div class="align-content-center"   >
-                    <a type="button" href="carrito.jsp" class="btn btn-secondary">Volver</a>
+                    <div class="row justify-content-between" id="volver-button">
+                        <a type="button" href="carrito.jsp" class="btn btn-secondary">Volver</a>
                     </div> 
                <td>
         

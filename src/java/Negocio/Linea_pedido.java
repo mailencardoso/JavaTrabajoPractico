@@ -11,17 +11,23 @@ package Negocio;
  */
 public class Linea_pedido {
     
-    int cantidad;
-    private Producto producto;
+   
     private int numeroLinea;
+    private Producto producto;
+    private int cantidad;
     
-    public Linea_pedido(int cant, Producto prodAct,int num){
+    public Linea_pedido(int num, Producto prodAct,int cant){
         
-        this.cantidad = cant;
-        this.producto = prodAct;
         this.numeroLinea = num;
+        this.producto = prodAct;
+        this.cantidad = cant;
+        
           
         }
+
+    public Linea_pedido() {
+        
+    }
     
     public int getCantidad(){
         return cantidad;
