@@ -15,7 +15,7 @@
     HttpSession objSesion = request.getSession(false);
     Pedido pedido = (Pedido) objSesion.getAttribute("pedidoActual");
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
-    
+       
 %>
 <!DOCTYPE html>
 
@@ -74,10 +74,9 @@
 
   <!-- Page Content -->
   <div class="container-profile">
-      <a type="submit" class="btn btn-success" id="seguir-comprando" href="listadoProductos.jsp">← Seguir Comprando</a>
       <%if(pedido != null){%>
-    <div class ="row justify-content-center" >
-        <form action="RegistroPedido" method="post">
+    <div class ="form-group" >
+        
             <h3 id="pedido">Mi pedido</h3>
             
             <table class="table table-striped" id="tablaPedido">
@@ -88,44 +87,44 @@
                         <th scope="col">Precio</th>
                         <th scope="col">Categoría</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">Subtotal</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <%ArrayList<Linea_pedido> lineas = new ArrayList<Linea_pedido>();
-                    lineas = pedido.getLineas();
+                    lineas = pedido.getLineas(); 
                     for (int i=0;i<lineas.size();i++){%>
+                    
                    <tr>
                      <td scope="row" ><%=lineas.get(i).getProducto().getID()%></td>
                      <td><%=lineas.get(i).getProducto().getNombre()%></td>
                      <td><%=lineas.get(i).getProducto().getPrecio()%></td>
                      <td><%=lineas.get(i).getProducto().getCategoria()%></td>
-                     <td><%=lineas.get(i).getCantidad()%></td>
-                     <td>$<%=lineas.get(i).getCantidad()*lineas.get(i).getProducto().getPrecio()%></td>
+                     <td><input type="text" name="cantidad" id="cantidad" size="1" value="<%=lineas.get(i).getCantidad()%>"></td>
+                     <td>
+                           <form action="EliminarProducto" method="post">
+                             <input type="hidden" name="numeroLinea" value="<%=lineas.get(i).getNumeroLinea()%>">
+                             <input type="submit" value="Eliminar">
+                           </form>
+                     </td>
+                     <td>
+                           <form action="ActualizarProducto" method="post">
+                             <input type="hidden" name="numeroLinea" value="<%=lineas.get(i).getNumeroLinea()%>">  
+                             <input type="hidden" name="cantidad">
+                             <input type="submit" value="Actualizar">
+                           </form>
+                     </td>
                    </tr>
                     <%}%>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td colspan="2"><label>Total </label></td>
-                        <td>$<%=pedido.getPrecio()%>               
-                    </tr>
-                   </tbody>
+                    </tbody>
                </table>
-               <td><input type="hidden" name="usuario" value="<%=usuarioActual.getUsuario()%>">
-               <a type="button"  class="btn btn-secondary" href="modificarPedido.jsp">Modificar pedido</a>
-               <input type="submit" class="btn btn-primary" id="carrito-register" value="Registrar Pedido">
-        </form>
+               <td>
+        
     </div>
-           <%} else { %>
-       <div class ="row justify-content-center" >    
-           <img class="carrito-vacio" src="img/carritoVacio.png">
-       </div>   
-           
-           <%}%>
+                     <%} else { response.sendRedirect("carrito.jsp"); }%>
   </div>
-
+               
 </body>
 
 </html>

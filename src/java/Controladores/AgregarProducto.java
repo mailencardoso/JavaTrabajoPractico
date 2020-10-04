@@ -102,7 +102,7 @@ public class AgregarProducto extends HttpServlet {
             pedActual.setPrecio();
             sesion.setAttribute("pedidoActual", pedActual);
             sesion.setAttribute("notificacion", "Objeto ingresado al carrito!");
-            response.sendRedirect("carrito.jsp");
+            response.sendRedirect(request.getHeader("referer"));
         }
     }
 /*response.encodeRedirectURL(request.getRequestURI())*/

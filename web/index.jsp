@@ -4,6 +4,7 @@
     objSesion.removeAttribute("error1");
     objSesion.removeAttribute("error2");
     objSesion.removeAttribute("userActual");
+    objSesion.removeAttribute("pedidoActual");
  %>
 <!DOCTYPE html>
 <html lang="en">

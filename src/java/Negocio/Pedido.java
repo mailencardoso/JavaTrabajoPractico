@@ -103,4 +103,12 @@ public class Pedido {
         precio = total;
     }
     
+    public void borrarLinea(int num){
+        for (int i=0;i<lineas.size();i++){
+            if (lineas.get(i).getNumeroLinea()==num){
+                lineas.remove(i);
+            }
+        }
+    }
+    
 }

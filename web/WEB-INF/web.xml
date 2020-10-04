@@ -48,6 +48,14 @@
         <servlet-name>RegistroPedido</servlet-name>
         <servlet-class>Controladores.RegistroPedido</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EliminarProducto</servlet-name>
+        <servlet-class>Controladores.EliminarProducto</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ActualizarProducto</servlet-name>
+        <servlet-class>Controladores.ActualizarProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -95,6 +103,14 @@
     <servlet-mapping>
         <servlet-name>RegistroPedido</servlet-name>
         <url-pattern>/RegistroPedido</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EliminarProducto</servlet-name>
+        <url-pattern>/EliminarProducto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActualizarProducto</servlet-name>
+        <url-pattern>/ActualizarProducto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
