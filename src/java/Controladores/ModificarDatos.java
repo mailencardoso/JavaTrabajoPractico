@@ -8,12 +8,20 @@ package Controladores;
 import Datos.ConsultaUsuario;
 import Negocio.Usuario;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import javax.sql.rowset.serial.SerialBlob;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -31,7 +39,7 @@ public class ModificarDatos extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         PrintWriter out = response.getWriter();
         HttpSession objSesion = request.getSession(false);
         
@@ -46,6 +54,10 @@ public class ModificarDatos extends HttpServlet {
         String nuevaPass2= request.getParameter("passNueva2");//Contraseña nueva 2
         String usuario = request.getParameter("usuario");
         String tipoUsuario= request.getParameter("tipoUsuario");
+        Part part = request.getPart("imagen");
+        InputStream inputStream = part.getInputStream();
+        byte[] blob = IOUtils.toByteArray(inputStream);
+        Blob foto = new SerialBlob(blob);
         
         boolean ban;
         ConsultaUsuario usu = new ConsultaUsuario();
@@ -93,16 +105,16 @@ public class ModificarDatos extends HttpServlet {
         }
         else {
             if(nuevaPass.equals("") && nuevaPass2.equals("")){
-                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,mail,contActual,tipoUsuario, direc);
+                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,mail,contActual,tipoUsuario, direc, foto);
             }
             else{
-                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,mail,nuevaPass,tipoUsuario, direc);
+                ban=usu.modifUsuario(usuario,nombre,apellido,telefono,mail,nuevaPass,tipoUsuario, direc, foto);
                 contReal = nuevaPass;
             }
             
             if(ban){
                 Usuario usuarioActual = (Usuario) objSesion.getAttribute("usuarioActual");
-                usuarioActual = new Usuario(usuario,contActual,tipoUsuario,nombre,apellido,telefono,mail, direc);
+                usuarioActual = new Usuario(usuario,contActual,tipoUsuario,nombre,apellido,telefono,mail, direc, foto);
                 objSesion.setAttribute("userActual", usuarioActual);
                 objSesion.setAttribute("notificacion", "Datos actualizados!");
                 response.sendRedirect("perfil.jsp");
@@ -126,7 +138,11 @@ public class ModificarDatos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -140,7 +156,11 @@ public class ModificarDatos extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ModificarDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

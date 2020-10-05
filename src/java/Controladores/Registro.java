@@ -8,17 +8,27 @@ package Controladores;
 import Datos.ConsultaUsuario;
 import Negocio.Usuario;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import javax.sql.rowset.serial.SerialBlob;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
  * @author Usuario
  */
+@MultipartConfig
 public class Registro extends HttpServlet {
 
     /**
@@ -31,7 +41,7 @@ public class Registro extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter(); /**Devuelve un objeto PrintWriter que puede enviar textos al cliente */
@@ -46,6 +56,12 @@ public class Registro extends HttpServlet {
         String email = request.getParameter("email");
         String telefono = request.getParameter("telefono");
         String direccion = request.getParameter("direccion");
+        Part part = request.getPart("imagen");
+        
+        InputStream inputStream = part.getInputStream();
+        
+        byte[] blob = IOUtils.toByteArray(inputStream);
+        Blob foto = new SerialBlob(blob);
         
         ConsultaUsuario usu1 = new ConsultaUsuario();
         ConsultaUsuario usu2 = new ConsultaUsuario();
@@ -62,7 +78,7 @@ public class Registro extends HttpServlet {
        ConsultaUsuario usu = new ConsultaUsuario();
         
         if(ban==true){
-                usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente");
+                usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente", foto);
                 sesion.setAttribute("exito", "Registro realizado");
                 response.sendRedirect("login.jsp"); 
             }
@@ -87,7 +103,11 @@ public class Registro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -101,7 +121,11 @@ public class Registro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

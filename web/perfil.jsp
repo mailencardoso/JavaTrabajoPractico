@@ -5,6 +5,8 @@
 --%>
 
 <%@page import="Negocio.Usuario"%>
+<%@page import="java.util.Base64"%>
+<%@page import="java.util.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     HttpSession objSesion = request.getSession(false);
@@ -107,6 +109,9 @@
             <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="listadoPedidosCliente.jsp">Lista de Pedidos</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
           </li>
         </ul>
@@ -116,12 +121,19 @@
  <%}%> 
   <!-- Page Content -->
 <div class="container-profile">
+    <form  action="Logout" method="post">
+        <input type="submit" class="btn btn-danger" id="cerrarsesion" onclick="ConfirmDemo()" value="Cerrar sesión" />
+    </form>
     <br><br>
     <div id="personal" class="row justify-content-center">
-            <h3>Mis datos personales</h3>
+            <h3 class="perfil">Mis datos personales</h3>
     </div>
+     <div class="row justify-content-center">
+            <img class="img-perfil" src="data:image/jpg;base64,<%=usuarioActual.base64Image%>"/><br>
+     </div>
     <br>
     <div class="row justify-content-center">
+       
         <div class="col-sm-4">
             Nombre de usuario: <label class="prof"><%=usuarioActual.getUsuario()%></label>
         </div>
@@ -148,9 +160,7 @@
     <div id="update-button" class="row justify-content-center">
         <div class="col-sm-4">
             <a class="btn btn-primary" href="modificarDatos.jsp" role="button">Modificar datos</a> <br><br>
-            <form id="cerrarsesion" action="Logout" method="post">
-            <input type="button" style="background-color:red; border-color:red; color:white" onclick="ConfirmDemo()" value="Cerrar sesión" />
-            </form>
+            
         </div>   
         
     </div> 

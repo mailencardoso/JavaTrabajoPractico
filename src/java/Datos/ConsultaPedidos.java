@@ -147,9 +147,10 @@ public class ConsultaPedidos extends Conexion{
                 String telCli = rs.getString("telefono");
                 String mailCli = rs.getString("email");
                 String direc = rs.getString("direccion");
+                Blob foto = rs.getBlob("foto_perfil");
                 
                 if (idpedido!= idPed){
-                    cliente = new Usuario(usuCli, conCli, tipoCli,nomCli, apeCli, telCli, mailCli,direc );
+                    cliente = new Usuario(usuCli, conCli, tipoCli,nomCli, apeCli, telCli, mailCli,direc, foto );
                     pedidoActual = new Pedido();
                     pedidoActual.setId(idpedido);
                     pedidoActual.setFechaPedido(fechaPed);
@@ -226,9 +227,10 @@ public class ConsultaPedidos extends Conexion{
                 String telCli = rs.getString("telefono");
                 String mailCli = rs.getString("email");
                 String direc = rs.getString("direccion");
+                Blob foto = rs.getBlob("foto_perfil");
                 
                 if (idpedido!= idPed){
-                    cliente = new Usuario(usuCli, conCli, tipoCli,nomCli, apeCli, telCli, mailCli,direc );
+                    cliente = new Usuario(usuCli, conCli, tipoCli,nomCli, apeCli, telCli, mailCli,direc, foto );
                     pedidoActual = new Pedido();
                     pedidoActual.setId(idpedido);
                     pedidoActual.setFechaPedido(fechaPed);

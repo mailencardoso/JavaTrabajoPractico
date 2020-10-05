@@ -79,6 +79,9 @@
                         <a class="nav-link" href="carrito.jsp">Pedidos</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="listadoPedidosCliente.jsp">Lista de Pedidos</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
                     </li>
                 </ul>
@@ -132,6 +135,7 @@
                     <input type="hidden" name="usuario" value="<%=usuarioActual.getUsuario()%>">
                     <input type="hidden" name="contActualReal" value="<%=usuarioActual.getPassword()%>">
                     <input type="hidden" name="tipoUsuario" value="<%=usuarioActual.getTipoUsuario()%>">
+                    <input type="hidden" name="imagen" value="<%=productoActual.getFoto()%>">
                 </div>
                 
                     

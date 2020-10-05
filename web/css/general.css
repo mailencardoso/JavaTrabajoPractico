@@ -168,3 +168,17 @@ h3{
     width: 120px;
 }
 
+.img-perfil{
+    width: 150px;
+    heigth: 150px;
+    margin-right: 210px;
+}
+
+.perfil{
+    margin-right: 150px;
+}
+
+#cerrarsesion{
+    margin-left: 50px;
+    margin-top: 50px;
+}

@@ -64,6 +64,9 @@
             <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="listadoPedidosCliente.jsp">Lista de Pedidos</a>
+          </li>
+          <li class="nav-item">
               <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
           </li>  
         </ul>

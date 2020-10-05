@@ -5,6 +5,8 @@
  */
 package Negocio;
 
+import java.sql.Blob;
+
 
 /**
  *
@@ -19,8 +21,9 @@ public class Usuario {
     String telefono;
     String email;
     String direccion;
+    Blob foto_perfil;
     
-    public Usuario(String usu, String con, String tipoUsu, String nom, String ape, String tel, String mail, String dir) {
+    public Usuario(String usu, String con, String tipoUsu, String nom, String ape, String tel, String mail, String dir, Blob foto) {
         this.usuario = usu;
         this.pass = con;
         this.tipo_usuario = tipoUsu;
@@ -29,9 +32,21 @@ public class Usuario {
         this.telefono = tel;
         this.email = mail;
         this.direccion = dir;
+        this.foto_perfil = foto;
     }
     
     public Usuario (){
+    }
+    
+    public String base64Image;
+ 
+ 
+    public String getBase64Image() {
+        return base64Image;
+    }
+ 
+    public void setBase64Image(String base64Image) {
+        this.base64Image = base64Image;
     }
     
     public String getUsuario(){
@@ -98,4 +113,11 @@ public class Usuario {
         this.direccion = dir;
     }
     
+    public Blob getFoto(){
+        return foto_perfil;
+    }
+    
+    public void setFoto(Blob foto){
+        this.foto_perfil = foto;
+    }
 }

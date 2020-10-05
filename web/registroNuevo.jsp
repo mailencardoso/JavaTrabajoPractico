@@ -56,7 +56,7 @@
   </nav>
     <div class="container-log" >
         <div class ="row" >
-            <form action="Registro" method="post">
+            <form action="Registro" method="post" enctype="multipart/form-data">
                 <h3>Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                             <div class="form-group">
@@ -87,6 +87,8 @@
                             <input type="tel" class="form-control" id="exampleTel" name="telefono" aria-describedby="telHelp" placeholder="Teléfono" required pattern="[0-9]+" title="Ingrese solo números."><br>
                             <label for="exampleDireccion">Dirección</label>
                             <input type="text" class="form-control" id="exampleDireccion" name="direccion" aria-describedby="direccionHelp" placeholder="Dirección" required><br>
+                            <label for="exampleImagen">Elija una imagen de perfil</label>
+                            <input type="file" class="form-control" id="exampleImagen" name="imagen"></input><br>
                             <div class="form-group" >
                                 <button type="submit" class="btn btn-primary">Crear cuenta</button>
                             </div> 
