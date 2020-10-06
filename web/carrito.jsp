@@ -121,7 +121,7 @@
                <input type="submit" class="btn btn-primary" id="carrito-register" value="Registrar Pedido">
         </form>
     </div>
-           <%} else { %>
+     <%} else { %>
        <div class ="row justify-content-center" >    
            <img class="carrito-vacio" src="img/carritoVacio.png">
        </div>   

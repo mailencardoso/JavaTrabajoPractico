@@ -113,7 +113,7 @@
                      <%}%>
                      <br><br> Total <%pedidos.get(i).setPrecio();%>
                             $<%=pedidos.get(i).getPrecio()%></td>             
-                    
+                        <br>
                    </tr>
                    <%}%>
                     

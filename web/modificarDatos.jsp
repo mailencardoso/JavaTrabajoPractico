@@ -135,7 +135,7 @@
                     <input type="hidden" name="usuario" value="<%=usuarioActual.getUsuario()%>">
                     <input type="hidden" name="contActualReal" value="<%=usuarioActual.getPassword()%>">
                     <input type="hidden" name="tipoUsuario" value="<%=usuarioActual.getTipoUsuario()%>">
-                    <input type="hidden" name="imagen" value="<%=productoActual.getFoto()%>">
+                    <input type="hidden" name="imagen" value="<%=usuarioActual.getFoto()%>">
                 </div>
                 
                     

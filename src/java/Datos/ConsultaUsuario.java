@@ -45,7 +45,7 @@ public class ConsultaUsuario extends Conexion{
             pst.setString(2, pass);
             rs = pst.executeQuery();
             
-            if (rs.absolute(1)){
+            if (rs.next()){
                 String usu = rs.getString("usuario");
                 String cont = rs.getString("pass");
                 String nom = rs.getString("nombre");

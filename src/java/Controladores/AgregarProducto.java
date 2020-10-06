@@ -85,7 +85,7 @@ public class AgregarProducto extends HttpServlet {
             Blob foto = new SerialBlob(blob);
         
             Producto producto = new Producto(id,nombre,descripcion,precio,foto,cat);
-            Linea_pedido lp = new Linea_pedido(cant , producto, num);
+            Linea_pedido lp = new Linea_pedido(num, producto, cant);
             ArrayList<Linea_pedido> lineas = new ArrayList<>();
             Pedido pedActual =  new Pedido();
         

@@ -233,9 +233,7 @@
 
         </div>
         <!-- /.row -->
-        <div class="row justify-content-center">
-            <a type="submit" href="listadoProductos.jsp" id="button-index" class="btn btn-primary btn-lg">Ver más</a>
-        </div>
+        
       </div>
       <!-- /.col-lg-9 -->
 
