@@ -38,22 +38,6 @@
   <!-- Custom styles for this template -->
   <link href="css/shop-homepage.css" rel="stylesheet">
   
-     <script type="text/javascript">
-     function ConfirmDemo() {
-    //Ingresamos un mensaje a mostrar
-    var mensaje = confirm("¿Está seguro que desea cerrar sesión?");
-    //Detectamos si el usuario acepto el mensaje
-    if (mensaje) {
-    document.getElementById('cerrarsesion').submit();    
-    alert("¡Gracias por visitarnos!");
-    
-    }
-    //Detectamos si el usuario denegó el mensaje
-    else {
-    alert("¡Gracias por quedarte con nosotros!");
-    }
-    }
-    </script>
 </head>
 
 <body>
@@ -122,7 +106,7 @@
   <!-- Page Content -->
 <div class="container-profile">
     <form  action="Logout" method="post">
-        <input type="submit" class="btn btn-danger" id="cerrarsesion" onclick="ConfirmDemo()" value="Cerrar sesión" />
+        <input type="submit" class="btn btn-danger" id="cerrarsesion" value="Cerrar sesión" />
     </form>
     <br><br>
     <div id="personal" class="row justify-content-center">
@@ -168,13 +152,7 @@
   
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

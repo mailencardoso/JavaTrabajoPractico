@@ -16,8 +16,12 @@
         response.sendRedirect("index.jsp");
     }
     String notificacion = "";
-   if (objSesion.getAttribute("estado") != null){
-        notificacion = (String) objSesion.getAttribute("estado");
+    String error = "";
+   if (objSesion.getAttribute("notificacion") != null){
+        notificacion = (String) objSesion.getAttribute("notificacion");
+    }
+   if (objSesion.getAttribute("error") != null){
+        error = (String) objSesion.getAttribute("error");
     }
     
 %>
@@ -82,18 +86,20 @@
             
             <label for="exampleCodigoProd">Código</label>
             <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" required><br>
-        <%if (notificacion.equals("Eliminado correctamente")){ %>
-                <div class="alert alert-success" role="alert">
-                                ¡Producto eliminado <b>correctamente</b>!
-                            </div>                 
+                
+                <%if (objSesion.getAttribute("notificacion") != null){ %>
+                    <div id="notificacion" class="alert alert-success" role="alert">
+                        <label align="center"><%=notificacion%></label>
+                    </div>
                 <%}%>
-                 <%objSesion.removeAttribute("estado");%>
-        <%if (notificacion.equals("Error: Codigo de producto no existe.")){ %>
-                <div class="alert alert-danger" role="alert">
-                                <b>¡ERROR!</b> Producto inexistente. <br>Ingrese de nuevo.
-                            </div>              
+                <%objSesion.removeAttribute("notificacion");%>
+                
+                <%if (objSesion.getAttribute("error") != null){ %>
+                    <div id="notificacion" class="alert alert-danger" role="alert">
+                        <label align="center"><%=error%></label>
+                    </div>
                 <%}%>
-                 <%objSesion.removeAttribute("estado");%>
+                <%objSesion.removeAttribute("error");%>
         <div class="form-group" id="modificar-datos-button"> 
             <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
             <button type="submit"  class="btn btn-primary">Buscar</button>
@@ -126,15 +132,68 @@
                     <%}%>
                    </tbody>
                </table>
+            <br><br>
+    <div class="row justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+    <%    
+    int pag = 1;
+    //Al momento de dar siguiente o presionar otro botón, manda como parametro "pg" con el número de página.
+    if (request.getParameter("pg") != null) {
+        pag = Integer.valueOf(request.getParameter("pg"));
+    } 
+    //Elementos por página.
+    int maxPag = prod.size() / 9;
+    //Aquí hago una operación para obtener el número de registro del que inicia.    
+    int regMin = (pag - 1) * 9;
+    //Aquí hago una operación para obtener el número de registros máximos para mostrar en esa página.
+    //Esto con el fin, de recorrer el arreglo desde el registro mínimo hasta el registro máximo.
+    int regMax = pag * 9;
+%>
+
+<% //Pregunto si hay más de una página, para comenzar paginación.
+        if (maxPag >= 1) {
+        //Si la página diferente a uno, si agrega el botón anterior.
+            if(pag!=1){%>
+                <li class="page-item">
+                    <a class="page-link" href="listadoPedidosCliente.jsp?pg=<%=pag - 1%>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                            
+            <%}%>
+            <%//Realizo el for para calcular el máximo de páginas.
+                for (int i = 0; i < maxPag; i++) {
+                //Si la página es igual a la página actual, muestra la etiqueta active.
+                    if(i+1==pag){
+            %>  
+                        <li class="page-item active"><a class="page-link" href="#"><%=i+1%></a></li>
+                            
+                        <%  }//Si no, sigue mostrando las etiquetas normales con la opción para desplazarse.
+                    else{%>
+                        <li class="page-item"><a class="page-link" href="listadoPedidosCliente.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
+                    <%}}
+                    //Sí pagina es diferente al número máximo de páginas, muestra la opción siguiente.
+                    if(pag!=maxPag){%>
+                        <li class="page-item">
+                            <a class="page-link" href="listadoPedidosCliente.jsp?pg=<%=pag + 1%>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                            
+                    <%}}//Si el máximo de páginas no es mayor a 1, muestra solo una página 
+                    else {%>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <%}
+                %>    
+            </ul>
+        </nav>    
+    </div>  
   <!-- /.container -->
 </div>
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

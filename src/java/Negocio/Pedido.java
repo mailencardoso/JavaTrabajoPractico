@@ -16,21 +16,20 @@ public class Pedido {
     private int idpedido;
     private Date fecha_pedido;
     private String orden_completa;
-    private Float precio;
+    private float precio;
     private Usuario cliente;
     private ArrayList<Linea_pedido> lineas;   
-    private String usuarioAdministrador;
+    
     
    
     
     
-    public Pedido(int idped, Date fecha, String completa, Usuario cli, String adm, ArrayList<Linea_pedido> lin){
+    public Pedido(int idped, Date fecha, String completa, Usuario cli, ArrayList<Linea_pedido> lin){
         
         this.idpedido = idped;
         this.fecha_pedido = fecha;
         this.orden_completa = completa;  
         this.cliente = cli;
-        this.usuarioAdministrador = adm;
         this.lineas = lin;
     }
 
@@ -40,7 +39,7 @@ public class Pedido {
 
     
 
-    public Pedido(int idpedido, Usuario cliente, java.sql.Date fechaPed, String orden, Float totalPedido, ArrayList<Linea_pedido> lineasPedido) {
+    public Pedido(int idpedido, Usuario cliente, java.sql.Date fechaPed, String orden, float totalPedido, ArrayList<Linea_pedido> lineasPedido) {
         
     }
 
@@ -74,13 +73,6 @@ public class Pedido {
         return cliente.getUsuario();
     }
     
-      public String getUsuarioAdministrador() {
-        return usuarioAdministrador;
-    }
-
-    public void setUsuarioAdministrador(String usuarioAdm) {
-        this.usuarioAdministrador = usuarioAdm;
-    }
     
     public void setCliente(Usuario cli) {
         this.cliente = cli;
@@ -94,15 +86,15 @@ public class Pedido {
         this.lineas = lineas;
     }
     
-    public Float getPrecio() {
+    public float getPrecio() {
         return precio;
     }
     
     public void setPrecio() {
-        Float total = 0f;
+        float total = 0f;
         if (lineas!=null){
             for (int i=0;i<lineas.size();i++){
-                total= total+lineas.get(i).getCantidad()*lineas.get(i).getProducto().getPrecio();
+                total= total+(lineas.get(i).getCantidad()*lineas.get(i).getProducto().getPrecio());
             }
        
         }

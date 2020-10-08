@@ -5,14 +5,11 @@
 --%>
 <%
     HttpSession objSesion = request.getSession(false);
-    String notificacion1 = "";
-    String notificacion2 = "";
-    if (objSesion.getAttribute("error1") != null){
-        notificacion1 = (String) objSesion.getAttribute("error1");
+    String error = "";
+    if (objSesion.getAttribute("error") != null){
+        error = (String) objSesion.getAttribute("error");
     };
-    if (objSesion.getAttribute("error2") != null){
-        notificacion2 = (String) objSesion.getAttribute("error2");
-    };   
+    
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -60,18 +57,12 @@
                 <h3>Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                             <div class="form-group">
-                            <%if (notificacion1.equals("Ya existe una cuenta para el email ingresado.")){ %>   
-                            <div class="alert alert-danger" role="alert">
-                                <b>Ya existe</b> una cuenta para el email ingresado.
-                            </div>   
+                            <%if (objSesion.getAttribute("error") != null){ %>
+                                <div id="notificacion" class="alert alert-danger" role="alert">
+                                    <label align="center"><%=error%></label>
+                                </div>
                             <%}%>
-                            <%objSesion.removeAttribute("error1");%>
-                            <%if (notificacion2.equals("Usuario ingresado ya existe.")){ %>   
-                            <div class="alert alert-danger" role="alert">
-                                Usuario ingresado <b>ya existe</b>. Ingrese uno diferente.
-                            </div>   
-                            <%}%>
-                            <%objSesion.removeAttribute("error1");%>
+                            <%objSesion.removeAttribute("error");%>
                             <label><font color=grey>Por favor rellene el siguiente formulario.</font></label><br>
                             <label for="exampleNombre">Nombre</label>
                             <input type="text" class="form-control" id="exampleNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre" required><br>

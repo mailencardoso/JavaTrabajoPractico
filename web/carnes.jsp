@@ -157,5 +157,7 @@
 
   </div>
   <!-- /.container -->
+  <!-- Footer -->
+  
 </body>
 </html>

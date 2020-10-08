@@ -10,10 +10,13 @@
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
     Producto productoActual = (Producto) objSesion.getAttribute("prodActual");
-    objSesion.removeAttribute("error");
+    String error = "";
     String notificacion = "";
     if (objSesion.getAttribute("notificacion") != null){
         notificacion = (String) objSesion.getAttribute("notificacion");
+    }
+    if (objSesion.getAttribute("error") != null){
+        error = (String) objSesion.getAttribute("error");
     }
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
@@ -73,11 +76,17 @@
                 </div>                 
                 <%}%>
                 <%objSesion.removeAttribute("exito");%>
-             
+                
+                <%if (objSesion.getAttribute("error") != null){ %>
+                    <div id="notificacion" class="alert alert-danger" role="alert">
+                        <label align="center"><%=error%></label>
+                    </div>
+                <%}%>
+                <%objSesion.removeAttribute("error");%>
                 
                 
                 <label for="exampleCodigoProd">Codigo</label>
-                <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" value="<%=productoActual.getID()%>" ><br>
+                <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" value="<%=productoActual.getID()%>" disabled><br>
                 
                 <label for="exampleNombreProducto">Titulo Producto</label>
                 <input type="text" class="form-control" id="exampleNombreProducto" name="nombreProducto" aria-describedby="nombreHelp" value="<%=productoActual.getNombre()%>" ><br>
@@ -107,6 +116,7 @@
                     <button type="submit"  class="btn btn-primary">Modificar</button>
                     
                 </div>
+                 
                 
                     
             </form>
@@ -115,13 +125,6 @@
   
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

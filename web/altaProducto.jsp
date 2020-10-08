@@ -52,6 +52,8 @@
   </nav>
   <%}%>      
     <div class="container-profile" >
+        <br><br>
+        <a type="submit" class="btn btn-secondary" id="seguir-comprando" href="productosABM.jsp">← Volver</a>
         <div id="altaproduc" class="row justify-content-center">
             <h3>Alta de Productos</h3>
         </div>

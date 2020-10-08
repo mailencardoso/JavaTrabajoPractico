@@ -17,11 +17,11 @@ public class Producto {
     int id_producto;
     String nombre;
     String descripcion;
-    Float precio;
+    float precio;
     Blob foto;
     String categoria;
     
-    public Producto(int id, String nom, String desc, Float pre, Blob imag, String cat){
+    public Producto(int id, String nom, String desc, float pre, Blob imag, String cat){
         this.id_producto = id;
         this.nombre = nom;
         this.descripcion = desc;
@@ -69,11 +69,11 @@ public class Producto {
         this.descripcion = desc;
     }
     
-    public Float getPrecio(){
+    public float getPrecio(){
         return precio;
     }
     
-    public void setPrecio(Float pre){
+    public void setPrecio(float pre){
         this.precio = pre;
     }
     

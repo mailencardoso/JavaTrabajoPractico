@@ -120,17 +120,67 @@
                    </tr>
                     <%}%>
                    </tbody>
-               </table>    
-                
+               </table> 
+ <div class="row justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+    <%    
+    int pag = 1;
+    //Al momento de dar siguiente o presionar otro botón, manda como parametro "pg" con el número de página.
+    if (request.getParameter("pg") != null) {
+        pag = Integer.valueOf(request.getParameter("pg"));
+    } 
+    //Elementos por página.
+    int maxPag = prod.size() / 9;
+    //Aquí hago una operación para obtener el número de registro del que inicia.    
+    int regMin = (pag - 1) * 9;
+    //Aquí hago una operación para obtener el número de registros máximos para mostrar en esa página.
+    //Esto con el fin, de recorrer el arreglo desde el registro mínimo hasta el registro máximo.
+    int regMax = pag * 9;
+%>
+
+<% //Pregunto si hay más de una página, para comenzar paginación.
+        if (maxPag >= 1) {
+        //Si la página diferente a uno, si agrega el botón anterior.
+            if(pag!=1){%>
+                <li class="page-item">
+                    <a class="page-link" href="listadoPedidosCliente.jsp?pg=<%=pag - 1%>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                            
+            <%}%>
+            <%//Realizo el for para calcular el máximo de páginas.
+                for (int i = 0; i < maxPag; i++) {
+                //Si la página es igual a la página actual, muestra la etiqueta active.
+                    if(i+1==pag){
+            %>  
+                        <li class="page-item active"><a class="page-link" href="#"><%=i+1%></a></li>
+                            
+                        <%  }//Si no, sigue mostrando las etiquetas normales con la opción para desplazarse.
+                    else{%>
+                        <li class="page-item"><a class="page-link" href="listadoPedidosCliente.jsp?pg=<%=i+1%>"><%=i+1%></a></li>
+                    <%}}
+                    //Sí pagina es diferente al número máximo de páginas, muestra la opción siguiente.
+                    if(pag!=maxPag){%>
+                        <li class="page-item">
+                            <a class="page-link" href="listadoPedidosCliente.jsp?pg=<%=pag + 1%>" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                            
+                    <%}}//Si el máximo de páginas no es mayor a 1, muestra solo una página 
+                    else {%>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <%}
+                %>    
+            </ul>
+        </nav>    
+    </div>  
   <!-- /.container -->
 </div>
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

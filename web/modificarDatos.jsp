@@ -8,10 +8,13 @@
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
-    objSesion.removeAttribute("error");
+    String error = "";
     String notificacion = "";
     if (objSesion.getAttribute("notificacion") != null){
         notificacion = (String) objSesion.getAttribute("notificacion");
+    }
+    if (objSesion.getAttribute("error") != null){
+        error = (String) objSesion.getAttribute("error");
     }
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
@@ -92,7 +95,7 @@
   <!-- Page Content -->
     <div class="container-profile">
         <div class ="row justify-content-center" >
-            <form action="ModificarDatos" method="post">
+            <form action="ModificarDatos" method="post" enctype="multipart/form-data">
                 <h3 id="modif">Modificar mis datos</h3>
      
                 <%if (notificacion.equals("Modificaciòn realizada")){ %>
@@ -101,6 +104,13 @@
                 </div>                 
                 <%}%>
                 <%objSesion.removeAttribute("exito");%>
+                
+                <%if (objSesion.getAttribute("error") != null){ %>
+                <div id="notificacion" class="alert alert-danger" role="alert">
+                    <label align="center"><%=error%></label>
+                </div>
+                <%}%>
+                <%objSesion.removeAttribute("error");%>
              
                 
                 
@@ -137,7 +147,8 @@
                     <input type="hidden" name="tipoUsuario" value="<%=usuarioActual.getTipoUsuario()%>">
                     <input type="hidden" name="imagen" value="<%=usuarioActual.getFoto()%>">
                 </div>
-                
+                <br>
+            
                     
             </form>
         </div>
@@ -145,16 +156,10 @@
   
   <!-- /.container -->
 
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    </body>
+</body>
 </html>

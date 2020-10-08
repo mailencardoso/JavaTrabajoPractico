@@ -67,11 +67,11 @@ public class Registro extends HttpServlet {
         ConsultaUsuario usu2 = new ConsultaUsuario();
               
         if (usu1.existeCuenta(email)){
-                sesion.setAttribute("error1", "Ya existe una cuenta para el email ingresado.");
+                sesion.setAttribute("error", "Ya existe una cuenta para el email ingresado.");
                 ban = false;
             };
         if(usu2.existeUsuario(usuario)){
-                sesion.setAttribute("error2", "Usuario ingresado ya existe.");
+                sesion.setAttribute("error", "Usuario ingresado ya existe.");
                 ban = false;
             }
              
@@ -79,12 +79,13 @@ public class Registro extends HttpServlet {
         
         if(ban==true){
                 usu.agregarCliente(usuario, nombre, apellido, email, pass, telefono, direccion, "Cliente", foto);
-                sesion.setAttribute("exito", "Registro realizado");
+                sesion.setAttribute("notificacion", "Registro realizado");
                 response.sendRedirect("login.jsp"); 
             }
             
         
         else{
+            sesion.setAttribute("error", "Error al registrarse, intentelo nuevamente.");
             response.sendRedirect("registroNuevo.jsp");
              
             

@@ -15,7 +15,14 @@
     HttpSession objSesion = request.getSession(false);
     Pedido pedido = (Pedido) objSesion.getAttribute("pedidoActual");
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
-    
+    objSesion.removeAttribute("error");
+    String notificacion = "";
+    if (objSesion.getAttribute("notificacion") != null){
+        notificacion = (String) objSesion.getAttribute("notificacion");
+    }
+    if(usuarioActual == null){
+        response.sendRedirect("index.jsp");
+    }
 %>
 <!DOCTYPE html>
 
@@ -80,6 +87,7 @@
       <a type="submit" class="btn btn-success" id="seguir-comprando" href="listadoProductos.jsp">← Seguir Comprando</a>
       <%if(pedido != null){%>
     <div class ="row justify-content-center" >
+        
         <form action="RegistroPedido" method="post">
             <h3 id="pedido">Mi pedido</h3>
             

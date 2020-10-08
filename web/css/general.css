@@ -8,6 +8,12 @@
     
 }
 
+.container{
+    height:100%;
+}
+
+
+
 h3{
   padding-bottom: 20px;
 }
@@ -86,8 +92,9 @@ h3{
 
 #altaproduc{
   
-    padding-top: 90px;
+    padding-top: 30px;
 }
+
 
 
 .pedido{

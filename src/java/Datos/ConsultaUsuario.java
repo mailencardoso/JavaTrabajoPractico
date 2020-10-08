@@ -85,14 +85,14 @@ public class ConsultaUsuario extends Conexion{
                 return usuarioActual;
             }
         } catch (Exception e) {
-            error = "Error: "+e;
+            error = "Error: No se ha podido iniciar sesion "+e;
         } finally{
             try {
                  if (getConexion()!= null) getConexion().close();
                  if (pst!=null) pst.close();
                  if (rs!= null) rs.close();
             } catch (Exception e) {
-                error = "Error: "+e;
+                error = "Error: No se ha podido cerrar la conexion "+e;
             }   
         }
         usuarioActual=null;     
@@ -123,13 +123,13 @@ public class ConsultaUsuario extends Conexion{
         } catch (SQLIntegrityConstraintViolationException e) {
             error = "Error: Nombre de usuario existente";
         } catch(Exception e){
-            error= "Error: "+e;
+            error= "Error: No se ha podido registrar nuevo usuario"+e;
         }finally {
             try {
                 if (getConexion()!=null) getConexion().close();
                 if (pst!=null) pst.close();
             } catch (Exception e) {
-                error = "Error: "+e;
+                error = "Error: No se ha podido cerrar la conexion "+e;
             }
         }
         return false;
@@ -155,14 +155,14 @@ public class ConsultaUsuario extends Conexion{
                 return true;
             }
         } catch (SQLException e) {
-            error = "Error: "+e;
+            error = "Error: No se ha podido modificar el usuario"+e;
         } finally{
             try{
                 if (pst!=null) pst.close();
                 if (getConexion()!=null) getConexion().close();
                 if (rs!= null) rs.close();
             } catch(SQLException e) {
-                error = "Error: "+e;
+                error = "Error: No se ha podido cerrar la conexion"+e;
                 }
         }
         return false;
@@ -185,14 +185,14 @@ public class ConsultaUsuario extends Conexion{
                 return true;
             }
         } catch (Exception e) {
-            error = "Error: "+e;
+            error = "Error: No existe usuario con dicho mail"+e;
         } finally{
             try {
                  if (getConexion()!= null) getConexion().close();
                  if (pst!=null) pst.close();
                  if (rs!= null) rs.close();
             } catch (Exception e) {
-                error = "Error: "+e;
+                error = "Error: No se ha podido cerrar la conexion "+e;
             }   
         }
         return false;
