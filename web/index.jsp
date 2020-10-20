@@ -109,7 +109,7 @@
                 <h4 class="card-title">
                   <a href="login.jsp">Cerveza Quilmes</a>
                 </h4>
-                <h5>$52.00</h5>
+                <h5>$51.99</h5>
                 <p class="card-text">Cerveza Quilmes En Lata X 473 Cc.</p>
               </div>
               <div class="card-footer">
@@ -137,14 +137,14 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="login.jsp"><img class="card-img-top" src="img/frutaverdu/pera.jpg" alt=""></a>
+              <a href="login.jsp"><img class="card-img-top" src="img/bebidas/baggio.jpg" alt=""></a>
               <div class="card-body">
                   <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">
-                  <a href="login.jsp">Pera</a>
+                  <a href="login.jsp">Baggio</a>
                 </h4>
-                <h5>$9.99</h5>
-                <p class="card-text">Pera X 100 Gr.</p>
+                <h5>$67.49</h5>
+                <p class="card-text">Baggio X 1,5 L</p>
               </div>
               <div class="card-footer">
                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
@@ -160,7 +160,7 @@
                 <h4 class="card-title">
                   <a href="login.jsp">Cabeza de Lomo</a>
                 </h4>
-                <h5>$41.90</h5>
+                <h5>$41.99</h5>
                 <p class="card-text">Cabeza De Lomo Ternera X 100 Gr.</p>
               </div>
               <div class="card-footer">
@@ -177,7 +177,7 @@
                 <h4 class="card-title">
                   <a href="login.jsp">Pan de hamb. Fargo</a>
                 </h4>
-                <h5>$96,72</h5>
+                <h5>$95.99</h5>
                 <p class="card-text">Pan De Hamburguesa Fargo C/Semillas Sesamo X4u.</p>
               </div>
               <div class="card-footer">
@@ -194,7 +194,7 @@
                 <h4 class="card-title">
                   <a href="login.jsp">Lavandina Ayudín</a>
                 </h4>
-                <h5>$78.99</h5>
+                <h5>$77.99</h5>
                 <p class="card-text">Lavandina En Gel Ayudin X700ml. Menta</p>
               </div>
               <div class="card-footer">

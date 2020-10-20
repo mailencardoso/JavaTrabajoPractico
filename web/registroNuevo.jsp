@@ -39,12 +39,6 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pedido</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="login.jsp">Iniciar Sesión</a>
           </li>
         </ul>

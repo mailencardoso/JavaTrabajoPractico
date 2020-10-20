@@ -79,6 +79,7 @@ public class ModificarProductos extends HttpServlet {
                 response.sendRedirect("productosABM.jsp");
             }
             else{
+                prod.setError("Error al actualizar producto");
                 objSesion.setAttribute("error",prod.getError());
                 response.sendRedirect("modificarProducto.jsp");
             }  

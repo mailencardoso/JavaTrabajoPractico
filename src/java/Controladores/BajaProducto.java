@@ -59,8 +59,8 @@ public class BajaProducto extends HttpServlet {
                 
             }
             else{
-                
-                objSesion.setAttribute("error", "Hubo un error");
+                prod.setError("Hubo un problema al eliminar producto, intente nuevamente");
+                objSesion.setAttribute("error", prod.getError());
                 response.sendRedirect("eliminarProducto.jsp");
             }  
         }      

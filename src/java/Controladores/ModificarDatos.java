@@ -122,6 +122,7 @@ public class ModificarDatos extends HttpServlet {
                 response.sendRedirect("perfil.jsp");
             }
             else{
+                usu.setError("Error al modificar los datos, verifique los campos e intente nuevamente.");
                 objSesion.setAttribute("error",usu.getError());
                 response.sendRedirect("modificarDatos.jsp");
             }  

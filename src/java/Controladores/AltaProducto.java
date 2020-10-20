@@ -74,6 +74,8 @@ public class AltaProducto extends HttpServlet {
             
         
         else{
+            product.setError("Error al agregar producto, revise los campos e intentelo nuevamente");
+            sesion.setAttribute("error", product.getError());
             response.sendRedirect("altaProducto.jsp");
              
             

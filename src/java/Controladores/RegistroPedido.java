@@ -49,6 +49,7 @@ public class RegistroPedido extends HttpServlet {
             response.sendRedirect("indexlogueado.jsp");
         }
         else{
+            ped.setError("Hubo un problema y no se pudo registrar el pedido, intente nuevamente");
             objSesion.setAttribute("error", ped.getError());
             response.sendRedirect("carrito.jsp");
         }

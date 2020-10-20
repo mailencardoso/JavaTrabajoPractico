@@ -105,7 +105,7 @@
         </div>
         
         <div class="col-lg-9">
-            <%if (objSesion.getAttribute("notificacion") != null){ %>
+            <%if (notificacion.equals("Objeto ingresado al carrito!")){ %>
                 <div id="notificacion" class="alert alert-success" role="alert">
                     <label align="center"><%=notificacion%></label>
                 </div>
