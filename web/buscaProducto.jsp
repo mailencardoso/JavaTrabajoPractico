@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="Negocio.Usuario"%>
+<a href="buscaProducto.jsp"></a>
 <%@page import="Datos.ConsultaProductos"%>
 <%@page import="Negocio.Producto"%>
 <%@page import="java.util.ArrayList"%>
@@ -16,9 +17,8 @@
         response.sendRedirect("index.jsp");
     }
     String notificacion = "";
-    if (objSesion.getAttribute("error") != null){
-        notificacion = (String) objSesion.getAttribute("error");
-    }
+    
+    
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,11 +81,11 @@
             
             <label for="exampleCodigoProd">Código</label>
             <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" required>
-             <%if (notificacion.equals("Error: Codigo de producto incorrecto.")){ %>
-                    <br> <div class="alert alert-danger" role="alert">
-                                <b>¡ERROR!</b> Producto no existe.<br>
-                                Ingrese nuevamente
-                            </div>
+            <% if (objSesion.getAttribute("error") != null){
+                   notificacion = (String) objSesion.getAttribute("error");%>
+                    <div id="notificacion" class="alert alert-danger" role="alert">
+                        <label align="center"><%=notificacion%></label>
+                    </div>
                     <%}%>
                  <%objSesion.removeAttribute("error");%>       
                  <br><div class="form-group" id="modificar-datos-button"> 

@@ -239,14 +239,14 @@ public class ConsultaProductos extends Conexion {
                 return true;
             }
         } catch (SQLException e) {
-            error = "Error: "+e;
+            error = "Error: No se pudo eliminar producto"+e;
         } finally{
             try{
                 if (pst!=null) pst.close();
                 if (getConexion()!=null) getConexion().close();
                 if (rs!= null) rs.close();
             } catch(SQLException e) {
-                error = "Error: "+e;
+                error = "Error: No se pudo cerrar conexion a la base de datos"+e;
                 }
         }
         return false;

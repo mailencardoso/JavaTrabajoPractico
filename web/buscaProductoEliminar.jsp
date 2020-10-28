@@ -17,12 +17,7 @@
     }
     String notificacion = "";
     String error = "";
-   if (objSesion.getAttribute("notificacion") != null){
-        notificacion = (String) objSesion.getAttribute("notificacion");
-    }
-   if (objSesion.getAttribute("error") != null){
-        error = (String) objSesion.getAttribute("error");
-    }
+  
     
 %>
 <!DOCTYPE html>
@@ -87,19 +82,21 @@
             <label for="exampleCodigoProd">Código</label>
             <input type="text" class="form-control" id="exampleCodigoProd" name="codigo" aria-describedby="codigoHelp" required><br>
                 
-                <%if (objSesion.getAttribute("notificacion") != null){ %>
+                <%if (objSesion.getAttribute("notificacion") != null){
+                    notificacion = (String) objSesion.getAttribute("notificacion");%>
                     <div id="notificacion" class="alert alert-success" role="alert">
                         <label align="center"><%=notificacion%></label>
                     </div>
                 <%}%>
                 <%objSesion.removeAttribute("notificacion");%>
                 
-                <%if (objSesion.getAttribute("error") != null){ %>
+                <%if (objSesion.getAttribute("estado") != null){ 
+                    error = (String) objSesion.getAttribute("estado");%>
                     <div id="notificacion" class="alert alert-danger" role="alert">
                         <label align="center"><%=error%></label>
                     </div>
                 <%}%>
-                <%objSesion.removeAttribute("error");%>
+                <%objSesion.removeAttribute("estado");%>
         <div class="form-group" id="modificar-datos-button"> 
             <a type="button"  class="btn btn-secondary" href="productosABM.jsp">Cancelar</a>
             <button type="submit"  class="btn btn-primary">Buscar</button>

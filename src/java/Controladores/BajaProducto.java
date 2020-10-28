@@ -54,12 +54,12 @@ public class BajaProducto extends HttpServlet {
         
         
         if(ban){
-                objSesion.setAttribute("estado", "Eliminado correctamente");
+                objSesion.setAttribute("notificacion", "Eliminado correctamente");
                 response.sendRedirect("buscaProductoEliminar.jsp");                
                 
             }
             else{
-                prod.setError("Hubo un problema al eliminar producto, intente nuevamente");
+                
                 objSesion.setAttribute("error", prod.getError());
                 response.sendRedirect("eliminarProducto.jsp");
             }  
