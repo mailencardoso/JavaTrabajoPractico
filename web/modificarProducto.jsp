@@ -11,13 +11,7 @@
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
     Producto productoActual = (Producto) objSesion.getAttribute("prodActual");
     String error = "";
-    String notificacion = "";
-    if (objSesion.getAttribute("notificacion") != null){
-        notificacion = (String) objSesion.getAttribute("notificacion");
-    }
-    if (objSesion.getAttribute("error") != null){
-        error = (String) objSesion.getAttribute("error");
-    }
+    
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
@@ -69,15 +63,9 @@
         <div class ="row justify-content-center" >
             <form action="ModificarProductos" method="post" enctype="multipart/form-data">
                 <h3 id="modif">Modificar Productos</h3>
-     
-                <%if (notificacion.equals("Modificaciòn realizada")){ %>
-                <div class="alert alert-success" role="alert">
-                    ¡Modificación realizada <b>con éxito</b>!
-                </div>                 
-                <%}%>
-                <%objSesion.removeAttribute("exito");%>
-                
-                <%if (objSesion.getAttribute("error") != null){ %>
+                    
+                <%if (objSesion.getAttribute("error") != null){ 
+                    error = (String) objSesion.getAttribute("error");%>
                     <div id="notificacion" class="alert alert-danger" role="alert">
                         <label align="center"><%=error%></label>
                     </div>

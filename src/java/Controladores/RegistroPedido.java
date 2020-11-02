@@ -45,7 +45,7 @@ public class RegistroPedido extends HttpServlet {
         if (ped.RegistroPedido(usuario,pedido)){
             objSesion.removeAttribute("pedidoActual");
             objSesion.removeAttribute("numeroLinea");
-            objSesion.setAttribute("notificacion", "Solicitud de pedido enviada!");
+            objSesion.setAttribute("notificacionCarrito", "Solicitud de pedido enviada!");
             response.sendRedirect("indexlogueado.jsp");
         }
         else{

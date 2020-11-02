@@ -9,9 +9,6 @@
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
     objSesion.removeAttribute("error");
     String notificacion = "";
-    if (objSesion.getAttribute("notificacion") != null){
-        notificacion = (String) objSesion.getAttribute("notificacion");
-    }
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
@@ -91,6 +88,13 @@
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-9">
+        <%if (objSesion.getAttribute("notificacionCarrito") != null){
+            notificacion = (String) objSesion.getAttribute("notificacionCarrito");%>
+            <div id="notificacion" class="alert alert-danger" role="alert">
+                <label align="center"><%=notificacion%></label>
+            </div>
+        <%}%>
+        <%objSesion.removeAttribute("notificacionCarrito");%>
 
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">

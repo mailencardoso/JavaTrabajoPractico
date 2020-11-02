@@ -242,14 +242,14 @@ public class ConsultaPedidos extends Conexion{
                 }
             }    
         } catch (Exception e) {
-            error = "Error: "+e;
+            error = "Error: No se ha podido listar su solicitud "+e;
         }finally{
            try {
                 if (getConexion()!=null) getConexion().close();
                 if (st!=null) st.close();
                 if (rs!=null) rs.close();
             } catch (SQLException e) {
-                error = "Error: "+e;
+                error = "Error: No se ha podido cerrar la conexion correctamente "+e;
             }
         }
         return pedidos;

@@ -8,6 +8,8 @@
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
+    
+    String error = "";
 %>
 <!DOCTYPE html>
 
@@ -56,6 +58,14 @@
         <a type="submit" class="btn btn-secondary" id="seguir-comprando" href="productosABM.jsp">← Volver</a>
         <div id="altaproduc" class="row justify-content-center">
             <h3>Alta de Productos</h3>
+                
+                <%if (objSesion.getAttribute("errorAltaProd") != null){
+                    error = (String) objSesion.getAttribute("errorAltaProd");%>
+                <div id="notificacion" class="alert alert-danger" role="alert">
+                    <label align="center"><%=error%></label>
+                </div>
+                <%}%>
+                <%objSesion.removeAttribute("errorAltaProd");%>
         </div>
         <div class ="row justify-content-center" >
             <div class="col-lg-3">

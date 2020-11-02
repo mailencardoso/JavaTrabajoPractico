@@ -6,9 +6,6 @@
 <%
     HttpSession objSesion = request.getSession(false);
     String error = "";
-    if (objSesion.getAttribute("error") != null){
-        error = (String) objSesion.getAttribute("error");
-    };
     
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -51,12 +48,13 @@
                 <h3>Regístrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
                             <div class="form-group">
-                            <%if (objSesion.getAttribute("error") != null){ %>
+                            <%if (objSesion.getAttribute("errorRegistro") != null){ 
+                                error = (String) objSesion.getAttribute("errorRegistro");%>
                                 <div id="notificacion" class="alert alert-danger" role="alert">
                                     <label align="center"><%=error%></label>
                                 </div>
                             <%}%>
-                            <%objSesion.removeAttribute("error");%>
+                            <%objSesion.removeAttribute("errorRegistro");%>
                             <label><font color=grey>Por favor rellene el siguiente formulario.</font></label><br>
                             <label for="exampleNombre">Nombre</label>
                             <input type="text" class="form-control" id="exampleNombre" name="nombre" aria-describedby="nombreHelp" placeholder="Nombre" required><br>

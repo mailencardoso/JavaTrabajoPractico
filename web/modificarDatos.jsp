@@ -10,14 +10,8 @@
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
     String error = "";
     String notificacion = "";
-    if (objSesion.getAttribute("notificacion") != null){
-        notificacion = (String) objSesion.getAttribute("notificacion");
-    }
-    if (objSesion.getAttribute("error") != null){
-        error = (String) objSesion.getAttribute("error");
-    }
     if(usuarioActual == null){
-        response.sendRedirect("index.jsp");
+       response.sendRedirect("index.jsp");
     }
 %>
 <!DOCTYPE html>
@@ -98,19 +92,21 @@
             <form action="ModificarDatos" method="post" enctype="multipart/form-data">
                 <h3 id="modif">Modificar mis datos</h3>
      
-                <%if (notificacion.equals("Modificaciòn realizada")){ %>
+               <% if (objSesion.getAttribute("notificacionModif") != null){
+                    notificacion = (String) objSesion.getAttribute("notificacionModif");%>
                 <div class="alert alert-success" role="alert">
-                    ¡Modificación realizada <b>con éxito</b>!
+                    <label align="center"><%=notificacion%></label>
                 </div>                 
                 <%}%>
-                <%objSesion.removeAttribute("exito");%>
+                <%objSesion.removeAttribute("notificacionModif");%>
                 
-                <%if (objSesion.getAttribute("error") != null){ %>
+                <%if (objSesion.getAttribute("errorModif") != null){
+                    error = (String) objSesion.getAttribute("errorModif");%>
                 <div id="notificacion" class="alert alert-danger" role="alert">
                     <label align="center"><%=error%></label>
                 </div>
                 <%}%>
-                <%objSesion.removeAttribute("error");%>
+                <%objSesion.removeAttribute("errorModif");%>
              
                 
                 

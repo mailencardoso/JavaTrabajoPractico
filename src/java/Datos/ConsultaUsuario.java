@@ -85,7 +85,7 @@ public class ConsultaUsuario extends Conexion{
                 return usuarioActual;
             }
         } catch (Exception e) {
-            error = "Error: No se ha podido iniciar sesion "+e;
+            error = "Error: Usuario y/o contraseña incorrectos"+e;
         } finally{
             try {
                  if (getConexion()!= null) getConexion().close();
@@ -123,7 +123,7 @@ public class ConsultaUsuario extends Conexion{
         } catch (SQLIntegrityConstraintViolationException e) {
             error = "Error: Nombre de usuario existente";
         } catch(Exception e){
-            error= "Error: No se ha podido registrar nuevo usuario"+e;
+            error= "Error: No se ha podido registrar nuevo usuario, intentelo nuevamente"+e;
         }finally {
             try {
                 if (getConexion()!=null) getConexion().close();
@@ -185,7 +185,7 @@ public class ConsultaUsuario extends Conexion{
                 return true;
             }
         } catch (Exception e) {
-            error = "Error: No existe usuario con dicho mail"+e;
+            error = "Error: Ya existe una cuenta con ese email, elija otro por favor."+e;
         } finally{
             try {
                  if (getConexion()!= null) getConexion().close();
@@ -214,7 +214,7 @@ public class ConsultaUsuario extends Conexion{
                 return true;
             }
         } catch (Exception e) {
-            error = "Error: "+e;
+            error = "Error: Usuario ingresado ya existe, elija otro por favor. "+e;
         } finally{
             try {
                  if (getConexion()!= null) getConexion().close();

@@ -12,6 +12,7 @@
 <%
     HttpSession objSesion = request.getSession(true);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
+    String notificacion = "";
  %>
 
 <!DOCTYPE html>
@@ -107,6 +108,13 @@
     <div class="row">
         
         <div class="col-lg-9">
+            <%if (objSesion.getAttribute("notificacion") != null){
+                notificacion = (String) objSesion.getAttribute("notificacion"); %>
+                <div id="notificacion" class="alert alert-success" role="alert">
+                    <label align="center"><%=notificacion%></label>
+                </div>
+            <%}%>
+            <%objSesion.removeAttribute("notificacion");%>
             
             <div class="row">
         
@@ -138,7 +146,7 @@
                         <%if(usuarioActual != null){%>
                         <label id="cantidad">Cantidad: </label>     <input type="text" name="cantidad" id="cantidad" size="1">
                         <div class="card-footer">    
-                            <input type="submit" onclick="alert('¡Producto/s agregados al carrito!')" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
+                            <input type="submit" class="btn btn-primary" id="carrito-button" value="Agregar carrito">
                         </div>
                         <%}%>
                     </form>   

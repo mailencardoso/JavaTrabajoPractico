@@ -15,11 +15,7 @@
     HttpSession objSesion = request.getSession(false);
     Pedido pedido = (Pedido) objSesion.getAttribute("pedidoActual");
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
-    objSesion.removeAttribute("error");
-    String notificacion = "";
-    if (objSesion.getAttribute("notificacion") != null){
-        notificacion = (String) objSesion.getAttribute("notificacion");
-    }
+    String error = "";
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
@@ -90,6 +86,13 @@
         
         <form action="RegistroPedido" method="post">
             <h3 id="pedido">Mi pedido</h3>
+            <%if (objSesion.getAttribute("error") != null){
+                error = (String) objSesion.getAttribute("error");%>
+                <div id="notificacion" class="alert alert-danger" role="alert">
+                        <label align="center"><%=error%></label>
+                    </div>
+                <%}%>
+                <%objSesion.removeAttribute("error");%>
             
             <table class="table table-striped" id="tablaPedido">
                 <thead>

@@ -75,7 +75,7 @@ public class ModificarProductos extends HttpServlet {
                 Producto productoActual = (Producto) objSesion.getAttribute("productoActual");
                 productoActual = new Producto(cod,nombre,descripcion,prec, foto, categoria);
                 objSesion.setAttribute("prodActual", productoActual);
-                objSesion.setAttribute("notificacion", "Datos actualizados!");
+                objSesion.setAttribute("notificacionModif", "Datos actualizados!");
                 response.sendRedirect("productosABM.jsp");
             }
             else{

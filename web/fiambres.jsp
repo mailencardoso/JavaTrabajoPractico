@@ -13,7 +13,7 @@
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
-  
+    String notificacion = "";
 %>
 
 <!DOCTYPE html>
@@ -108,6 +108,13 @@
     <div class="row">
         
         <div class="col-lg-9">
+            <%if (objSesion.getAttribute("notificacion") != null){
+                notificacion = (String) objSesion.getAttribute("notificacion"); %>
+                <div id="notificacion" class="alert alert-success" role="alert">
+                    <label align="center"><%=notificacion%></label>
+                </div>
+            <%}%>
+            <%objSesion.removeAttribute("notificacion");%>
             
             <div class="row">
         

@@ -12,6 +12,7 @@
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
     Producto productoActual = (Producto) objSesion.getAttribute("prodActual");
+    String error = "";
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
@@ -71,6 +72,13 @@
   <!-- Page Content -->
  <div class="container-profile">
     <div id="altaproduc" class="row justify-content-center">
+            <%if (objSesion.getAttribute("error") != null){ 
+                    error = (String) objSesion.getAttribute("error");%>
+                    <div id="notificacion" class="alert alert-danger" role="alert">
+                        <label align="center"><%=error%></label>
+                    </div>
+                <%}%>
+                <%objSesion.removeAttribute("error");%>
             <h3>Está seguro que desea eliminar el siguiente producto?</h3>
     </div>
     <div class ="row justify-content-center" >

@@ -51,7 +51,7 @@ public class BuscarProductosDelete extends HttpServlet {
             response.sendRedirect("eliminarProducto.jsp");  
             
         }else{
-            prod.setError("Error: Codigo de producto no existe.");
+            prod.setError("Error: Codigo de producto incorrecto.");
             sesion.setAttribute("estado", prod.getError());
             response.sendRedirect("buscaProductoEliminar.jsp");
 

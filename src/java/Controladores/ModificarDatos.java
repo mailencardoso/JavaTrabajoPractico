@@ -67,42 +67,42 @@ public class ModificarDatos extends HttpServlet {
         if (contActual.equals("")||nombre.equals("")||apellido.equals("")||
                 mail.equals("")||telefono.equals("") || direc.equals("")){
             usu.setError("Error: Complete todos los campos obligatorios (*)");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(!contReal.equals(contActual)){
             usu.setError("Error: Ingrese correctamente la contraseña actual");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(!nuevaPass.equals(nuevaPass2)){
             usu.setError("Error: Los dos campos de la nueva contraseña no coinciden");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(nuevaPass.length()<6 && !nuevaPass.equals("")){
             usu.setError("Error: La nueva contraseña debe tener por lo menos 6 caracteres");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(!nombre.matches("^[A-Za-z][a-z]+")){
             usu.setError("Error: Ingrese un nombre correcto");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(!apellido.matches("^[A-Za-z][a-z]+")){
             usu.setError("Error: Ingrese un apellido correcto");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if(!mail.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$")){
             usu.setError("Error: Ingrese un mail correcto");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else if ( !telefono.matches( "[0-9][0-9][0-9][0-9][0-9][0-9][0-9]+" )){
             usu.setError("Error: Ingrese un número de teléfono correcto (Sólo dígitos)");
-            objSesion.setAttribute("error",usu.getError());
+            objSesion.setAttribute("errorModif",usu.getError());
             response.sendRedirect("modificarDatos.jsp");
         }
         else {
@@ -118,12 +118,12 @@ public class ModificarDatos extends HttpServlet {
                 Usuario usuarioActual = (Usuario) objSesion.getAttribute("usuarioActual");
                 usuarioActual = new Usuario(usuario,contActual,tipoUsuario,nombre,apellido,telefono,mail, direc, foto);
                 objSesion.setAttribute("userActual", usuarioActual);
-                objSesion.setAttribute("notificacion", "Datos actualizados!");
+                objSesion.setAttribute("notificacionModif", "Datos actualizados!");
                 response.sendRedirect("perfil.jsp");
             }
             else{
                 usu.setError("Error al modificar los datos, verifique los campos e intente nuevamente.");
-                objSesion.setAttribute("error",usu.getError());
+                objSesion.setAttribute("errorModif",usu.getError());
                 response.sendRedirect("modificarDatos.jsp");
             }  
         }

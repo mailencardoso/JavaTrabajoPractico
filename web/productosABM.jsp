@@ -3,6 +3,8 @@
 <%
     HttpSession objSesion = request.getSession(false);
     Usuario usuarioActual = (Usuario) objSesion.getAttribute("userActual");
+    String notificacion = "";
+    String modificacion = "";
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
@@ -63,7 +65,22 @@
  <div class="container-profile">
     
     <div id="product-abm" class="row justify-content-center">
-            <h3>ABM de Productos</h3>
+            <h3>ABM de Productos</h3
+            <% if (objSesion.getAttribute("exitoAltaProd") != null){
+                    notificacion = (String) objSesion.getAttribute("exitoAltaProd");%>
+                <div class="alert alert-success" role="alert">
+                    <label align="center"><%=notificacion%></label>
+                </div>                 
+            <%}%>
+            <%objSesion.removeAttribute("exitoAltaProd");%>
+            
+            <% if (objSesion.getAttribute("notificacionModif") != null){
+                    modificacion = (String) objSesion.getAttribute("notificacionModif");%>
+                <div class="alert alert-success" role="alert">
+                    <label align="center"><%=modificacion%></label>
+                </div>                 
+            <%}%>
+            <%objSesion.removeAttribute("notificacionModif");%>
     </div>
     <br>
     <div class="row justify-content-center">

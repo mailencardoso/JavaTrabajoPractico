@@ -51,8 +51,8 @@ public class Login extends HttpServlet {
             response.sendRedirect("indexlogueado.jsp");  /* redirige al inicio */
             
         }else{
-            user.setError("Error: Usuario y/o contraseñas incorrectos.");
-            sesion.setAttribute("error",user.getError());
+            user.setError("Usuario y/o contraseña incorrectos. ");
+            sesion.setAttribute("errorLogin",user.getError());
             response.sendRedirect("login.jsp");
 
         }

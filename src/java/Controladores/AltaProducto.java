@@ -68,14 +68,14 @@ public class AltaProducto extends HttpServlet {
         
         if(ban==true){
                 product.agregarProducto(cod, nombre, desc, prec, foto, categoria);
-                sesion.setAttribute("exito", "Producto dado de alta con exito");
-                response.sendRedirect("agregadoExitoso.jsp"); 
+                sesion.setAttribute("exitoAltaProd", "Producto dado de alta con exito");
+                response.sendRedirect("productosABM.jsp"); 
             }
             
         
         else{
             product.setError("Error al agregar producto, revise los campos e intentelo nuevamente");
-            sesion.setAttribute("error", product.getError());
+            sesion.setAttribute("errorAltaProd", product.getError());
             response.sendRedirect("altaProducto.jsp");
              
             

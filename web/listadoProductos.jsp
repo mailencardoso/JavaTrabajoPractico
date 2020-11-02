@@ -16,9 +16,6 @@
     objSesion.removeAttribute("error");
     String tipoUsuario = usuarioActual.getTipoUsuario();
     String notificacion = "";
-    if (objSesion.getAttribute("notificacion") != null){
-        notificacion = (String) objSesion.getAttribute("notificacion");
-    }
     if(usuarioActual == null){
         response.sendRedirect("index.jsp");
     }
@@ -73,6 +70,9 @@
             <a class="nav-link" href="carrito.jsp">Pedidos</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="listadoPedidosCliente.jsp">Lista de Pedidos</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="perfil.jsp">Hola, <%=usuarioActual.getUsuario()%></a>
           </li>
         </ul>
@@ -105,7 +105,8 @@
         </div>
         
         <div class="col-lg-9">
-            <%if (notificacion.equals("Objeto ingresado al carrito!")){ %>
+            <%if (objSesion.getAttribute("notificacion") != null){
+                notificacion = (String) objSesion.getAttribute("notificacion"); %>
                 <div id="notificacion" class="alert alert-success" role="alert">
                     <label align="center"><%=notificacion%></label>
                 </div>

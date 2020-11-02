@@ -5,15 +5,8 @@
 --%>
 <%
     HttpSession objSesion = request.getSession(false);
-    String notificacion = "";
-    String notificacion2 = "";
-    if (objSesion.getAttribute("exito") != null){
-        notificacion = (String) objSesion.getAttribute("exito");
-    }
-    if (objSesion.getAttribute("error") != null){
-        notificacion2 = (String) objSesion.getAttribute("error");
-    }
-    
+    String exito = "";
+    String error = "";
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,12 +46,20 @@
         <div class ="row" >
             <form action="Login" method="post">
                 <h3>Iniciar sesión</h3>
-                 <%if (notificacion.equals("Registro realizado")){ %>
-                <div class="alert alert-success" role="alert">
-                                ¡Registro nuevo realizado <b>con éxito</b>!
-                            </div>                 
+                <% if (objSesion.getAttribute("errorLogin") != null){
+                   error = (String) objSesion.getAttribute("errorLogin");%>
+                    <div id="notificacion" class="alert alert-danger" role="alert">
+                        <label align="center"><%=error%></label>
+                    </div>
+                    <%}%>
+                 <%objSesion.removeAttribute("errorLogin");%> 
+                 <%if (objSesion.getAttribute("exitoRegistro") != null){
+                        exito = (String) objSesion.getAttribute("exitoRegistro");%>
+                    <div class="alert alert-success" role="alert">
+                        <label align="center"><%=exito%></label>
+                    </div>                 
                 <%}%>
-                 <%objSesion.removeAttribute("exito");%>
+                 <%objSesion.removeAttribute("exitoRegistro");%>
                 <div class="form-group" >
                     <label for="exampleInputUsuario">Usuario</label>
                     <input type="text" class="form-control" id="exampleInputUsuario" name="usuario" aria-describedby="usuarioHelp" >
@@ -70,13 +71,6 @@
                 </div>
                 <div class="form-group" >
                     <button type="submit" class="btn btn-primary">Iniciar sesión</button><br>
-                    
-                    <%if (notificacion2.equals("Error: Usuario y/o contraseñas incorrectos.")){ %>
-                    <br> <div class="alert alert-danger" role="alert">
-                                <b>¡ERROR!</b> Usuario y/o contraseña incorrectos. <br>Verifica tus datos.
-                            </div>
-                    <%}%>
-                 <%objSesion.removeAttribute("error");%>
                  
                 </div> 
                <div class="form-group" >
