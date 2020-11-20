@@ -137,7 +137,7 @@
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="login.jsp"><img class="card-img-top" src="img/bebidas/baggio.jpg" alt=""></a>
+              <a href="login.jsp"><img class="card-img-top" src="img/Bebidas/baggio.jpg" alt=""></a>
               <div class="card-body">
                   <small><font color="red">Oferta publicada</font></small> 
                 <h4 class="card-title">

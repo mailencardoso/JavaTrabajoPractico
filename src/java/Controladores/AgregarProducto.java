@@ -28,10 +28,7 @@ import javax.servlet.http.Part;
 import javax.sql.rowset.serial.SerialBlob;
 import org.apache.commons.io.IOUtils;
 
-/**
- *
- * @author Ferna
- */
+
 @MultipartConfig
 public class AgregarProducto extends HttpServlet {
 

@@ -7,6 +7,7 @@
 <%@page import="Negocio.Usuario"%>
 <%@page import="Datos.ConsultaPedidos"%>
 <%@page import="Negocio.Pedido"%>
+<%@page import="Negocio.FormatDate"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Base64"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -100,16 +101,18 @@
                      <br><br><b>Mail:</b> <%=pedidos.get(i).getMailCliente()%></td>
                      
                      <td><b>Número de Pedido:</b> <%=pedidos.get(i).getId()%>
-                     <br><br><b>Fecha Pedido:</b> <%=pedidos.get(i).getFechaPedido()%></td>
+                     <br><br><b>Fecha Pedido:</b> <%=FormatDate.FechaFormato(pedidos.get(i).getFechaPedido())%></td>
                      
                      <td><% for (int j=0;j<pedidos.get(i).getLineas().size();j++){%>
+                         
                          <b>Nombre Producto:</b> <%=pedidos.get(i).getLineas().get(j).getProducto().getNombre()%>
                          <br><br><b>Precio Unitario:</b> $<%=pedidos.get(i).getLineas().get(j).getProducto().getPrecio()%>
                      <br><br><b>Categoria:</b> <%=pedidos.get(i).getLineas().get(j).getProducto().getCategoria()%>
                      <br><br><b>Cantidad:</b> <%=pedidos.get(i).getLineas().get(j).getCantidad()%><br><br>
+                     ---------------------------------------------- <br>
                      <%}%>
                      <br><br><b> Total</b> <%pedidos.get(i).setPrecio();%>
-                            $<%=pedidos.get(i).getPrecio()%></td>             
+                            $<%=String.format("%.2f",pedidos.get(i).getPrecio())%></td>             
                     
                    </tr>
                    <%}%>

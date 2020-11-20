@@ -65,12 +65,12 @@
  <div class="container-profile">
     
     <div id="product-abm" class="row justify-content-center">
-            <h3>ABM de Productos</h3
+        <h3>ABM de Productos</h3>
             <% if (objSesion.getAttribute("exitoAltaProd") != null){
                     notificacion = (String) objSesion.getAttribute("exitoAltaProd");%>
-                <div class="alert alert-success" role="alert">
-                    <label align="center"><%=notificacion%></label>
-                </div>                 
+                    <div class="alert alert-success" role="alert">
+                        <label align="center"><%=notificacion%></label>
+                    </div>                 
             <%}%>
             <%objSesion.removeAttribute("exitoAltaProd");%>
             
@@ -93,7 +93,7 @@
         
     </div>
   <!-- /.container -->
-</div>
+ </div>
 
 
   <!-- Bootstrap core JavaScript -->

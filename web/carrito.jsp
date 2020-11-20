@@ -123,7 +123,7 @@
                         <td></td>
                         <td></td>
                         <td colspan="2"><label><b>Total:</b> </label></td>
-                        <td>$<%=pedido.getPrecio()%>            
+                        <td>$<%=String.format("%.2f",pedido.getPrecio())%>            
                     </tr>
                    </tbody>
                </table>

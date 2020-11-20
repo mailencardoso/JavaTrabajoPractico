@@ -96,7 +96,8 @@
   <%}%>        
           
  <div class="container">
-     
+     <a type="submit" class="btn btn-success" id="seguir-comprando" href="listadoProductos.jsp">← Volver</a>
+     <h3 align="center">Bebidas</h3>
      <% ArrayList<Producto> prod = new ArrayList<Producto>(); prod = null;
             ConsultaProductos productos = new ConsultaProductos();
             prod = productos.buscarCategoria("Bebidas"); %>
@@ -105,7 +106,8 @@
             <br>
             
             
-    <div class="row">
+    <div class="row justify-content-center">
+        
         
         <div class="col-lg-9">
             <%if (objSesion.getAttribute("notificacion") != null){
@@ -118,7 +120,7 @@
             
             <div class="row">
         
-           
+                
  
             <%for(int i=0;i<prod.size();i++ ){%>
                 <div class="col-lg-4 col-md-6 mb-4">

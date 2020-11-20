@@ -97,7 +97,8 @@
   </nav>
   <%}%>  
  <div class="container">
-     
+     <a type="submit" class="btn btn-success" id="seguir-comprando" href="listadoProductos.jsp">← Volver</a>
+     <h3 align="center">Productos de Limpieza</h3>
      <% ArrayList<Producto> prod = new ArrayList<Producto>(); prod = null;
             ConsultaProductos productos = new ConsultaProductos();
             prod = productos.buscarCategoria("Productos de limpieza"); %>

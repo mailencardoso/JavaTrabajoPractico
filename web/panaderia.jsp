@@ -98,6 +98,8 @@
   </nav>
   <%}%>  
  <div class="container">
+     <a type="submit" class="btn btn-success" id="seguir-comprando" href="listadoProductos.jsp">← Volver</a>
+     <h3 align="center">Panadería y Bollería Industrial</h3>
      
      <% ArrayList<Producto> prod = new ArrayList<Producto>(); prod = null;
             ConsultaProductos productos = new ConsultaProductos();

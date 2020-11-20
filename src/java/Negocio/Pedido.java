@@ -5,6 +5,8 @@
  */
 package Negocio;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 /**
@@ -58,8 +60,9 @@ public class Pedido {
     }
     
     public void setFechaPedido(Date fecha){
+        
         this.fecha_pedido = fecha;
-    }
+    } 
     
     public String getOrdenCompleta(){
         return orden_completa;
@@ -91,7 +94,7 @@ public class Pedido {
     }
     
     public void setPrecio() {
-        float total = 0f;
+        float total = 0;
         if (lineas!=null){
             for (int i=0;i<lineas.size();i++){
                 total= total+(lineas.get(i).getCantidad()*lineas.get(i).getProducto().getPrecio());
